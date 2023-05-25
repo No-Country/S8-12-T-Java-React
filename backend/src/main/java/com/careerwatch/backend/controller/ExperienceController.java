@@ -1,14 +1,14 @@
 package com.careerwatch.backend.controller;
 
 
+import com.careerwatch.backend.dto.resume.ExperienceDto;
+import com.careerwatch.backend.dto.resume.UpdateExperienceDto;
+import com.careerwatch.backend.service.ExperienceService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 
 
@@ -18,20 +18,20 @@ import java.util.List;
 public class ExperienceController {
     
     private final ExperienceService experienceService;
-    
+
 
     @GetMapping
-    public ResponseEntity<List<ExperienceDto>> getAllExperiences() throws JsonProcessingException {
-        return ResponseEntity.ok(experienceService.getAllExperiences());
+    public ResponseEntity<List<ExperienceDto>> getAllExperiences(@PathVariable Long resumeId) throws JsonProcessingException {
+        return ResponseEntity.ok(experienceService.getAllExperiences(resumeId));
     }
 
     @GetMapping("/{experienceId}")
     public ResponseEntity<ExperienceDto> getExperienceById(@PathVariable Long experienceId) throws JsonProcessingException  {
-        return ResponseEntity.ok(experienceService.getExperienceById(experienceId));
+        return ResponseEntity.ok(experienceService.getExperience(experienceId));
     }
 
     @PutMapping("/{experienceId}")
-    public ResponseEntity<ExperienceDto> updateExperience(@PathVariable Long experienceId, @ModelAttribute ExperienceDto experienceDto) throws JsonProcessingException {
+    public ResponseEntity<ExperienceDto> updateExperience(@PathVariable Long experienceId, @RequestBody UpdateExperienceDto experienceDto) throws JsonProcessingException {
         return ResponseEntity.ok(experienceService.updateExperience(experienceId, experienceDto));
     }
 

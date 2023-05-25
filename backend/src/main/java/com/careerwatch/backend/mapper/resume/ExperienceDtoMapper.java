@@ -3,6 +3,9 @@ package com.careerwatch.backend.mapper.resume;
 import com.careerwatch.backend.dto.resume.ExperienceDto;
 import com.careerwatch.backend.entity.Experience;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -30,5 +33,14 @@ public class ExperienceDtoMapper {
                 .dateEnd(experienceDto.getDateEnd())
                 .description(experienceDto.getDescription())
                 .build();
+    }
+
+    public List<ExperienceDto> entitiesToDtoList(List<Experience> experiences){
+        List<ExperienceDto> listExperiencesDto = new java.util.ArrayList<>(java.util.Collections.emptyList());
+
+        for (Experience experience : experiences) {
+            listExperiencesDto.add(entityToDto(experience));
+        }
+        return listExperiencesDto;
     }
 }
