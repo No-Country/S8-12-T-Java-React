@@ -18,7 +18,7 @@ const Board = (props) => {
           {props.title}
         </h2>
         <h2 className=" ml-3 text-start text-[1.5em] ">{props.description}</h2>
-        <h3 className="flex flex-col items-star mt-10 ml-3">
+        <h3 className="flex flex-col items-star mt-4 ml-3">
           Careado hace {props.data} días
         </h3>
       </button>
