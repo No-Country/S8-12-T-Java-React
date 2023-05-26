@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from "react";
-import Button from "../Button";
+import React, { useState } from "react";
+import EditBoard from "./EditBoard";
+import DeletedBoard from "./DeleteBoard";
 
 const BoardOptions = (props) => {
   const [boardName, setBoardName] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [deletedModal, setDeletedModal] = useState(false);
 
- 
 
   const handleModalClose = () => {
     setBoardName('');
-    props.onClose(); 
+    props.onClose();
   };
 
+  const handleEditClick = () => {
+    setShowModal(true);
+  };
+  const handleDeleted =()=>{
+    setDeletedModal(true);
+  }
 
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
@@ -19,21 +27,34 @@ const BoardOptions = (props) => {
         
         <div className="flex-column">
           <button
-            onClick={handleModalClose}
+            onClick={handleEditClick}
             className="bg-[#6D28D9] text-white w-full py-2 rounded-md"
           >
             Editar
           </button>
           <button
-            onClick={handleModalClose}
+            onClick={handleDeleted}
             className="mt-3 w-full py-2 rounded-md text-[#6D28D9] border-[#6D28D9] border br"
           >
             Eliminar
           </button>
         </div>
       </div>
+
+      {showModal && (
+        <EditBoard title={props.title} onClose={() => handleModalClose(false)} />
+      )}
+
+      {deletedModal && (
+        <DeletedBoard title={props.title} onClose={() => handleModalClose(false)}/>
+      )
+
+
+      }
     </div>
   );
 };
 
 export default BoardOptions;
+
+
