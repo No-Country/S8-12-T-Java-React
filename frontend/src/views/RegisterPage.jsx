@@ -142,7 +142,7 @@ export default function RegisterPage() {
       <div className="my-4">
         <p>
           ¿Ya tienes cuenta?{" "}
-          <Link to={"login"}>
+          <Link to={"/login"}>
             <span className="font-bold underline text-[#232323]">
               Inicia sesión
             </span>

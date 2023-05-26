@@ -39,12 +39,13 @@ export default function Login() {
     <>
       <div className="w-full h-full bg-white text-neutral-900">
         <div className="h-[90vh] flex flex-col justify-evenly">
-          <h1 className="text-[16vw] text-center text-neutral-600 font-normal antialiased mt-[10vh]">
+          <h1 className="text-[16vw] text-center text-neutral-600 font-normal antialiased mt-[3vh]">
             Career<span className="text-orange-600">Watch</span>
           </h1>
           <form
             className="flex flex-col gap-y-[2vh]"
             onSubmit={(e) => FormError(e)}
+            
           >
             <div className="flex flex-col justify-around gap-y-[1vh]">
               <div className="flex flex-col gap-y-[1vh]">
@@ -90,7 +91,7 @@ export default function Login() {
                 </p>
               </div>
             </div>
-            <Link className="self-center" to={'board'}><button
+            <Link to={'/board'}><button 
               className="w-[90vw] h-[5vh] min-h-[5vh] max-h-[6vh] self-center bg-[#6D28D9] text-white font-normal rounded"
               type="submit"
             >
@@ -134,9 +135,7 @@ export default function Login() {
             <p className="font-[Lato,sans-serif] font-normal">
               ¿No tienes cuenta?
             </p>
-            <p className="ml-[3vw] underline font-[Lato,sans-serif] font-bold">
-              Registrarse
-            </p>
+            <Link to={'/register'} className="text-black ml-[3vw] underline font-[Lato,sans-serif] font-bold">Registrarse</Link>
           </div>
         </div>
       </div>

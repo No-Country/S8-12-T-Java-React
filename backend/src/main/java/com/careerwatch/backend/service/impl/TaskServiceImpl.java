@@ -19,10 +19,16 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService {
 
     private final ApplicationRepository applicationRepository;
-
     private final TaskDtoMapper mapper;
-
     private final TaskRepository taskRepository;
+
+
+    @Override
+    public TaskDto createTask(TaskDto taskDto) {
+        Task task = mapper.dtoToEntity(taskDto);
+        taskRepository.save(task);
+        return mapper.entityToDto(task);
+    }
 
     @Override
     public List<TaskDto> getAllTasksByApplicationId(Long applicationId) {

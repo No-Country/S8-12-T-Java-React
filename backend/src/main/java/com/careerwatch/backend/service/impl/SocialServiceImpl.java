@@ -22,6 +22,16 @@ public class SocialServiceImpl implements SocialService {
     private final SocialRepository socialRepository;
     private final SocialDtoMapper mapper;
     private final ProfileRepository profileRepository;
+
+
+    @Override
+    public SocialDto createSocial(SocialDto socialDto) {
+        Social social = mapper.dtoToEntity(socialDto);
+        socialRepository.save(social);
+        return mapper.entityToDto(social);
+    }
+
+
     @Override
     public List<SocialDto> getAllSocialsByResumeId(Long resumeId) {
         Profile profile = profileRepository.findByResumeId(resumeId)
