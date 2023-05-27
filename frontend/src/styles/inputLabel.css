@@ -2,12 +2,17 @@ label{
     color: rgb(20, 20, 20);
 }
 input{
+    outline: none;
     background-color: white;
     border: 1px solid rgb(224, 224, 224);
     color: rgb(20, 20, 20);
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -o-border-radius: 2px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+input:focus{
+    box-shadow: 0 0 0 2px #bcaada;    
+    border: 1px solid #6D28D9;
 }
