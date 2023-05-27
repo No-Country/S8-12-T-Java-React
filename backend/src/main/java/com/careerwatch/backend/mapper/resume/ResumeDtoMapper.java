@@ -1,9 +1,11 @@
 package com.careerwatch.backend.mapper.resume;
 
+import com.careerwatch.backend.dto.resume.education.EducationDto;
 import com.careerwatch.backend.dto.resume.experience.ExperienceDto;
 import com.careerwatch.backend.dto.resume.language.LanguageDto;
 import com.careerwatch.backend.dto.resume.profile.ProfileDto;
 import com.careerwatch.backend.dto.resume.resume.ResumeDto;
+import com.careerwatch.backend.entity.Profile;
 import com.careerwatch.backend.entity.Resume;
 import com.careerwatch.backend.entity.User;
 import com.careerwatch.backend.repository.*;
@@ -15,12 +17,11 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class ResumeDtoMapper {
-
     private final UserRepository userRepository;
     private final ExperienceRepository experienceRepository;
     private final LanguageRepository languageRepository;
-    private final ProfileRepository profileRepository;
-
+    private final EducationRepository educationRepository;
+    private final EducationDtoMapper educationDtoMapper;
     private final ProfileDtoMapper profileDtoMapper;
     private final ExperienceDtoMapper experienceDtoMapper;
     private final LanguageDtoMapper languageDtoMapper;
@@ -36,9 +37,12 @@ public class ResumeDtoMapper {
                 .stream().map(
                         languageDtoMapper::entityToDto)
                 .toList();
+        List<EducationDto> educationDtoList = educationRepository.findAllByResumeId(resume.getId())
+                .stream().map(
+                        educationDtoMapper::entityToDto)
+                .toList();
 
-        ProfileDto profileDto = profileDtoMapper.entityToDto(profileRepository.findByResumeId(resume.getId())
-                .orElseThrow(()-> new RuntimeException("No profile in Resume")));
+        ProfileDto profileDto = profileDtoMapper.entityToDto(resume.getProfile());
 
         return ResumeDto.builder()
                 .id(resume.getId())
@@ -46,6 +50,7 @@ public class ResumeDtoMapper {
                 .presentation(resume.getPresentation())
                 .resumeName(resume.getResumeName())
                 .profile(profileDto)
+                .educations(educationDtoList)
                 .experiences(experienceDtoList)
                 .languages(languageDtoList)
                 .build();

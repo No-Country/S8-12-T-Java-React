@@ -13,7 +13,6 @@ import java.util.List;
 @Builder
 public class ProfileDto {
     private Long id;
-    private Long resumeId;
     private String fullName;
     private String title;
     private String email;

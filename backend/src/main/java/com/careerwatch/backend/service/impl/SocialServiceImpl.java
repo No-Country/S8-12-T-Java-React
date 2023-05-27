@@ -1,11 +1,10 @@
 package com.careerwatch.backend.service.impl;
 
-import com.careerwatch.backend.entity.Profile;
+import com.careerwatch.backend.entity.Resume;
 import com.careerwatch.backend.exception.NotFoundException;
-import com.careerwatch.backend.repository.ProfileRepository;
+import com.careerwatch.backend.repository.ResumeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import com.careerwatch.backend.dto.resume.social.SocialDto;
 import com.careerwatch.backend.dto.resume.social.UpdateSocialDto;
 import com.careerwatch.backend.entity.Social;
@@ -21,14 +20,24 @@ public class SocialServiceImpl implements SocialService {
     
     private final SocialRepository socialRepository;
     private final SocialDtoMapper mapper;
-    private final ProfileRepository profileRepository;
+    private final ResumeRepository resumeRepository;
+
+    @Override
+    public SocialDto createSocial(Long resumeId, SocialDto socialDto) {
+        Resume resume = resumeRepository.findById(resumeId)
+                .orElseThrow(()-> new NotFoundException("Error: resume not found"));
+        Social social = mapper.dtoToEntity(socialDto);
+        social.setProfileId(resume.getProfile().getId());
+        socialRepository.save(social);
+        return mapper.entityToDto(social);
+    }
+
     @Override
     public List<SocialDto> getAllSocialsByResumeId(Long resumeId) {
-        Profile profile = profileRepository.findByResumeId(resumeId)
-                .orElseThrow(()-> new NotFoundException("Error: resume with id " + resumeId + " not found"));
-        List<SocialDto> socialDtoList = mapper.entitiesToDtoList(profile.getSocials());
-
-        return socialDtoList;
+        Resume resume = resumeRepository.findById(resumeId)
+                .orElseThrow(()-> new NotFoundException("Error: resume not found"));
+        return mapper.entitiesToDtoList(
+                socialRepository.findAllByProfileId(resume.getProfile().getId()));
     }
     
     @Override
@@ -53,7 +62,7 @@ public class SocialServiceImpl implements SocialService {
     
     @Override
     public void deleteSocialById(Long socialId) {
-        if (socialRepository.existsById(socialId))
+        if (!socialRepository.existsById(socialId))
             throw new NotFoundException("Error: social with id " + socialId + " not found");
 
         socialRepository.deleteById(socialId);

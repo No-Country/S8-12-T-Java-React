@@ -11,6 +11,7 @@ import lombok.Setter;
 @Builder
 public class SocialDto {
     private Long id;
+    private Long profileId;
     private String title;
     private String link;
 }
