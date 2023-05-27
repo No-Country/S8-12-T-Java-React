@@ -7,6 +7,7 @@ import Boards from './views/Board'
 import Login from './views/Login'
 import { Footer } from './components/Footer'
 import Registerpage from './views/RegisterPage'
+import Perfil from './views/Perfil'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route element={<Landing/>} path='/'/>
       <Route element={<Login/>} path='/login'/>
       <Route element={<Boards/>} path='/board'/>
+      <Route element={<Perfil/>} path='/perfil'/>
       <Route element={<Registerpage/>} path='/register'/>
     </Routes>
     <Footer/>
