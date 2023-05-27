@@ -19,10 +19,8 @@ public class Language {
     @Column(name = "ID")
     private Long id;
 
-
     @Column(name = "RESUME_ID")
     private Long resumeId;
-
 
     @Column(name = "LANGUAGE")
     private ELanguage language;
