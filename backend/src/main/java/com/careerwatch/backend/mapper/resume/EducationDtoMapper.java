@@ -45,4 +45,13 @@ public class EducationDtoMapper {
         }
         return listEducationsDto;
     }
+
+    public List<Education> dtoListToEntities(List<EducationDto> educationDtos){
+        List<Education> listEducations = new ArrayList<>(emptyList());
+
+        for (EducationDto education : educationDtos) {
+            listEducations.add(dtoToEntity(education));
+        }
+        return listEducations;
+    }
 }
