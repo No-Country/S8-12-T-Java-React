@@ -15,6 +15,7 @@ public class SocialDtoMapper {
     public SocialDto entityToDto(Social social){
         return SocialDto.builder()
                 .id(social.getId())
+                .profileId(social.getProfileId())
                 .title(social.getTitle())
                 .link(social.getLink())
                 .build();

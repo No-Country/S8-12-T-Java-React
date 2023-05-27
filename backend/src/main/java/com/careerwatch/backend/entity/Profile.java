@@ -18,10 +18,6 @@ public class Profile {
     @Column(name = "ID")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "RESUME_ID", referencedColumnName = "ID")
-    private Resume resume;
-
     @Column(name = "FULL_NAME")
     private String fullName;
 
@@ -39,8 +35,4 @@ public class Profile {
 
     @Column(name = "IMG_RESUME")
     private String imgResume;
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "PROFILE_ID", referencedColumnName = "ID")
-    private List<Social> socials;
 }

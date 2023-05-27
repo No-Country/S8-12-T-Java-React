@@ -22,7 +22,7 @@ public class ResumeController {
         return ResponseEntity.ok(resumeService.getAllResumesByUserId(userId));
     }
 
-    @GetMapping("/{resumeId}")
+    @GetMapping("/resume/{resumeId}")
     public ResponseEntity<ResumeDto> getResumeById( @PathVariable Long resumeId) throws JsonProcessingException {
         return ResponseEntity.ok(resumeService.getResumeById(resumeId));
     }
