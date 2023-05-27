@@ -3,8 +3,8 @@ import "../styles/inputLabel.css";
 import "../styles/fontLogo.css";
 import "../styles/latoFont.css";
 import { Facebook, Google } from "../assets/icons/Icons";
-import { Navigate, useLocation } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
+
 
 export default function Login() {
   const [emailValue, setEmailValue] = useState("");
@@ -30,8 +30,8 @@ export default function Login() {
         ErrorText: "La contraseña que has introducido es incorrecta.",
       });
     } else {
-      // event.preventDefault()
-      return <Navigate to={"/"} />;
+      //  event.preventDefault()
+      return redirect('/');
     }
   }
 
@@ -44,7 +44,10 @@ export default function Login() {
           </h1>
           <form
             className="flex flex-col gap-y-[2vh]"
-            onSubmit={(e) => FormError(e)}
+            onSubmit={(e) =>{ FormError(e); return redirect('/');}}
+            method="get"
+            action={'/board'}
+            
             
           >
             <div className="flex flex-col justify-around gap-y-[1vh]">
@@ -91,12 +94,12 @@ export default function Login() {
                 </p>
               </div>
             </div>
-            <Link to={'/board'}><button 
+            <button 
               className="w-[90vw] h-[5vh] min-h-[5vh] max-h-[6vh] self-center bg-[#6D28D9] text-white font-normal rounded"
               type="submit"
             >
               Iniciar sesión
-            </button></Link>
+            </button>
           </form>
           <div className="w-[90vw] flex flex-row self-center justify-between">
             <div>
