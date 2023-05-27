@@ -18,6 +18,12 @@ public class SocialController {
 
     private final SocialService socialService;
 
+    
+    @PostMapping
+    public ResponseEntity<SocialDto> createSocial(@RequestBody SocialDto socialDto) throws JsonProcessingException {
+        return ResponseEntity.ok(socialService.createSocial(socialDto));
+    }
+
     @GetMapping
     public ResponseEntity<List<SocialDto>> getAllSocials(@PathVariable Long resumeId) throws JsonProcessingException {
         return ResponseEntity.ok(socialService.getAllSocialsByResumeId(resumeId));

@@ -16,6 +16,10 @@ public class TaskController {
 
     private final TaskService taskService;
 
+    @PostMapping
+    public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto taskDto) throws JsonProcessingException {
+        return ResponseEntity.ok(taskService.createTask(taskDto));
+    }
 
     @GetMapping("/{applicationId}")
     public ResponseEntity<List<TaskDto>> getAllTasksById(@PathVariable Long applicationId) throws JsonProcessingException {
