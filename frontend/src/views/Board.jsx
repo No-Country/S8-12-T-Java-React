@@ -41,16 +41,14 @@ export default function Boards() {
         <div className="w-[90vw] text-[1.28em] text-star text-700 font-bold flex flex-row items-center mt-3 mb-3">
           <img
             className="w-[10vw] drop-shadow-md mr-3 "
-            src="../../public/trello.svg"
+            src="./trello.svg"
             alt="1"
           ></img>
           <h2>Tablero</h2>
         </div>
-        <Link to={"login"}>
           <button className="w-[90vw] h-[6vh] bg-[#6D28D9] text-white font-normal">
             Nuevo tablero
-          </button>
-        </Link>
+          </button>       
         {boards.map((board,index)=>(
 
           <div className="m-5">

@@ -31,6 +31,14 @@ public class StageServiceImpl implements StageService {
 
     @Transactional
     @Override
+    public StageDto createStage(StageDto stageDto) {
+        Stage stage = mapper.dtoToEntity(stageDto);
+        stageRepository.save(stage);
+        return mapper.entityToDto(stage);
+    }
+
+    @Transactional
+    @Override
     public List<StageDto> getAllStagesByUserId(Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(()-> new NotFoundException("Error: User with id " + userId + " not found"));
