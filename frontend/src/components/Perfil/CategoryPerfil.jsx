@@ -1,12 +1,19 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
 
-const CategoryPerfil = (props) => {
+const CategoryPerfil = ({ name, onClick }) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
     <div className="relative flex items-center">
-    <Link>
-      <button className="relative z-10 flex items-center justify-start w-[90vw] h-[6vh] bg-[#6D28D9] text-white font-normal rounded-md shadow-md mt-[3vh]">
-        <span className="ml-5">{props.name}</span>
+      <button
+        className="relative z-10 flex items-center justify-start w-[90vw] h-[6vh] bg-[#6D28D9] text-white font-normal rounded-md shadow-md mt-[3vh]"
+        onClick={handleClick}
+      >
+        <span className="ml-5">{name}</span>
         <span className="flex-grow"></span>
         <img
           className="ml-2 mr-5 w-[3vh]"
@@ -14,12 +21,8 @@ const CategoryPerfil = (props) => {
           alt="1"
         />
       </button>
-    </Link>
-  </div>
+    </div>
+  );
+};
 
-  
-  
-  )
-}
-
-export default CategoryPerfil
+export default CategoryPerfil;
