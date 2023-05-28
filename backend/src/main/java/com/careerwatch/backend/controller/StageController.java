@@ -24,7 +24,7 @@ public class StageController {
         return ResponseEntity.ok(stageService.createStage(stageDto));
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/user/{userId}")
     public ResponseEntity<List<StageDto>> getAllStagesById(@PathVariable Long userId) throws JsonProcessingException {
         return ResponseEntity.ok(stageService.getAllStagesByUserId(userId));
     }

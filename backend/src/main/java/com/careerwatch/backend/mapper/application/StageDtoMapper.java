@@ -40,12 +40,15 @@ public class StageDtoMapper {
 
         User userStage = userRepository.findById(stageDto.getUserId())
                 .orElseThrow(()-> new RuntimeException("Error: User not found"));
-        List<Application> applications = new ArrayList<>();
 
-        for (ApplicationDto appDto : stageDto.getApplications()){
-            applications.add(applicationRepository.findById(appDto.getId())
-                    .orElseThrow(()-> new RuntimeException("Error: Application not found")));
+        List<Application> applications = new ArrayList<>();
+        if (stageDto.getApplications() != null){
+            for (ApplicationDto appDto : stageDto.getApplications()){
+                applications.add(applicationRepository.findById(appDto.getId())
+                        .orElseThrow(()-> new RuntimeException("Error: Application not found")));
+            }
         }
+
 
         return Stage.builder()
                 .stageName(stageDto.getStageName())
