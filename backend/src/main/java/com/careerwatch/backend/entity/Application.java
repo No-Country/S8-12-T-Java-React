@@ -1,7 +1,6 @@
 package com.careerwatch.backend.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -20,6 +19,9 @@ public class Application {
     @Column(name = "ID")
     private Long id;
 
+    @Column(name="RESUME_ID")
+    private Long resumeId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
 
@@ -27,11 +29,7 @@ public class Application {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STAGE_ID")
-
     private Stage stage;
-
-    @OneToMany(mappedBy = "application", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Task> tasks = new ArrayList<>();
 
     @Column(name = "POSITION")
     private String position;
@@ -45,8 +43,5 @@ public class Application {
 
     @Column(name = "COMPANY")
     private String company;
-
-    @Column(name="RESUME_NAME")
-    private String resumeName;
 
 }

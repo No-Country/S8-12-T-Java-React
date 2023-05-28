@@ -2,6 +2,7 @@ package com.careerwatch.backend.service.impl;
 
 import com.careerwatch.backend.dto.application.application.ApplicationDto;
 import com.careerwatch.backend.dto.application.application.UpdateApplicationDto;
+import com.careerwatch.backend.dto.application.task.TaskDto;
 import com.careerwatch.backend.entity.Application;
 import com.careerwatch.backend.entity.Stage;
 import com.careerwatch.backend.entity.Task;
@@ -11,11 +12,13 @@ import com.careerwatch.backend.mapper.application.ApplicationDtoMapper;
 import com.careerwatch.backend.mapper.application.TaskDtoMapper;
 import com.careerwatch.backend.repository.ApplicationRepository;
 import com.careerwatch.backend.repository.StageRepository;
+import com.careerwatch.backend.repository.TaskRepository;
 import com.careerwatch.backend.repository.UserRepository;
 import com.careerwatch.backend.service.ApplicationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,11 +31,19 @@ public class ApplicationServiceImpl implements ApplicationService {
     private final UserRepository userRepository;
     private final StageRepository stageRepository;
     private final TaskDtoMapper taskMapper;
+    private final TaskRepository taskRepository;
 
     @Override
     public ApplicationDto createApplication(ApplicationDto applicationDto) {
         Application application = mapper.dtoToEntity(applicationDto);
         applicationRepository.save(application);
+        if (applicationDto.getTasks() != null){
+            for(TaskDto taskDto : applicationDto.getTasks()){
+                Task task = taskMapper.dtoToEntity(taskDto);
+                task.setApplicationId(application.getId());
+                taskRepository.save(task);
+            }
+        }
         return mapper.entityToDto(application);
     }
 
@@ -61,34 +72,34 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public ApplicationDto updateApplicationById(Long applicationId, UpdateApplicationDto application) {
+    public ApplicationDto updateApplicationById(Long applicationId, UpdateApplicationDto applicationDto) {
         Application existingApplication = applicationRepository.findById(applicationId)
                 .orElseThrow(() -> new RuntimeException("Error: application with id " + applicationId + " not found"));
 
-        application.getUserId().ifPresent(userId -> {
+        applicationDto.getUserId().ifPresent(userId -> {
             User userApplication = userRepository.findById(userId)
                     .orElseThrow(() -> new RuntimeException("Error: user with id " + userId + " not found"));
             existingApplication.setUser(userApplication);
         });
 
-        application.getStageId().ifPresent(stageId -> {
+        applicationDto.getStageId().ifPresent(stageId -> {
             Stage stageApplication = stageRepository.findById(stageId)
                     .orElseThrow(() -> new RuntimeException("Error: Stage with id " + stageId + " not found"));
             existingApplication.setStage(stageApplication);
         });
 
-        application.getTasks().ifPresent(tasks -> {
-            List<Task> taskList = tasks.stream()
-                    .map(taskMapper::dtoToEntity)
-                    .collect(Collectors.toList());
-            existingApplication.setTasks(taskList);
+        applicationDto.getTasks().ifPresent(tasks -> {
+            for (TaskDto task : tasks){
+                task.setApplicationId(existingApplication.getId());
+                taskRepository.save(taskMapper.dtoToEntity(task));
+            }
         });
 
-        application.getPosition().ifPresent(existingApplication::setPosition);
-        application.getDescription().ifPresent(existingApplication::setDescription);
-        application.getApplicationDate().ifPresent(existingApplication::setApplicationDate);
-        application.getCompany().ifPresent(existingApplication::setCompany);
-        application.getResumeName().ifPresent(existingApplication::setResumeName);
+        applicationDto.getPosition().ifPresent(existingApplication::setPosition);
+        applicationDto.getDescription().ifPresent(existingApplication::setDescription);
+        applicationDto.getApplicationDate().ifPresent(existingApplication::setApplicationDate);
+        applicationDto.getCompany().ifPresent(existingApplication::setCompany);
+        applicationDto.getResumeId().ifPresent(existingApplication::setResumeId);
 
         Application updatedApplication = applicationRepository.save(existingApplication);
 
@@ -97,6 +108,10 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public void deleteApplicationById(Long applicationId) {
+        List<Task> tasks = taskRepository.findAllByApplicationId(applicationId);
+        if (!tasks.isEmpty()){
+            tasks.forEach(taskRepository::delete);
+        }
         applicationRepository.deleteById(applicationId);
     }
 }

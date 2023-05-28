@@ -17,10 +17,8 @@ public class Task {
     @Column(name = "ID")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "APPLICATION_ID")
     @NotNull
-    private Application application;
+    private Long applicationId;
 
     @Column(name = "TITLE")
     private String title;
