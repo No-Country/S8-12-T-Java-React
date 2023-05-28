@@ -4,7 +4,7 @@ import "../styles/fontLogo.css";
 import "../styles/latoFont.css";
 import { Facebook, Google } from "../assets/icons/Icons";
 import { Link, redirect } from "react-router-dom";
-
+import axios from 'axios'
 
 export default function Login() {
   const [emailValue, setEmailValue] = useState("");
@@ -14,6 +14,18 @@ export default function Login() {
     color: "",
     ErrorText: "",
   });
+
+  const Login = async() =>{
+    try{
+      const response= await axios.get('https://randomuser.me/api/');
+      console.log(response.data);
+
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+  
+
 
   function FormError() {
     if (emailValue == "") {
@@ -30,8 +42,7 @@ export default function Login() {
         ErrorText: "La contraseña que has introducido es incorrecta.",
       });
     } else {
-      //  event.preventDefault()
-      return redirect('/');
+      localStorage.setItem('isLogged','true');
     }
   }
 
@@ -44,10 +55,9 @@ export default function Login() {
           </h1>
           <form
             className="flex flex-col gap-y-[2vh]"
-            onSubmit={(e) =>{ FormError(e); return redirect('/');}}
-            method="get"
-            action={'/board'}
+            onSubmit={(e) =>{ FormError(e);}}
             
+            action="/"
             
           >
             <div className="flex flex-col justify-around gap-y-[1vh]">
@@ -97,6 +107,7 @@ export default function Login() {
             <button 
               className="w-[90vw] h-[5vh] min-h-[5vh] max-h-[6vh] self-center bg-[#6D28D9] text-white font-normal rounded"
               type="submit"
+              
             >
               Iniciar sesión
             </button>
