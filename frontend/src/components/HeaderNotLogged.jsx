@@ -2,7 +2,7 @@ import React from 'react'
 import { HamburgHeader } from '../assets/icons/Icons'
 import '../styles/fontLogo.css'
 
-const Header = () => {
+export const HeaderNotLogged = () => {
   return (
     <>
     <header className='bg-neutral-50 w-full h-[10vh] flex flex-row items-center justify-between drop-shadow-lg fixed z-10'>
@@ -13,5 +13,3 @@ const Header = () => {
     </>
   )
 }
-
-export default Header
