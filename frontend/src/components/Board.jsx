@@ -9,7 +9,7 @@ const Board = (props) => {
       </h2>
       <h2 className=" ml-3 text-start text-400">{props.description}</h2>
       <h3 className="flex flex-col items-star mt-2 ml-3">
-        Careado hace {props.data} días
+        Creado hace {props.data} días
       </h3>
     </main>
   );

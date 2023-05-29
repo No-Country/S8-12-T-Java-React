@@ -10,6 +10,16 @@ export const HamburgHeader = () => {
     </svg>
   );
 };
+export const XClose = () => {
+  return (
+    <svg fill="none" viewBox="0 0 14 14" className="h-[1em]" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M1.225 13.825l-1.05-1.05L5.95 7 .175 1.225l1.05-1.05L7 5.95 12.775.175l1.05 1.05L8.05 7l5.775 5.775-1.05 1.05L7 8.05l-5.775 5.775z"
+        fill="#232323"
+      />
+    </svg>
+  );
+};
 
 export const QuoteLeft = () => {
   return (
@@ -27,9 +37,14 @@ export const QuoteLeft = () => {
   );
 };
 
-export const Facebook = ({h}) => {
+export const Facebook = ({ h }) => {
   return (
-    <svg fill="none" className={h} viewBox="0 0 12 24" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      fill="none"
+      className={h}
+      viewBox="0 0 12 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M3 8H0v4h3v12h5V12h3.642L12 8H8V6.333C8 5.378 8.192 5 9.115 5H12V0H8.192C4.596 0 3 1.583 3 4.615V8z"
         fill="#fff"
@@ -37,7 +52,7 @@ export const Facebook = ({h}) => {
     </svg>
   );
 };
-export const Google = ({h}) => {
+export const Google = ({ h }) => {
   return (
     <svg viewBox="0 0 48 48" className={h} xmlns="http://www.w3.org/2000/svg">
       <defs>
