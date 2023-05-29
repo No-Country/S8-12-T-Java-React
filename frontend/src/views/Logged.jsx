@@ -1,9 +1,9 @@
-import React from 'react'
-import Boards from './Board'
-import { Footer } from '../components/Footer'
+import React from "react";
+import Boards from "./Board";
+import { Footer } from "../components/Footer";
 import { HeaderLogged } from '../components/HeaderLogged'
-import { Route, Routes } from 'react-router-dom'
-
+import { Route, Routes } from "react-router-dom";
+import Perfil from "./Perfil";
 
 
 export default function Logged() {
@@ -13,8 +13,9 @@ export default function Logged() {
         <Routes>
             <Route element={<Boards/>} path='/'/>
             <Route element={<Boards/>} path='*'/>
+            <Route element={<Perfil />} path="/perfil" />
         </Routes>
         <Footer/>
     </>
-  )
+  );
 }

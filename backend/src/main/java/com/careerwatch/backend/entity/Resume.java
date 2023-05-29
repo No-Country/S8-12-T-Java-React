@@ -28,4 +28,8 @@ public class Resume {
 
     @Column(name = "RESUME_NAME")
     private String resumeName;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PROFILE_ID", referencedColumnName = "ID")
+    private Profile profile;
 }

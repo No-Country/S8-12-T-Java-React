@@ -7,10 +7,12 @@ import com.careerwatch.backend.entity.Stage;
 import com.careerwatch.backend.entity.Task;
 import com.careerwatch.backend.entity.User;
 import com.careerwatch.backend.repository.StageRepository;
+import com.careerwatch.backend.repository.TaskRepository;
 import com.careerwatch.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,11 +23,17 @@ public class ApplicationDtoMapper {
     private final TaskDtoMapper taskMapper;
     private final UserRepository userRepository;
     private final StageRepository stageRepository;
+    private final TaskRepository taskRepository;
+
     public ApplicationDto entityToDto (Application application){
 
-        List<TaskDto> taskDtos = application.getTasks().stream().map(
-                taskMapper::entityToDto
-        ).toList();
+        List<TaskDto> taskDtos =  Collections.emptyList();
+        List<Task> existingTaks = taskRepository.findAllByApplicationId(application.getId());
+        if(!existingTaks.isEmpty()){
+            taskDtos = existingTaks.stream().map(
+                    taskMapper::entityToDto
+            ).toList();
+        }
 
         return ApplicationDto.builder()
                 .id(application.getId())
@@ -36,7 +44,7 @@ public class ApplicationDtoMapper {
                 .description(application.getDescription())
                 .applicationDate(application.getApplicationDate())
                 .company(application.getCompany())
-                .resumeName(application.getResumeName())
+                .resumeId(application.getResumeId())
                 .build();
     };
 
@@ -48,19 +56,14 @@ public class ApplicationDtoMapper {
         Stage stageApplication = stageRepository.findById(applicationDto.getStageId())
                 .orElseThrow(()-> new RuntimeException("Error: Stage not found"));
 
-        List<Task> tasks = applicationDto.getTasks().stream().map(
-                taskMapper::dtoToEntity
-        ).toList();
-
         return Application.builder()
                 .user(userApplication)
                 .stage(stageApplication)
-                .tasks(tasks)
                 .position(applicationDto.getPosition())
                 .description(applicationDto.getDescription())
                 .applicationDate(applicationDto.getApplicationDate())
                 .company(applicationDto.getCompany())
-                .resumeName(applicationDto.getResumeName())
+                .resumeId(applicationDto.getResumeId())
                 .build();
     }
 

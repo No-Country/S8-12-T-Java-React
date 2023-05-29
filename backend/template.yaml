@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+  Function:
+    Timeout: 30
+
+Resources:
+  CareerWatchFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: com.careerwatch.backend.StreamLambdaHandler::handleRequest
+      Runtime: java17
+      AutoPublishAlias: production
+      SnapStart:
+        ApplyOn: PublishedVersions
+      Architectures:
+        - x86_64
+      MemorySize: 1024
+      Environment:
+        Variables:
+          POWERTOOLS_SERVICE_NAME: CareerWatchApi
+          DB_HOST: !Ref DBhost
+          DB_PORT: !Ref DBport
+          DB_NAME: !Ref DBname
+          DB_USERNAME: !Ref DBusername
+          DB_PASSWORD: !Ref DBpassword
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+
+Parameters:
+  DBhost:
+    Type: String
+    Default: ''
+    Description: Enter the DB host name or IP address
+  DBport:
+    Type: String
+    Default: ''
+    Description: Enter the DB port
+  DBname:
+    Type: String
+    Default: ''
+    Description: Enter the DB name
+  DBusername:
+    Type: String
+    Default: ''
+    Description: Enter the DB username
+  DBpassword:
+    Type: String
+    Default: ''
+    Description: Enter the DB password

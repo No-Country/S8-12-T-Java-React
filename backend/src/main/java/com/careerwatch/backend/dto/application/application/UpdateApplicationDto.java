@@ -8,12 +8,12 @@ import java.util.Optional;
 public class UpdateApplicationDto {
     private Long userId;
     private Long stageId;
+    private Long resumeId;
     private List<TaskDto> tasks;
     private String position;
     private String description;
     private String applicationDate;
     private String company;
-    private String resumeName;
 
     public Optional<Long> getUserId(){
         return Optional.ofNullable(this.userId);
@@ -36,7 +36,7 @@ public class UpdateApplicationDto {
     public Optional<String> getCompany(){
         return Optional.ofNullable(this.company);
     }
-    public Optional<String> getResumeName(){
-        return Optional.ofNullable(this.resumeName);
+    public Optional<Long> getResumeId(){
+        return Optional.ofNullable(this.resumeId);
     }
 }

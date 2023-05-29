@@ -16,7 +16,6 @@ public class UpdateSocialDto {
     private String title;
     private String link;
 
-
     public Optional<String> getTitle() {
         return Optional.ofNullable(title);
     }

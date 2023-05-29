@@ -21,5 +21,5 @@ public class ApplicationDto {
     private String description;
     private String applicationDate;
     private String company;
-    private String resumeName;
+    private Long resumeId;
 }

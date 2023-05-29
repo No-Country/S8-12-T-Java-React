@@ -23,8 +23,8 @@ public class ApplicationController {
         return ResponseEntity.ok(applicationService.createApplication(applicationDto));
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<List<ApplicationDto>> getAllApplicationsById(@PathVariable Long userId) throws JsonProcessingException {
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<ApplicationDto>> getAllApplicationsByUserId(@PathVariable Long userId) throws JsonProcessingException {
         return ResponseEntity.ok(applicationService.getAllApplicationsByUserId(userId));
     }
 
@@ -38,7 +38,7 @@ public class ApplicationController {
         return ResponseEntity.ok(applicationService.updateApplicationById(applicationId, applicationDto));
     }
 
-    @PutMapping("/{stageId}/{applicationId}")
+    @PutMapping("/stage/{stageId}/application/{applicationId}")
     public ResponseEntity<ApplicationDto> updateStageApplication(@PathVariable Long stageId, @PathVariable Long applicationId) throws JsonProcessingException {
         return ResponseEntity.ok(applicationService.updateStageApplication(stageId, applicationId));
     }

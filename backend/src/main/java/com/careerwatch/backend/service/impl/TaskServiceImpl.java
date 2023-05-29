@@ -34,7 +34,8 @@ public class TaskServiceImpl implements TaskService {
     public List<TaskDto> getAllTasksByApplicationId(Long applicationId) {
         Application application = applicationRepository.findById(applicationId)
                 .orElseThrow(()-> new NotFoundException("Error: application with id " + applicationId + " not found"));
-        return mapper.entitiesToDtoList(application.getTasks());
+
+        return mapper.entitiesToDtoList(taskRepository.findAllByApplicationId(applicationId));
     }
 
     @Override
@@ -55,7 +56,7 @@ public class TaskServiceImpl implements TaskService {
             Application application = applicationRepository.findById(taskDto.getApplicationId()
                     .orElseThrow(()->new RuntimeException("Error : task with id " + taskDto.getApplicationId() + " not found")))
                     .orElseThrow(()-> new RuntimeException("Error : application not found"));
-            task.setApplication(application);
+            task.setApplicationId(application.getId());
         }
         taskRepository.save(task);
         return mapper.entityToDto(task);

@@ -39,4 +39,10 @@ public class ExperienceDtoMapper {
                 .map(this::entityToDto)
                 .collect(Collectors.toList());
     }
+
+    public List<Experience> dtoListToEntities(List<ExperienceDto> experienceDtos) {
+        return experienceDtos.stream()
+                .map(this::dtoToEntity)
+                .collect(Collectors.toList());
+    }
 }

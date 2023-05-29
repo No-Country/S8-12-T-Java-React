@@ -33,7 +33,7 @@ public class LanguageDtoMapper {
             case "chinese" -> ELanguage.CHINESE;
             default -> null;
         };
-        ELanguageLevel languageLvl = switch (languageDto.getLanguage().toLowerCase()) {
+        ELanguageLevel languageLvl = switch (languageDto.getLanguageLevel().toLowerCase()) {
             case "a1" -> ELanguageLevel.A1;
             case "a2" -> ELanguageLevel.A2;
             case "b1" -> ELanguageLevel.B1;
@@ -54,6 +54,12 @@ public class LanguageDtoMapper {
     public List<LanguageDto> entitiesToDtoList(List<Language> languages) {
         return languages.stream()
                 .map(this::entityToDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<Language> dtoListToEntities(List<LanguageDto> languageDtos) {
+        return languageDtos.stream()
+                .map(this::dtoToEntity)
                 .collect(Collectors.toList());
     }
 }
