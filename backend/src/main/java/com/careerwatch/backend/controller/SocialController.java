@@ -20,8 +20,8 @@ public class SocialController {
 
     
     @PostMapping
-    public ResponseEntity<SocialDto> createSocial(@RequestBody SocialDto socialDto) throws JsonProcessingException {
-        return ResponseEntity.ok(socialService.createSocial(socialDto));
+    public ResponseEntity<SocialDto> createSocial(@PathVariable Long resumeId, @RequestBody SocialDto socialDto) throws JsonProcessingException {
+        return ResponseEntity.ok(socialService.createSocial(resumeId, socialDto));
     }
 
     @GetMapping

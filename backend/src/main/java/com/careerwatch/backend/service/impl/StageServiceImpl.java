@@ -49,7 +49,7 @@ public class StageServiceImpl implements StageService {
     @Override
     public StageDto getStageById (Long id) {
         return mapper.entityToDto(stageRepository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Error: stage " + id + " not found")));
+                .orElseThrow(()-> new NotFoundException("Error: stage " + id + " not found")));
     }
 
     @Transactional
@@ -57,7 +57,7 @@ public class StageServiceImpl implements StageService {
     public StageDto updateStage (Long id, UpdateStageDto stageDto) {
         
         Stage stage = stageRepository.findById(id).orElseThrow(()->
-                new RuntimeException("Error: stage not found"));
+                new NotFoundException("Error: stage not found"));
 
         stageDto.getStageName().ifPresent(stage::setStageName);
 
@@ -81,8 +81,8 @@ public class StageServiceImpl implements StageService {
     @Transactional
     @Override
     public void deleteStage(Long stageId) {
-        if (stageRepository.existsById(stageId))
-            throw new RuntimeException("Error: stage " + stageId + " not found");
+        if (!stageRepository.existsById(stageId))
+            throw new NotFoundException("Error: stage " + stageId + " not found");
         stageRepository.deleteById(stageId);
     }
 

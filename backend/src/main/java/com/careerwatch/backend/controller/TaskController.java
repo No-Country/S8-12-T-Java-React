@@ -21,7 +21,7 @@ public class TaskController {
         return ResponseEntity.ok(taskService.createTask(taskDto));
     }
 
-    @GetMapping("/{applicationId}")
+    @GetMapping("/application/{applicationId}")
     public ResponseEntity<List<TaskDto>> getAllTasksById(@PathVariable Long applicationId) throws JsonProcessingException {
         return ResponseEntity.ok(taskService.getAllTasksByApplicationId(applicationId));
     }
