@@ -18,7 +18,7 @@ export default function RegisterPage() {
   const password = watch("password");
 
   return (
-    <div className="mx-4 mt-8">
+    <div className="mx-4 flex flex-col justify-evenly h-[80vh]">
       <form
         className="grid grid-cols-2 gap-y-7 text-base"
         onSubmit={handleSubmit(submitData)}
