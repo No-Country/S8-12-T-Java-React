@@ -4,7 +4,7 @@ import "../styles/fontLogo.css";
 import "../styles/latoFont.css";
 import { Facebook, Google } from "../assets/icons/Icons";
 import { Link, redirect } from "react-router-dom";
-import axios from 'axios'
+import axios from "axios";
 
 export default function Login() {
   const [emailValue, setEmailValue] = useState("");
@@ -15,17 +15,14 @@ export default function Login() {
     ErrorText: "",
   });
 
-  const Login = async() =>{
-    try{
-      const response= await axios.get('https://randomuser.me/api/');
+  const Login = async () => {
+    try {
+      const response = await axios.get("https://randomuser.me/api/");
       console.log(response.data);
-
     } catch (error) {
       throw error.response.data;
     }
-  }
-  
-
+  };
 
   function FormError() {
     if (emailValue == "") {
@@ -42,7 +39,7 @@ export default function Login() {
         ErrorText: "La contraseña que has introducido es incorrecta.",
       });
     } else {
-      localStorage.setItem('isLogged','true');
+      localStorage.setItem("isLogged", "true");
     }
   }
 
@@ -55,10 +52,10 @@ export default function Login() {
           </h1>
           <form
             className="flex flex-col gap-y-[2vh]"
-            onSubmit={(e) =>{ FormError(e);}}
-            
+            onSubmit={(e) => {
+              FormError(e);
+            }}
             action="/"
-            
           >
             <div className="flex flex-col justify-around gap-y-[1vh]">
               <div className="flex flex-col gap-y-[1vh]">
@@ -104,10 +101,9 @@ export default function Login() {
                 </p>
               </div>
             </div>
-            <button 
+            <button
               className="w-[90vw] h-[5vh] min-h-[5vh] max-h-[6vh] self-center bg-[#6D28D9] text-white font-normal rounded"
               type="submit"
-              
             >
               Iniciar sesión
             </button>
@@ -149,7 +145,12 @@ export default function Login() {
             <p className="font-[Lato,sans-serif] font-normal">
               ¿No tienes cuenta?
             </p>
-            <Link to={'/register'} className="text-black ml-[3vw] underline font-[Lato,sans-serif] font-bold">Registrarse</Link>
+            <Link
+              to={"/register"}
+              className="text-black ml-[3vw] underline font-[Lato,sans-serif] font-bold"
+            >
+              Registrarse
+            </Link>
           </div>
         </div>
       </div>
