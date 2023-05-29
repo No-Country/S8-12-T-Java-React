@@ -7,33 +7,15 @@ import Experience from "../components/Perfil/Experience";
 import Information from "../components/Perfil/Information";
 import Knowledge from "../components/Perfil/Knowledge";
 import Languages from "../components/Perfil/Languages";
+import AddDeleted from "../components/Perfil/AddDeleted";
 
 export default function Perfil() {
-  const [showInformation, setShowInformation] = useState(false);
-  const [showEducation, setShowEducation] = useState(false);
-  const [showExperience, setShowExperience] = useState(false);
-  const [showCertifications, setShowCertifications] = useState(false);
-  const [showKnowledge, setShowKnowledge] = useState(false);
-  const [showLanguajes, setShowLanguajes] = useState(false);
+  const [activeComponent, setActiveComponent] = useState("");
 
-  const handleInformation = () => {
-    setShowInformation(!showInformation);
+  const handleComponentToggle = (componentName) => {
+    setActiveComponent(componentName === activeComponent ? "" : componentName);
   };
-  const handleEducation = () => {Experience
-    setShowEducation(!showEducation);
-  };
-  const handleExperience = () => {
-    setShowExperience(!showExperience);
-  };
-  const handleCertifications = () => {
-    setShowCertifications(!showCertifications);
-  };
-  const handleKnowledge = () => {
-    setShowKnowledge(!showKnowledge);
-  };
-  const handleLanguajes = () => {
-    setShowLanguajes(!showLanguajes);
-  };
+
   return (
     <>
       <div className="flex justify-center">
@@ -46,19 +28,44 @@ export default function Perfil() {
       <div className="flex flex-col items-center">
         <CategoryPerfil
           name={"Información personal"}
-          onClick={handleInformation}
+          onClick={() => handleComponentToggle("information")}
         />
-        {showInformation && <Information />}
-        <CategoryPerfil name={"Educación"} onClick={handleEducation} />
-        {showEducation && <Education />}
-        <CategoryPerfil name={"Experiencia"} onClick={handleExperience} />
-        {showExperience && <Experience />}
-        <CategoryPerfil name={"Certificaciones"} onClick={handleCertifications} />
-        {showCertifications && <Certifications />}
-        <CategoryPerfil name={"Conocimientos"} onClick={handleKnowledge} />
-        {showKnowledge && <Knowledge />}
-        <CategoryPerfil name={"Idiomas"} onClick={handleLanguajes} />
-        {showLanguajes && <Languages />}
+        {activeComponent === "information" && <Information />}
+        <CategoryPerfil
+          name={"Educación"}
+          onClick={() => handleComponentToggle("education")}
+        />
+        {activeComponent === "education" && <Education />}
+        {activeComponent === "education" && <AddDeleted name={"Agregar educación"} />}
+
+        <CategoryPerfil
+          name={"Experiencia"}
+          onClick={() => handleComponentToggle("experience")}
+        />
+        {activeComponent === "experience" && <Experience />}
+        {activeComponent === "experience" && <AddDeleted name={"Agregar experiencia"} />}
+
+        <CategoryPerfil
+          name={"Certificaciones"}
+          onClick={() => handleComponentToggle("certifications")}
+        />
+        {activeComponent === "certifications" && <Certifications />}
+        {activeComponent === "certifications" && <AddDeleted name={"Agregar certificado"} />}
+        
+        <CategoryPerfil
+          name={"Conocimientos"}
+          onClick={() => handleComponentToggle("knowledge")}
+        />
+        {activeComponent === "knowledge" && <Knowledge />}
+        {activeComponent === "knowledge" && <AddDeleted name={"Agregar conocimientos"} />}
+
+        <CategoryPerfil
+          name={"Idiomas"}
+          onClick={() => handleComponentToggle("languages")}
+        />
+        {activeComponent === "languages" && <Languages />}
+        {activeComponent === "languages" && <AddDeleted name={"Agregar idioma"} />}
+
         <CategoryPerfil name={"Contacto"} />
       </div>
       <div className="flex justify-center mt-[3vh]">

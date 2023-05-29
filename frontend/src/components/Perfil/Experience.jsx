@@ -1,4 +1,5 @@
-import { useState } from "react";
+import  { useState } from "react";
+
 
 const Experience = () => {
   const [titulo, setTitulo] = useState("");
@@ -91,26 +92,6 @@ const Experience = () => {
           <p htmlFor="" className=" ml-[2vh]">
             Actualmente trabajo aquí
           </p>
-        </div>
-        <div className="flex flex-row justify-between ">
-          <div className="flex flex-row">
-            <img
-              className="w-[3vh] drop-shadow-xl  "
-              src="../../public/plus.svg"
-              alt="1"
-            ></img>
-            <p htmlFor="" className="ml-4">
-              Agregar experiencia
-            </p>
-          </div>
-          <div className="flex flex-row">
-            <img
-              className="w-[3vh] drop-shadow-xl  "
-              src="../../public/trash.svg"
-              alt="1"
-            ></img>
-            <p>Eliminar</p>
-          </div>
         </div>
       </div>
     </>

@@ -1,5 +1,6 @@
 import  { useState } from "react";
 
+
 const Education = () => {
   const [titulo, setTitulo] = useState("");
   const [institucion, setInstitucion] = useState("");
@@ -92,26 +93,8 @@ const Education = () => {
             Actualmente asisto
           </p>
         </div>
-        <div className="flex flex-row justify-between ">
-          <div className="flex flex-row">
-            <img
-              className="w-[3vh] drop-shadow-xl  "
-              src="../../public/plus.svg"
-              alt="1"
-            ></img>
-            <p htmlFor="" className="ml-4">
-              Agregar educación
-            </p>
-          </div>
-          <div className="flex flex-row">
-            <img
-              className="w-[3vh] drop-shadow-xl  "
-              src="../../public/trash.svg"
-              alt="1"
-            ></img>
-            <p>Eliminar</p>
-          </div>
-        </div>
+        
+       
       </div>
     </>
   );

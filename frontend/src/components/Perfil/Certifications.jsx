@@ -77,26 +77,7 @@ const Certifications = () => {
             En curso
           </p>
         </div>
-        <div className="flex flex-row justify-between ">
-          <div className="flex flex-row">
-            <img
-              className="w-[3vh] drop-shadow-xl  "
-              src="../../public/plus.svg"
-              alt="1"
-            ></img>
-            <p htmlFor="" className="ml-4">
-              Agregar certificación
-            </p>
-          </div>
-          <div className="flex flex-row">
-            <img
-              className="w-[3vh] drop-shadow-xl  "
-              src="../../public/trash.svg"
-              alt="1"
-            ></img>
-            <p>Eliminar</p>
-          </div>
-        </div>
+        
       </div>
     </>
   );
