@@ -25,7 +25,6 @@ const Board = (props) => {
       {showModal && (
         <BoardOptions title={props.title} onClose={() => setShowModal(false)} />
       )}
-      
     </main>
   );
 };
