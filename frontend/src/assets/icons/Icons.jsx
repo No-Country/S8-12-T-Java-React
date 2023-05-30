@@ -23,7 +23,7 @@ export const XClose = () => {
 
 export const Arrow = ({h,rotate}) =>{
   return(
-    <svg style={{transform: `rotate(${rotate})`}} fill="none" viewBox="0 0 12 8" className={`h-[${h}] mt-[0.45vh]`} xmlns="http://www.w3.org/2000/svg">
+    <svg style={{transform: `rotate(${rotate})`,height:`${h}`}} fill="none" viewBox="0 0 12 8" className= 'mt-[0.45vh]' xmlns="http://www.w3.org/2000/svg">
       <path
         d="M6 7.375l-6-6L1.075.3 6 5.25 10.925.325 12 1.4 6 7.375z"
         fill="#6D28D9"
