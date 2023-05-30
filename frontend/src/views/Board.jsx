@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Board from "../components/Board";
 import NewBoard from "../components/modal/NewBoard";
+import '../styles/latoFont.css'
 
 export default function Boards() {
   const boards = [
@@ -40,7 +41,7 @@ export default function Boards() {
             src="./trello.svg"
             alt="1"
           ></img>
-          <h2>Tablero</h2>
+          <h2 className="font-['Lato','sans-serif'] font-bold">Tablero</h2>
         </div>
         <NewBoard />
         {boards.map((board, index) => (
