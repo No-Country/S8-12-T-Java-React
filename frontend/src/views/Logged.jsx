@@ -13,7 +13,7 @@ export default function Logged() {
         <Routes>
             <Route element={<Boards/>} path='/'/>
             <Route element={<Boards/>} path='*'/>
-            <Route element={<Perfil />} path="/perfil" />
+            <Route element={<Perfil />} path="/curriculumn" />
         </Routes>
         <Footer/>
     </>
