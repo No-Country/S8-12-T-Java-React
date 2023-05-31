@@ -47,7 +47,7 @@ public class ResumeController {
     public ResponseEntity<List<EducationDto>> getAllEducations(@PathVariable Long resumeId) throws JsonProcessingException {
         return ResponseEntity.ok(educationService.getAllEducations(resumeId));
     }
-    @GetMapping("/{resumeId}/socials}")
+    @GetMapping("/{resumeId}/socials")
     public ResponseEntity<List<SocialDto>> getAllSocials(@PathVariable Long resumeId) throws JsonProcessingException {
         return ResponseEntity.ok(socialService.getAllSocialsByResumeId(resumeId));
     }

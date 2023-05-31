@@ -37,7 +37,7 @@ public class ApplicationController {
     public ResponseEntity<ApplicationDto> updateApplicationById(@PathVariable Long applicationId, @RequestBody UpdateApplicationDto applicationDto) throws JsonProcessingException {
         return ResponseEntity.ok(applicationService.updateApplicationById(applicationId, applicationDto));
     }
-    @PutMapping("/{applicationId}/toStage/{stageId")
+    @PutMapping("/{applicationId}/toStage/{stageId}")
     public ResponseEntity<ApplicationDto> updateStageApplication(@PathVariable Long stageId, @PathVariable Long applicationId) throws JsonProcessingException {
         return ResponseEntity.ok(applicationService.updateStageApplication(stageId, applicationId));
     }
