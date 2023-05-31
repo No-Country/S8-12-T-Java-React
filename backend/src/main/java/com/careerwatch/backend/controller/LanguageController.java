@@ -13,35 +13,25 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/Languages")
+@RequestMapping("/api/v1/languages")
 public class LanguageController {
-    
     private final LanguageService languageService;
 
     @PostMapping
     public ResponseEntity<LanguageDto> createLanguage(@RequestBody LanguageDto languageDto) throws JsonProcessingException {
         return ResponseEntity.ok(languageService.createLanguage(languageDto));
     }
-
-    @GetMapping("/{resumeId}")
-    public ResponseEntity<List<LanguageDto>> getAllLanguagesByResumeId(@PathVariable Long resumeId) throws JsonProcessingException {
-        return ResponseEntity.ok(languageService.getAllLanguagesByResumeId(resumeId));
-    }
-
     @GetMapping("/{languageId}")
-    public ResponseEntity<LanguageDto> getLanguageById(@PathVariable Long LanguageId) throws JsonProcessingException  {
-        return ResponseEntity.ok(languageService.getLanguageById(LanguageId));
+    public ResponseEntity<LanguageDto> getLanguageById(@PathVariable Long languageId) throws JsonProcessingException  {
+        return ResponseEntity.ok(languageService.getLanguageById(languageId));
     }
-
     @PutMapping("/{languageId}")
-    public ResponseEntity<LanguageDto> updateLanguage(@PathVariable Long LanguageId, @RequestBody UpdateLanguageDto LanguageDto) throws JsonProcessingException {
-        return ResponseEntity.ok(languageService.updateLanguageById(LanguageId, LanguageDto));
+    public ResponseEntity<LanguageDto> updateLanguage(@PathVariable Long languageId, @RequestBody UpdateLanguageDto languageDto) throws JsonProcessingException {
+        return ResponseEntity.ok(languageService.updateLanguageById(languageId, languageDto));
     }
-
     @DeleteMapping("/{languageId}")
-    public ResponseEntity<Void> deleteLanguage(@PathVariable Long LanguageId) throws JsonProcessingException {
-        languageService.deleteLanguageById(LanguageId);
+    public ResponseEntity<Void> deleteLanguage(@PathVariable Long languageId) throws JsonProcessingException {
+        languageService.deleteLanguageById(languageId);
         return ResponseEntity.noContent().build();
     }
-    
 }

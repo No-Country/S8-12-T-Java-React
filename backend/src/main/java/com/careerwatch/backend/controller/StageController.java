@@ -23,22 +23,14 @@ public class StageController {
     public ResponseEntity<StageDto> createStage(@RequestBody StageDto stageDto) throws JsonProcessingException {
         return ResponseEntity.ok(stageService.createStage(stageDto));
     }
-
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<StageDto>> getAllStagesById(@PathVariable Long userId) throws JsonProcessingException {
-        return ResponseEntity.ok(stageService.getAllStagesByUserId(userId));
-    }
-
     @GetMapping("/{stageId}")
     public ResponseEntity<StageDto> getStageById(@PathVariable Long stageId) throws JsonProcessingException  {
         return ResponseEntity.ok(stageService.getStageById(stageId));
     }
-
     @PutMapping("/{stageId}")
     public ResponseEntity<StageDto> updateStage(@PathVariable Long stageId, @RequestBody UpdateStageDto stageDto) throws JsonProcessingException {
         return ResponseEntity.ok(stageService.updateStage(stageId, stageDto));
     }
-
     @DeleteMapping("/{stageId}")
     public ResponseEntity<Void> deleteStage(@PathVariable Long stageId) throws JsonProcessingException {
         stageService.deleteStage(stageId);

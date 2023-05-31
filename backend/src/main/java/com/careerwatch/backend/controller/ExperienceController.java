@@ -21,22 +21,14 @@ public class ExperienceController {
     public ResponseEntity<ExperienceDto> createExperience(@RequestBody ExperienceDto experienceDto) throws JsonProcessingException {
         return ResponseEntity.ok(experienceService.createExperience(experienceDto));
     }
-
-    @GetMapping("/{resumeId}")
-    public ResponseEntity<List<ExperienceDto>> getAllExperiencesByResumeId(@PathVariable Long resumeId) throws JsonProcessingException {
-        return ResponseEntity.ok(experienceService.getAllExperiencesByResumeId(resumeId));
-    }
-
     @GetMapping("/{experienceId}")
     public ResponseEntity<ExperienceDto> getExperienceById(@PathVariable Long experienceId) throws JsonProcessingException  {
         return ResponseEntity.ok(experienceService.getExperienceById(experienceId));
     }
-
     @PutMapping("/{experienceId}")
     public ResponseEntity<ExperienceDto> updateExperienceById(@PathVariable Long experienceId, @RequestBody ExperienceDto experienceDto) throws JsonProcessingException {
         return ResponseEntity.ok(experienceService.updateExperienceById(experienceId, experienceDto));
     }
-
     @DeleteMapping("/{experienceId}")
     public ResponseEntity<Void> deleteExperience(@PathVariable Long experienceId) throws JsonProcessingException {
         experienceService.deleteExperienceById(experienceId);
