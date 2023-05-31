@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { XClose } from "../assets/icons/Icons";
 import { Link } from "react-router-dom";
 import { Arrow } from "../assets/icons/Icons";
+import '../styles/menusButtons.css'
 
 export const MenuLogged = ({isOpen,onClose}) => {
     const [active, setactive] = useState(1);
@@ -28,13 +29,13 @@ export const MenuLogged = ({isOpen,onClose}) => {
         <button onClick={onClose} className="h-[2.8em] w-[2.8em] flex items-center justify-center border border-neutral-900 rounded-md">
           <XClose/>
         </button>
-        <Link to={'/'} onClick={()=>setactive(1)} className={`w-fit h-[4.5%] flex items justify-end ${active===1?'border-b-2':null} border-[#6D28D9] text-[#6D28D9] hover:text-[#6D28D9] font-['Lato','sans-serif'] font-normal`}>Tableros</Link>
-        <Link to={'/'} onClick={()=>setactive(2)} className={`w-fit h-[4.5%] flex items justify-end ${active===2?'border-b-2':null} border-[#6D28D9] text-[#6D28D9] hover:text-[#6D28D9] font-['Lato','sans-serif'] font-normal`}>Empleos</Link>
+        <Link to={'/'} onClick={()=>setactive(1)} className={`btnInactive ${active===1?'btnActive':null} font-['Lato','sans-serif'] font-normal`}>Tableros</Link>
+        <Link to={'/'} onClick={()=>setactive(2)} className={`btnInactive ${active===2?'btnActive':null} font-['Lato','sans-serif'] font-normal`}>Empleos</Link>
         <p onClick={()=>setactive(3)} className={`w-fit h-[4.5%] gap-x-[2vw] flex items-center justify-end text-[#6D28D9] hover:text-[#6D28D9] font-['Lato','sans-serif'] font-normal`}>Biblioteca{active===3 ? <Arrow h={'1vh'} rotate={'180deg'}/>:<Arrow h={'1vh'} rotate={'0deg'}/>}</p>
         {active===3?<Biblioteca/>:null}
-        <Link to={'/'} onClick={()=>setactive(4)} className={`w-fit h-[4.5%] flex items justify-end ${active===4?'border-b-2':null} border-[#6D28D9] text-[#6D28D9] hover:text-[#6D28D9] font-['Lato','sans-serif'] font-normal`}>Métricas</Link>
-        <Link to={'/'} onClick={()=>setactive(5)} className={`w-fit h-[4.5%] flex items justify-end ${active===5?'border-b-2':null} border-[#6D28D9] text-[#6D28D9] hover:text-[#6D28D9] font-['Lato','sans-serif'] font-normal`}>Calendario</Link>
-        <Link to={'/'} onClick={()=>setactive(6)} className={`w-fit h-[4.5%] flex items justify-end ${active===6?'border-b-2':null} border-[#6D28D9] text-[#6D28D9] hover:text-[#6D28D9] font-['Lato','sans-serif'] font-normal`}>Desconectarse</Link>
+        <Link to={'/'} onClick={()=>setactive(4)} className={`btnInactive ${active===4?'btnActive':null} font-['Lato','sans-serif'] font-normal`}>Métricas</Link>
+        <Link to={'/'} onClick={()=>setactive(5)} className={`btnInactive ${active===5?'btnActive':null} font-['Lato','sans-serif'] font-normal`}>Calendario</Link>
+        <Link to={'/'} onClick={()=>setactive(6)} className={`btnInactive ${active===6?'btnActive':null} font-['Lato','sans-serif'] font-normal`}>Desconectarse</Link>
       </div>
       </div>
     </div>
