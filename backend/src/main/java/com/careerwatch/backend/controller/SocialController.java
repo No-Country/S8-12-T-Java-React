@@ -23,22 +23,14 @@ public class SocialController {
     public ResponseEntity<SocialDto> createSocial(@PathVariable Long resumeId, @RequestBody SocialDto socialDto) throws JsonProcessingException {
         return ResponseEntity.ok(socialService.createSocial(resumeId, socialDto));
     }
-
-    @GetMapping
-    public ResponseEntity<List<SocialDto>> getAllSocials(@PathVariable Long resumeId) throws JsonProcessingException {
-        return ResponseEntity.ok(socialService.getAllSocialsByResumeId(resumeId));
-    }
-
     @GetMapping("/{socialId}")
     public ResponseEntity<SocialDto> getSocialById(@PathVariable Long socialId) throws JsonProcessingException  {
         return ResponseEntity.ok(socialService.getSocialById(socialId));
     }
-
     @PutMapping("/{socialId}")
     public ResponseEntity<SocialDto> updateSocial(@PathVariable Long socialId, @RequestBody UpdateSocialDto socialDto) throws JsonProcessingException {
         return ResponseEntity.ok(socialService.updateSocialById(socialId, socialDto));
     }
-
     @DeleteMapping("/{socialId}")
     public ResponseEntity<Void> deleteSocial(@PathVariable Long socialId) throws JsonProcessingException {
         socialService.deleteSocialById(socialId);
