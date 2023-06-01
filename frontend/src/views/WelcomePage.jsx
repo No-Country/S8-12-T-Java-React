@@ -1,4 +1,4 @@
-import comprobado from "../../public/comprobado.svg";
+import comprobado from "../assets/images/comprobado.svg";
 
 export default function WelcomePage() {
   return (
