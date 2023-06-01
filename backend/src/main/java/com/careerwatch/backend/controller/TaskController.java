@@ -20,13 +20,7 @@ public class TaskController {
     public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto taskDto) throws JsonProcessingException {
         return ResponseEntity.ok(taskService.createTask(taskDto));
     }
-
-    @GetMapping("/application/{applicationId}")
-    public ResponseEntity<List<TaskDto>> getAllTasksById(@PathVariable Long applicationId) throws JsonProcessingException {
-        return ResponseEntity.ok(taskService.getAllTasksByApplicationId(applicationId));
-    }
-
-    @GetMapping("/{taskId}")
+    @GetMapping("/task/{taskId}")
     public ResponseEntity<TaskDto> getTaskById(@PathVariable Long taskId) throws JsonProcessingException  {
         return ResponseEntity.ok(taskService.getTaskById(taskId));
     }
