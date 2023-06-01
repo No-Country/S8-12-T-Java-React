@@ -11,8 +11,8 @@ export default function Error404() {
       <p className='text-[4vh]'>404</p>
       <p>Página no encontrada</p>
       </div>
-        <p className='w-10/12 md:w-1/6 font-normal'>La página que estás buscando no existe o ha ocurrido algún error. Intenta volver al inicio.</p>
-        <Link to={'/'} className= "flex items-center justify-center w-[90vw] h-[5vh] md:w-[10vw] md:h-[4vh] bg-[#6D28D9] text-white font-normal rounded shadow-md focus:shadow-none hover:text-white mt-[3vh]"> Volver al inicio </Link>
+        <p className='w-10/12 lg:w-1/6 font-normal'>La página que estás buscando no existe o ha ocurrido algún error. Intenta volver al inicio.</p>
+        <Link to={'/'} className= "flex items-center justify-center w-[90vw] h-[5vh] lg:w-[10vw] lg:h-[4vh] bg-[#6D28D9] text-white font-normal rounded shadow-md focus:shadow-none hover:text-white mt-[3vh]"> Volver al inicio </Link>
       </div>
     </main>
   )

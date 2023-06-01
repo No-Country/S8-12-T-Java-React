@@ -15,7 +15,7 @@ export default function Logged() {
 
   function Responsive() {
     return responsize > 768 ? (
-      <header className="w-[100vw] h-[8vh] gap-x-[18vw] flex items-center border-2">
+      <header className="w-[100vw] h-[8vh] gap-x-[18vw] flex items-center border-2 select-none">
         <h1 className='text-[1.25em] text-neutral-600 antialiased ml-[5vw]'>Career<span className='text-orange-600'>Watch</span></h1>
         <div className=" flex flex-row justify-center gap-x-[8vw]">
         <NavLink to={'/'} className={({ isActive, isPending }) => isPending ? "h-[35%] btnInactive" : isActive ? "h-[35%] btnActive" : "h-[35%] btnInactive"}>Empleos</NavLink>
