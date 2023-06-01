@@ -130,14 +130,25 @@ export default function RegisterPage() {
             </span>
           )}
         </div>
-
-        <button
-          className="col-span-2 rounded bg-[#6D28D9] text-white h-10"
-          type="submit"
-          value="submit"
-        >
-          Crear cuenta
-        </button>
+        {!errors ? (
+          <Link to={"/WelcomePage"}>
+            <button
+              className="col-span-2 rounded bg-[#6D28D9] text-white h-10"
+              type="submit"
+              value="submit"
+            >
+              Crear cuenta
+            </button>
+          </Link>
+        ) : (
+          <button
+            className="col-span-2 rounded bg-[#6D28D9] text-white h-10"
+            type="submit"
+            value="submit"
+          >
+            Crear cuenta
+          </button>
+        )}
       </form>
       <div className="my-4">
         <p>

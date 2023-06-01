@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import "../styles/latoFont.css";
 import { LandingsCards } from "../components/LandingsCards";
 import { QuoteLeft } from "../assets/icons/Icons";
-import heroIMG from "../../public/heroIMG.svg";
-import heroImage from "../../public/heroImage.svg";
-import postulaciones from "../../public/Postulaciones.svg";
-import bibliotecla from "../../public/Biblioteca.svg";
-import metricas from "../../public/Metricas.svg";
-import calendario from "../../public/Calendario.svg";
+import heroIMG from "../assets/images/heroIMG.svg";
+import heroImage from "../assets/images/heroImage.svg";
+import postulaciones from "../assets/images/Postulaciones.svg";
+import bibliotecla from "../assets/images/Biblioteca.svg";
+import metricas from "../assets/images/Metricas.svg";
+import calendario from "../assets/images/Calendario.svg";
 export default function Landing() {
   return (
     <>
