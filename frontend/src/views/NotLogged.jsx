@@ -15,6 +15,7 @@ export default function NotLogged() {
       <Route element={<Landing/>} path='/'/>
       <Route element={<Login/>} path='/login'/>
       <Route element={<RegisterPage/>} path='/register'/>
+      <Route element={<Error404 />} path="*" />
     </Routes>
     <Footer/>
     </>
