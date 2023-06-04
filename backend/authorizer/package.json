@@ -1,0 +1,16 @@
+{
+    "name": "authorizer",
+    "version": "1.0.0",
+    "description": "Lambda authorizer function",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"No tests specified\" && exit 0"
+    },
+    "author": "Tu nombre",
+    "license": "MIT",
+    "dependencies": {
+      "jsonwebtoken": "^8.5.1",
+      "pg": "^8.7.1"
+    }
+  }
+  
