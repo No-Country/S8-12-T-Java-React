@@ -32,4 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 .env
-authorizer/node_modules
+/lambdaAuthorizer/node_modules
