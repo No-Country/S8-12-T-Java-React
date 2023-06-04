@@ -7,14 +7,15 @@ global.fetch = fetch;
 
 const { Pool } = pg;
 
+// Lambda Handler
 export const handler = async function(event, context, callback) {
   
   const pool = new Pool({
-    user: 'postgres',
-    password: '61Beg^b4DdwfCs',
-    host: 'career-watch-db.cyrvqazvf55x.us-east-1.rds.amazonaws.com',
-    database: 'career_watch_db',
-    port: '5432'
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT
   });
 
   async function checkUserInDatabase(username) {
@@ -29,13 +30,15 @@ export const handler = async function(event, context, callback) {
     }
   }
 
-  async function createUserInDatabase(username, password) {
-    const client = await pool.connect();
-    try {
-      const hashedPassword = await bcrypt.hash(password, 10); // Encriptar la contraseña con bcrypt
-      const query = 'INSERT INTO users (email, password) VALUES ($1, $2)';
-      const values = [username, hashedPassword];
-      await client.query(query, values);
+  async function createUserInDatabase(username, password, profileImg) {
+  const client = await pool.connect();
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const currentDate = new Date();
+    const userSince = new Date(currentDate.getTime() - (3 * 60 * 60 * 1000)).toISOString();
+    const query = 'INSERT INTO users (user_since, email, password, profile_img) VALUES ($1, $2, $3, $4)';
+    const values = [userSince, username, hashedPassword, profileImg];
+    await client.query(query, values);
     } finally {
       client.release();
     }
@@ -76,34 +79,33 @@ export const handler = async function(event, context, callback) {
   var isTokenDecodedWithSecretKey = true;
 
   try {
-    decoded = jwt.verify(token, 'SECRET_KEY=5266556A586E3272357538782F413F4428472D4B6150645367566B5970337336763979244226452948404D6251655468576D5A7134743777217A25432A462D4A');
+    decoded = jwt.verify(token, process.env.SECRET_KEY);
+    
   } catch (error) {
     isTokenDecodedWithSecretKey = false;
   }
 
   if (!isTokenDecodedWithSecretKey) {
     try {
-      const googleClientId = '78072880403-um2cr1jmbeuehh2cj5hnp08ilct0edor.apps.googleusercontent.com'; 
       const googleIssuer = `https://accounts.google.com`;
-
       const googleToken = jwt.decode(token, { complete: true });
       const googleJwtHeader = googleToken.header;
-
-      if (googleJwtHeader.alg !== 'RS256' || googleJwtHeader.kid !== googleClientId) {
+      if (googleJwtHeader.alg !== 'RS256') {
         throw new Error('Invalid token');
       }
-
-      const googleJwtPayload = googleToken.payload;
-      const googleJwtSignature = googleToken.signature;
-      const googleJwt = `${googleToken.header}.${googleToken.payload}.${googleJwtSignature}`;
 
       const url = `https://www.googleapis.com/oauth2/v3/certs`;
       const response = await fetch(url);
       const keys = await response.json();
       const key = keys.keys.find(k => k.kid === googleJwtHeader.kid);
       const publicKey = jwkToPem(key);
-      const googleDecoded = jwt.verify(googleJwt, publicKey, { issuer: googleIssuer });
-
+      const googleDecoded = jwt.verify(token, publicKey, { issuer: googleIssuer });
+      
+      for (const key in googleDecoded) {
+        if (googleDecoded.hasOwnProperty(key)) {
+        }
+      }
+      
       decoded = googleDecoded;
     } catch (error) {
       callback('Unauthorized');
@@ -114,7 +116,7 @@ export const handler = async function(event, context, callback) {
 
     if (!userExists) {
       const generatedPassword = generateRandomPassword();
-      await createUserInDatabase(decoded.email, generatedPassword);
+      await createUserInDatabase(decoded.email, generatedPassword, decoded.picture);
       callback(null, generatePolicy(decoded.email, 'Allow'));
       return;
     }else{
