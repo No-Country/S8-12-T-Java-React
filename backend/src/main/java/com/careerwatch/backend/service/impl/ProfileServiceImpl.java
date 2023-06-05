@@ -51,11 +51,12 @@ public class ProfileServiceImpl implements ProfileService{
         profileDto.getLocation().ifPresent(resume.getProfile()::setLocation);
         profileDto.getImgResume().ifPresent(resume.getProfile()::setImgResume);
 
-        if (!profileDto.getSocials().isEmpty()){
+        if (profileDto.getSocials() != null){
             for (SocialDto socialDto : profileDto.getSocials()) {
                 socialService.createSocial(resume.getProfile().getId(), socialDto);
             }
         }
+
         profileRepository.save(resume.getProfile());
         return mapper.entityToDto(resume.getProfile());
     }

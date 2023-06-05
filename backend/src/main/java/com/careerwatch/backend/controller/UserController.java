@@ -10,6 +10,7 @@ import com.careerwatch.backend.service.ResumeService;
 import com.careerwatch.backend.service.StageService;
 import com.careerwatch.backend.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +48,8 @@ public class UserController {
         return ResponseEntity.ok(applicationService.getAllApplicationsByUserId(userId));
     }
     @PutMapping("/{userId}")
-    public ResponseEntity<UserDto> updateUser(@PathVariable Long userId, @RequestBody UpdateUserDto userDto) throws JsonProcessingException {
+    public ResponseEntity<UserDto> updateUser(@PathVariable Long userId,
+                                              @Valid @RequestBody UpdateUserDto userDto) throws JsonProcessingException {
         return ResponseEntity.ok(userService.updateUser(userId, userDto));
     }
     @DeleteMapping("/{userId}")

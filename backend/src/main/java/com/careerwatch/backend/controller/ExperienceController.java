@@ -3,6 +3,7 @@ package com.careerwatch.backend.controller;
 import com.careerwatch.backend.dto.resume.experience.ExperienceDto;
 import com.careerwatch.backend.service.ExperienceService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class ExperienceController {
     private final ExperienceService experienceService;
 
     @PostMapping
-    public ResponseEntity<ExperienceDto> createExperience(@RequestBody ExperienceDto experienceDto) throws JsonProcessingException {
+    public ResponseEntity<ExperienceDto> createExperience(@Valid @RequestBody ExperienceDto experienceDto) throws JsonProcessingException {
         return ResponseEntity.ok(experienceService.createExperience(experienceDto));
     }
     @GetMapping("/{experienceId}")
@@ -27,7 +28,8 @@ public class ExperienceController {
         return ResponseEntity.ok(experienceService.getExperienceById(experienceId));
     }
     @PutMapping("/{experienceId}")
-    public ResponseEntity<ExperienceDto> updateExperienceById(@PathVariable Long experienceId, @RequestBody ExperienceDto experienceDto) throws JsonProcessingException {
+    public ResponseEntity<ExperienceDto> updateExperienceById(@PathVariable Long experienceId,
+                                                              @Valid @RequestBody ExperienceDto experienceDto) throws JsonProcessingException {
         return ResponseEntity.ok(experienceService.updateExperienceById(experienceId, experienceDto));
     }
     @DeleteMapping("/{experienceId}")

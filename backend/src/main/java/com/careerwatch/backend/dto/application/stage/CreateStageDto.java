@@ -1,6 +1,5 @@
 package com.careerwatch.backend.dto.application.stage;
 
-import com.careerwatch.backend.dto.application.application.ApplicationDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
@@ -9,17 +8,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @Builder
-public class StageDto {
-    private Long id;
+public class CreateStageDto {
+    @Schema(requiredMode = Schema.RequiredMode.REQUIRED)
     @NotEmpty(message = "User Id not specified")
     private Long userId;
-    @Pattern(regexp = "^(?!\\s*$).+", message = "Title must not be blank")
+    @Pattern(regexp = "^(?!\\s*$).+", message = "Stage name must not be blank")
     private String stageName;
-    private List<ApplicationDto> applications;
 }

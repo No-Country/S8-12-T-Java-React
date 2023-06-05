@@ -4,6 +4,7 @@ import com.careerwatch.backend.dto.resume.social.SocialDto;
 import com.careerwatch.backend.dto.resume.social.UpdateSocialDto;
 import com.careerwatch.backend.service.SocialService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,8 @@ public class SocialController {
 
     
     @PostMapping
-    public ResponseEntity<SocialDto> createSocial(@PathVariable Long resumeId, @RequestBody SocialDto socialDto) throws JsonProcessingException {
+    public ResponseEntity<SocialDto> createSocial(@PathVariable Long resumeId,
+                                                  @Valid @RequestBody SocialDto socialDto) throws JsonProcessingException {
         return ResponseEntity.ok(socialService.createSocial(resumeId, socialDto));
     }
     @GetMapping("/{socialId}")
@@ -29,7 +31,8 @@ public class SocialController {
         return ResponseEntity.ok(socialService.getSocialById(socialId));
     }
     @PutMapping("/{socialId}")
-    public ResponseEntity<SocialDto> updateSocial(@PathVariable Long socialId, @RequestBody UpdateSocialDto socialDto) throws JsonProcessingException {
+    public ResponseEntity<SocialDto> updateSocial(@PathVariable Long socialId,
+                                                  @Valid @RequestBody UpdateSocialDto socialDto) throws JsonProcessingException {
         return ResponseEntity.ok(socialService.updateSocialById(socialId, socialDto));
     }
     @DeleteMapping("/{socialId}")
