@@ -3,8 +3,8 @@ import "../styles/inputLabel.css";
 import "../styles/fontLogo.css";
 import "../styles/latoFont.css";
 import { Facebook, Google } from "../assets/icons/Icons";
-import { Link, redirect } from "react-router-dom";
-import axios from "axios";
+import { Link} from "react-router-dom";
+import api from '../api/Post'
 
 export default function Login() {
   const [emailValue, setEmailValue] = useState("");
@@ -14,32 +14,36 @@ export default function Login() {
     color: "",
     ErrorText: "",
   });
+  const [inputError,setInputError] = useState("")
 
-  const Login = async () => {
+  const Login = async () => {   
     try {
-      const response = await axios.get("https://randomuser.me/api/");
-      console.log(response.data);
+      const response = await api.post( '/auth/authenticate', {email: `${emailValue}`, password: `${passwordValue}`})
+        localStorage.setItem("USER_TOKEN", response.data.token)
+        window.location.replace('/')
+        
     } catch (error) {
-      throw error.response.data;
+      setInputError(error.response.data.message[0]);    
     }
-  };
+  }
 
   function FormError() {
-    if (emailValue == "") {
+    if (emailValue == "" || inputError === "Error: Username not found") {
       event.preventDefault();
       setEmailResult({
         color: "#f02849",
         ErrorText:
           "El correo que ha introducido no esta vinculado con ninguna de nuestras cuentas.",
       });
-    } else if (passwordValue == "") {
+    } else if (passwordValue == "" || inputError === "Error: Invalid password") {
       event.preventDefault();
       setPasswordResult({
         color: "#f02849",
         ErrorText: "La contraseña que has introducido es incorrecta.",
       });
     } else {
-      localStorage.setItem("isLogged", "true");
+      event.preventDefault();
+      Login();
     }
   }
 
