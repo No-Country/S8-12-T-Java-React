@@ -2,7 +2,7 @@ import comprobado from "../assets/images/comprobado.svg";
 
 export default function WelcomePage() {
   return (
-    <div className="sm:w-full sm:h-[80vh] flex flex-col sm:justify-center sm:items-center">
+    <div className="sm:w-full sm:h-[100vh] flex flex-col sm:justify-center sm:items-center">
       <div className="p-4 my-6 sm:shadow-lg sm:bg-white sm:border sm:rounded-lg sm:max-h-96 sm:max-w-screen-sm h-[50vh] flex flex-col justify-around items-center content-center">
         <img className="h-40" src={comprobado} alt="Tilde de comprobado" />
         <p className="text-lg font-bold text-center">
