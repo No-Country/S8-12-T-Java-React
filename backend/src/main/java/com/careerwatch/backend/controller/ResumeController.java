@@ -9,6 +9,7 @@ import com.careerwatch.backend.dto.resume.resume.UpdateResumeDto;
 import com.careerwatch.backend.dto.resume.social.SocialDto;
 import com.careerwatch.backend.service.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,11 +54,11 @@ public class ResumeController {
         return ResponseEntity.ok(socialService.getAllSocialsByResumeId(resumeId));
     }
     @PostMapping()
-    public ResponseEntity<ResumeDto> createResume(@RequestBody ResumeDto resumeDto) throws JsonProcessingException {
+    public ResponseEntity<ResumeDto> createResume(@Valid @RequestBody ResumeDto resumeDto) throws JsonProcessingException {
         return ResponseEntity.status(HttpStatus.CREATED).body(resumeService.createResume(resumeDto));
     }
     @PutMapping("/{resumeId}")
-    public ResponseEntity<ResumeDto> updateResumeById(@PathVariable Long resumeId, @RequestBody UpdateResumeDto resumeDto) throws JsonProcessingException {
+    public ResponseEntity<ResumeDto> updateResumeById(@Valid @PathVariable Long resumeId, @RequestBody UpdateResumeDto resumeDto) throws JsonProcessingException {
         return ResponseEntity.ok(resumeService.updateResumeById(resumeId, resumeDto));
     }
     @DeleteMapping("/{resumeId}")

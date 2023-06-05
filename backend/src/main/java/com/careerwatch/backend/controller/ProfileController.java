@@ -6,6 +6,7 @@ import com.careerwatch.backend.dto.resume.social.SocialDto;
 import com.careerwatch.backend.service.ProfileService;
 import com.careerwatch.backend.service.SocialService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class ProfileController {
 
     @PutMapping("/{resumeId}")
     public ResponseEntity<ProfileDto> updateProfileByResumeId(@PathVariable Long resumeId,
-                                                              @RequestBody UpdateProfileDto profileDto) throws JsonProcessingException {
+                                                              @Valid @RequestBody UpdateProfileDto profileDto) throws JsonProcessingException {
         return ResponseEntity.ok(profileService.updateProfileByResumeId(resumeId, profileDto));
     }
     @DeleteMapping("/{resumeId}")

@@ -1,6 +1,7 @@
 package com.careerwatch.backend.dto.application.stage;
 
 import com.careerwatch.backend.dto.application.application.ApplicationDto;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Builder
 public class UpdateStageDto {
-
+    @Pattern(regexp = "^(?!\\s*$).+", message = "Stage name must not be blank")
     private String stageName;
     private List<ApplicationDto> applications;
 

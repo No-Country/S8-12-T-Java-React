@@ -1,23 +1,27 @@
 package com.careerwatch.backend.dto.application.application;
 
 import com.careerwatch.backend.dto.application.task.TaskDto;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 
 import java.util.List;
 import java.util.Optional;
 
 public class UpdateApplicationDto {
-    private Long userId;
+    @Pattern(regexp = "^(?:\\d+)?\\s*$", message = "Stage Id must not be blank and must be a number")
     private Long stageId;
+    @Pattern(regexp = "^(?:\\d+)?\\s*$", message = "Resume Id must not be blank and must be a number")
     private Long resumeId;
-    private List<TaskDto> tasks;
+    @Pattern(regexp = "^(?!\\s*$).+", message = "Position must not be blank")
     private String position;
+    @Pattern(regexp = "^(?!\\s*$).+", message = "Description must not be blank")
     private String description;
+    @Pattern(regexp = "^(?!\\s*$).+", message = "Application Date must not be blank")
     private String applicationDate;
+    @Pattern(regexp = "^(?!\\s*$).+", message = "Company must not be blank")
     private String company;
+    private List<TaskDto> tasks;
 
-    public Optional<Long> getUserId(){
-        return Optional.ofNullable(this.userId);
-    }
     public Optional<Long> getStageId(){
         return Optional.ofNullable(this.stageId);
     }

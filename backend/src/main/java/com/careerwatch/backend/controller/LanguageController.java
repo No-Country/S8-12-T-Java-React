@@ -4,6 +4,7 @@ import com.careerwatch.backend.dto.resume.language.LanguageDto;
 import com.careerwatch.backend.dto.resume.language.UpdateLanguageDto;
 import com.careerwatch.backend.service.LanguageService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class LanguageController {
     private final LanguageService languageService;
 
     @PostMapping
-    public ResponseEntity<LanguageDto> createLanguage(@RequestBody LanguageDto languageDto) throws JsonProcessingException {
+    public ResponseEntity<LanguageDto> createLanguage(@Valid @RequestBody LanguageDto languageDto) throws JsonProcessingException {
         return ResponseEntity.ok(languageService.createLanguage(languageDto));
     }
     @GetMapping("/{languageId}")
@@ -27,7 +28,8 @@ public class LanguageController {
         return ResponseEntity.ok(languageService.getLanguageById(languageId));
     }
     @PutMapping("/{languageId}")
-    public ResponseEntity<LanguageDto> updateLanguage(@PathVariable Long languageId, @RequestBody UpdateLanguageDto languageDto) throws JsonProcessingException {
+    public ResponseEntity<LanguageDto> updateLanguage(@PathVariable Long languageId,
+                                                      @Valid @RequestBody UpdateLanguageDto languageDto) throws JsonProcessingException {
         return ResponseEntity.ok(languageService.updateLanguageById(languageId, languageDto));
     }
     @DeleteMapping("/{languageId}")

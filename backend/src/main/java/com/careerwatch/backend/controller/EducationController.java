@@ -4,6 +4,7 @@ import com.careerwatch.backend.dto.resume.education.EducationDto;
 import com.careerwatch.backend.dto.resume.education.UpdateEducationDto;
 import com.careerwatch.backend.service.EducationService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class EducationController {
 
 
     @PostMapping("/{resumeId}")
-    public ResponseEntity<EducationDto> createEducation(@RequestBody EducationDto educationDto) throws JsonProcessingException {
+    public ResponseEntity<EducationDto> createEducation(@Valid @RequestBody EducationDto educationDto) throws JsonProcessingException {
         return ResponseEntity.ok(educationService.createEducation(educationDto));
     }
     @GetMapping("/{educationId}")
@@ -28,7 +29,7 @@ public class EducationController {
         return ResponseEntity.ok(educationService.getEducation(educationId));
     }
     @PutMapping("/{educationId}")
-    public ResponseEntity<EducationDto> updateEducation(@PathVariable Long educationId, @RequestBody UpdateEducationDto educationDto) throws JsonProcessingException {
+    public ResponseEntity<EducationDto> updateEducation(@Valid @PathVariable Long educationId, @RequestBody UpdateEducationDto educationDto) throws JsonProcessingException {
         return ResponseEntity.ok(educationService.updateEducation(educationId, educationDto));
     }
     @DeleteMapping("/{educationId}")

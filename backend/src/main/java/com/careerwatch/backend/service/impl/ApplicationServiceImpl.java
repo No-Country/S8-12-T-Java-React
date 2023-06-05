@@ -76,11 +76,6 @@ public class ApplicationServiceImpl implements ApplicationService {
         Application existingApplication = applicationRepository.findById(applicationId)
                 .orElseThrow(() -> new RuntimeException("Error: application with id " + applicationId + " not found"));
 
-        applicationDto.getUserId().ifPresent(userId -> {
-            User userApplication = userRepository.findById(userId)
-                    .orElseThrow(() -> new RuntimeException("Error: user with id " + userId + " not found"));
-            existingApplication.setUser(userApplication);
-        });
 
         applicationDto.getStageId().ifPresent(stageId -> {
             Stage stageApplication = stageRepository.findById(stageId)

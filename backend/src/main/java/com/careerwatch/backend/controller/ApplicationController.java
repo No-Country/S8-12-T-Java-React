@@ -6,6 +6,7 @@ import com.careerwatch.backend.dto.application.task.TaskDto;
 import com.careerwatch.backend.service.ApplicationService;
 import com.careerwatch.backend.service.TaskService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class ApplicationController {
     private final TaskService taskService;
 
     @PostMapping()
-    public ResponseEntity<ApplicationDto> createApplication(@RequestBody ApplicationDto applicationDto) throws JsonProcessingException {
+    public ResponseEntity<ApplicationDto> createApplication(@Valid @RequestBody ApplicationDto applicationDto) throws JsonProcessingException {
         return ResponseEntity.ok(applicationService.createApplication(applicationDto));
     }
     @GetMapping("/{applicationId}")
@@ -35,7 +36,7 @@ public class ApplicationController {
         return ResponseEntity.ok(taskService.getAllTasksByApplicationId(applicationId));
     }
     @PutMapping("/{applicationId}")
-    public ResponseEntity<ApplicationDto> updateApplicationById(@PathVariable Long applicationId, @RequestBody UpdateApplicationDto applicationDto) throws JsonProcessingException {
+    public ResponseEntity<ApplicationDto> updateApplicationById(@PathVariable Long applicationId, @Valid @RequestBody UpdateApplicationDto applicationDto) throws JsonProcessingException {
         return ResponseEntity.ok(applicationService.updateApplicationById(applicationId, applicationDto));
     }
     @PutMapping("/{applicationId}/toStage/{stageId}")

@@ -1,6 +1,7 @@
 package com.careerwatch.backend.service.impl;
 
 import com.careerwatch.backend.dto.application.application.ApplicationDto;
+import com.careerwatch.backend.dto.application.stage.CreateStageDto;
 import com.careerwatch.backend.dto.application.stage.StageDto;
 import com.careerwatch.backend.dto.application.stage.UpdateStageDto;
 import com.careerwatch.backend.entity.Application;
@@ -31,7 +32,11 @@ public class StageServiceImpl implements StageService {
 
     @Transactional
     @Override
-    public StageDto createStage(StageDto stageDto) {
+    public StageDto createStage(CreateStageDto createStageDto) {
+        StageDto stageDto = StageDto.builder()
+                .userId(createStageDto.getUserId())
+                .stageName(createStageDto.getStageName())
+                .build();
         Stage stage = mapper.dtoToEntity(stageDto);
         stageRepository.save(stage);
         return mapper.entityToDto(stage);
