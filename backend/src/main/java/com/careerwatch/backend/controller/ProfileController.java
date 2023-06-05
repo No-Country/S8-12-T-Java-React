@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/profile")
+@CrossOrigin(origins = "*")
 public class ProfileController {
     
     private final ProfileService profileService;

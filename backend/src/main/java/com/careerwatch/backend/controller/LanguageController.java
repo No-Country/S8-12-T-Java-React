@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/languages")
+@CrossOrigin(origins = "*")
 public class LanguageController {
     private final LanguageService languageService;
 

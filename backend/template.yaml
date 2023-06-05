@@ -20,6 +20,7 @@ Resources:
     Properties:
       StageName: Prod
 
+
   ApiFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -58,7 +59,7 @@ Resources:
           Properties:
             RestApiId: !Ref CWApi
             Path: /auth/{proxy+}
-            Method: POST
+            Method: ANY
 
 Parameters:
   DBhost:

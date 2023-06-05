@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/applications")
+@CrossOrigin(origins = "*")
 public class ApplicationController {
 
     private final ApplicationService applicationService;
