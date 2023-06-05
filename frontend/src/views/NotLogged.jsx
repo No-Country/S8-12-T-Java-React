@@ -5,7 +5,7 @@ import Landing from './Landing'
 import { HeaderNotLogged } from '../components/HeaderNotLogged'
 import { Footer } from '../components/Footer'
 import RegisterPage from './RegisterPage'
-
+import Error404 from './Error404'
 
 export default function NotLogged() {
   return (

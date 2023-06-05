@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Board from "../components/Board";
 import NewBoard from "../components/modal/NewBoard";
 import '../styles/latoFont.css'
+import { Link } from "react-router-dom";
 
 export default function Boards() {
   const boards = [
@@ -35,7 +36,7 @@ export default function Boards() {
   return (
     <>
       <main className="bg-white text-black w-full h-full flex flex-col items-center ">
-        <div className="w-[90vw] text-[1.28em] text-star text-700 font-bold flex flex-row items-center mt-2 mb-3">
+        <div className="w-[90vw] text-[1.15em] text-star text-700 font-bold flex flex-row items-center mt-[10%] mb-3">
           <img
             className="w-[10vw] drop-shadow-md mr-3 "
             src="./trello.svg"
@@ -44,15 +45,15 @@ export default function Boards() {
           <h2 className="font-['Lato','sans-serif'] font-bold">Tablero</h2>
         </div>
         <NewBoard />
-        {boards.map((board, index) => (
-          <div className="m-3">
+        {boards.map((board,index) => (
+          <Link to={`/tablero/${index}`} className="m-3" key={index}>
             <Board
               key={index}
               title={board.boardTitle}
               data={board.boardData}
               description={board.boardDescription}
             />
-          </div>
+          </Link>
         ))}
       </main>
     </>
