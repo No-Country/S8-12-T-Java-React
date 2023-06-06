@@ -79,10 +79,10 @@ export default function Logged() {
       <Responsive />
       <Routes>
         <Route element={<Boards />} path="/" />
-        <Route element={<TableroSeleccionado/>} path="/tablero/:id"/>
+        <Route element={<TableroSeleccionado />} path="/tablero/:id" />
         <Route element={<Perfil />} path="/curriculumn" />
         <Route element={<Error404 />} path="*" />
-        <Route element={<WelcomePage />} path="/welcomePage" />
+        <Route element={<WelcomePage />} path="/welcome" />
       </Routes>
       <Footer />
     </>
