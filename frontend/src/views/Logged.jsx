@@ -9,6 +9,7 @@ import { Arrow } from "../assets/icons/Icons";
 import Error404 from "./Error404";
 import WelcomePage from "./WelcomePage";
 import TableroSeleccionado from "./TableroSeleccionado";
+import { ContextTokenProvider } from "../context/Token";
 
 export default function Logged() {
   const responsize = window.innerWidth;
@@ -77,6 +78,7 @@ export default function Logged() {
   return (
     <>
       <Responsive />
+      <ContextTokenProvider >
       <Routes>
         <Route element={<Boards />} path="/" />
         <Route element={<TableroSeleccionado/>} path="/tablero/:id"/>
@@ -84,6 +86,7 @@ export default function Logged() {
         <Route element={<Error404 />} path="*" />
         <Route element={<WelcomePage />} path="/welcomePage" />
       </Routes>
+       </ContextTokenProvider>
       <Footer />
     </>
   );

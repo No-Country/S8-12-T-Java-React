@@ -14,7 +14,7 @@ export default function Login() {
     color: "",
     ErrorText: "",
   });
-  const [inputError,setInputError] = useState("")
+  const [inputError,setInputError] = useState("");
 
   const Login = async () => {   
     try {
@@ -23,20 +23,33 @@ export default function Login() {
         window.location.replace('/')
         
     } catch (error) {
-      setInputError(error.response.data.message[0]);    
+      setInputError(error.response.data.message[0]); 
     }
   }
 
   function FormError() {
-    if (emailValue == "" || inputError === "Error: Username not found") {
+    if (emailValue === "" || inputError == "Error: Username not found") {
       event.preventDefault();
       setEmailResult({
         color: "#f02849",
         ErrorText:
           "El correo que ha introducido no esta vinculado con ninguna de nuestras cuentas.",
       });
-    } else if (passwordValue == "" || inputError === "Error: Invalid password") {
+    }else{
+      setEmailResult({
+        color: "",
+        ErrorText:
+          "",
+      });
+    } 
+    if ( inputError === "Error: Invalid password") {
       event.preventDefault();
+      setEmailResult({
+        color: "",
+        ErrorText:
+          "",
+      });
+
       setPasswordResult({
         color: "#f02849",
         ErrorText: "La contraseña que has introducido es incorrecta.",
