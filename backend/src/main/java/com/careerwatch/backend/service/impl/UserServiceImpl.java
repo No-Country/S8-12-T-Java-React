@@ -2,6 +2,7 @@ package com.careerwatch.backend.service.impl;
 
 import com.careerwatch.backend.dto.user.UpdateUserDto;
 import com.careerwatch.backend.dto.user.UserDto;
+import com.careerwatch.backend.dto.user.UserIdDto;
 import com.careerwatch.backend.entity.User;
 import com.careerwatch.backend.exception.NotFoundException;
 import com.careerwatch.backend.mapper.user.UserDtoMapper;
@@ -31,6 +32,16 @@ public class UserServiceImpl implements UserService {
     public UserDto getUserById(Long id) {
         return mapper.entityToDto(userRepository.findById(id)
                 .orElseThrow(()-> new NotFoundException("Error: user " + id + " not found")));
+    }
+
+    @Override
+    public UserIdDto getUserIdByEmail(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(()->
+                new NotFoundException("Error: user not found"));
+
+        return UserIdDto.builder()
+                .id(user.getId())
+                .build();
     }
 
     @Transactional

@@ -19,7 +19,8 @@ public class TaskDto {
     @Schema(requiredMode = Schema.RequiredMode.REQUIRED)
     @NotEmpty(message = "Application Id not specified")
     private Long applicationId;
-    @Pattern(regexp = "^(?!\\s*$).+", message = "Title must not be blank")
+    @Schema(requiredMode = Schema.RequiredMode.REQUIRED)
+    @NotEmpty(message = "Title must not be empty")
     private String title;
     @Pattern(regexp = "^(?!\\s*$).+", message = "Description must not be blank")
     private String description;

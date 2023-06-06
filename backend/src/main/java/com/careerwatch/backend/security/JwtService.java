@@ -16,7 +16,7 @@ import java.util.function.Function;
 @Service
 public class JwtService {
     private static final Logger logger = LoggerFactory.getLogger(JwtService.class);
-    private static final String SECRET_KEY = "5266556A586E3272357538782F413F4428472D4B6150645367566B5970337336763979244226452948404D6251655468576D5A7134743777217A25432A462D4A";
+    private static final String SECRET_KEY = "${SECRET_KEY}";
     private static final Long jwtExpirationMs = 28800000L;
 
     private Key getSignInKey() {
