@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import personIMG from "../assets/images/personIMG.svg";
+import api from "../api/Post";
 
 export default function RegisterPage() {
   const {
@@ -10,8 +11,17 @@ export default function RegisterPage() {
     formState: { errors },
   } = useForm();
 
-  const submitData = (data, e) => {
-    console.log(data);
+  const submitData = async (data, e) => {
+    try {
+      // Llamar a la API para generar el token
+      const response = await api.post("/auth/register", data);
+      const token = response.data.token;
+      localStorage.setItem("USER_TOKEN", token);
+      window.location.replace("/welcome");
+      console.log("Token:", token);
+    } catch (error) {
+      console.error("Error al generar el token:", error);
+    }
     e.target.reset();
   };
 
