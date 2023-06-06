@@ -1,4 +1,5 @@
 import  { useState } from "react";
+import Button from "../Button";
 
 const Information = () => {
 
@@ -30,17 +31,7 @@ const Information = () => {
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
           />
-          <label htmlFor="">Género</label>
-          <select
-          className="w-[21vh] h-[6vh] mb-[2vh]"
-          value={genero}
-          onChange={handleGeneroChange}
-        >
-          <option value=""></option>
-          <option value="Masculino">Masculino</option>
-          <option value="Femenino">Femenino</option>
-          <option value="Otro">Otro</option>
-        </select>
+         
         </div>
         <div className="flex flex-col">
           <label htmlFor="">Apellido</label>
@@ -50,13 +41,19 @@ const Information = () => {
             value={apellido}
             onChange={(e) => setApellido(e.target.value)}
           />
-          <label htmlFor="">Teléfono</label>
+        
+        </div>
+          <div>
+
+            <div className="flex flex-col">
+            <label htmlFor="">Teléfono</label>
           <input
             type="text"
-            className="w-[22vh] h-[6vh] mb-[2vh]"
-            value={telefono}
+            className="w-[44.5vh] h-[6vh] mb-[2vh]"
+            value={email}
             onChange={(e) => setTelefono(e.target.value)}
-          />
+            />
+            </div>
         </div>
       </div>
       <div className="flex flex-col">
@@ -80,7 +77,7 @@ const Information = () => {
           <label htmlFor="">Ciudad</label>
           <input
             type="text"
-            className="w-[21vh] h-[6vh] mb-[2vh]"
+            className="w-[44.5vh] h-[6vh] mb-[2vh]"
             value={ciudad}
             onChange={(e) => setCiudad(e.target.value)}
           />
@@ -93,13 +90,7 @@ const Information = () => {
             value={provincia}
             onChange={(e) => setProvincia(e.target.value)}
           />
-          <label htmlFor="">Código postal</label>
-          <input
-            type="text"
-            className="w-[22vh] h-[6vh] mb-[2vh]"
-            value={codigoPostal}
-            onChange={(e) => setCodigoPostal(e.target.value)}
-          />
+        
         </div>
       </div>
       <div className="flex flex-col">
@@ -110,6 +101,9 @@ const Information = () => {
           value={linkedin}
           onChange={(e) => setLinkedin(e.target.value)}
         />
+      </div>
+      <div>
+      <Button name={"Guardar"} />
       </div>
     </div>
   );

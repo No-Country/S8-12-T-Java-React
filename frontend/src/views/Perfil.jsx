@@ -66,10 +66,10 @@ export default function Perfil() {
         {activeComponent === "languages" && <Languages />}
         {activeComponent === "languages" && <AddDeleted name={"Agregar idioma"} />}
 
-        <CategoryPerfil name={"Contacto"} />
+       
       </div>
       <div className="flex justify-center mt-[3vh]">
-        <Button name={"Guardar"} />
+       
       </div>
     </>
   );
