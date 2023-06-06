@@ -19,6 +19,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/v1/resumes")
+@CrossOrigin(origins = "*")
 public class ResumeController {
     private final ResumeService resumeService;
     private final ProfileService profileService;

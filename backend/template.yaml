@@ -4,9 +4,24 @@ Transform: AWS::Serverless-2016-10-31
 Globals:
   Function:
     Timeout: 30
+    Environment:
+      Variables:
+        POWERTOOLS_SERVICE_NAME: CareerWatchApi
+        DB_HOST: !Ref DBhost
+        DB_PORT: !Ref DBport
+        DB_NAME: !Ref DBname
+        DB_USERNAME: !Ref DBusername
+        DB_PASSWORD: !Ref DBpassword
+        SECRET_KEY: !Ref SecretKey
 
 Resources:
-  CareerWatchFunction:
+  CWApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+
+
+  ApiFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: .
@@ -18,19 +33,32 @@ Resources:
       Architectures:
         - x86_64
       MemorySize: 1024
-      Environment:
-        Variables:
-          POWERTOOLS_SERVICE_NAME: CareerWatchApi
-          DB_HOST: !Ref DBhost
-          DB_PORT: !Ref DBport
-          DB_NAME: !Ref DBname
-          DB_USERNAME: !Ref DBusername
-          DB_PASSWORD: !Ref DBpassword
       Events:
-        HelloWorld:
+        ApiEvent:
           Type: Api
           Properties:
-            Path: /{proxy+}
+            RestApiId: !Ref CWApi
+            Path: /api/v1/{proxy+}
+            Method: ANY
+
+  RegisterFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: com.careerwatch.backend.StreamLambdaHandler::handleRequest
+      Runtime: java17
+      AutoPublishAlias: production
+      SnapStart:
+        ApplyOn: PublishedVersions
+      Architectures:
+        - x86_64
+      MemorySize: 1024
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CWApi
+            Path: /auth/{proxy+}
             Method: ANY
 
 Parameters:
@@ -54,3 +82,7 @@ Parameters:
     Type: String
     Default: ''
     Description: Enter the DB password
+  SecretKey:
+    Type: String
+    Default: ''
+    Description: Enter the jwt secret

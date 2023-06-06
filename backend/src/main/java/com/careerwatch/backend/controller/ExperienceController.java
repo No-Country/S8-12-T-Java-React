@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/experiences")
+@CrossOrigin(origins = "*")
 public class ExperienceController {
     
     private final ExperienceService experienceService;
