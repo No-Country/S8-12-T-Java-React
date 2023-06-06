@@ -2,14 +2,25 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import personIMG from "../assets/images/personIMG.svg";
 import api from "../api/Post";
+import { ButtonLoader } from "../components/ButtonLoader";
+import { useState } from "react";
 
 export default function RegisterPage() {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
+
+  const handleClick = () => {
+    // Simulación de carga del sistema
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  };
 
   const submitData = async (data, e) => {
     try {
@@ -148,13 +159,16 @@ export default function RegisterPage() {
                 </span>
               )}
             </div>
-            <button
+            <ButtonLoader isLoading={isLoading} onClick={handleClick}>
+              Crear cuenta
+            </ButtonLoader>
+            {/* <button
               className="col-span-2 rounded bg-[#6D28D9] text-white h-10 shadow-md"
               type="submit"
               value="submit"
             >
               Crear cuenta
-            </button>
+            </button> */}
           </form>
           <div className="my-4">
             <p>
