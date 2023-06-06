@@ -35,29 +35,32 @@ export default function Landing() {
             </Link>
           </div>
         </div>
-        <div className="h-[75vh] flex flex-col justify-between items-center my-[9vh]">
-          <h2 className='w-[90vw] text-[1.15em] text-center text-neutral-900 font-["Lato","sans-serif"] font-bold'>
-            Lorem ipsum dolor sit amet
-            <br />
-            consectetur. Lacinia imperdiet
-            <br />
-            consectetur nunc a tortor quam.
-          </h2>
-          <h3 className='w-[90vw] text-[1em] text-center text-neutral-900 font-["Lato","sans-serif"] font-normal'>
-            Lorem ipsum dolor sit amet consectetur. Amet scelerisque sapien dui
-            lorem. Eget cursus eget velit vestibulum eu. Interdum condimentum.
-          </h3>
+        <div className="h-[80vh] flex flex-col justify-evenly items-center sm:flex-row sm:justify-center">
+          <div className="sm:w-1/4 sm:mx-8">
+            <h2 className='w-full  text-[1.5em] sm:text-[1.75em] text-center sm:text-left text-neutral-900 font-["Lato","sans-serif"] font-bold py-2'>
+              La clave del éxito profesional: Gestiona tu futuro con facilidad.
+            </h2>
+
+            <h3 className='w-full py-2 text-[0.95em] sm:text-lg text-center sm:text-left text-neutral-900 font-["Lato","sans-serif"] font-normal'>
+              {`"Desbloquea el potencial de tu carrera y alcanza nuevas alturas con
+            nuestra herramienta revolucionaria de gestión profesional. Organiza
+            tus postulaciones, destaca tus logros, y mantén el control de tu
+            futuro con facilidad. ¡No esperes más para alcanzar el éxito que
+            mereces! Actúa ahora y lleva tu carrera al siguiente nivel."`}
+            </h3>
+          </div>
+
           <img
-            className="h-1/3 drop-shadow-md"
+            className="w-full drop-shadow-md sm:w-1/4 sm:mx-8"
             src={heroImage}
             alt="Personas subiendo escalera"
           ></img>
-          <h2 className='w-[90vw] text-[1.25em] text-center text-neutral-900 font-["Lato","sans-serif"] font-bold'>
-            ¿Qué Ofrecemos?
-          </h2>
         </div>
 
         <div className="flex flex-col items-center gap-y-[3vh]">
+          <h2 className='w-full  text-[1.25em] text-center text-neutral-900 font-["Lato","sans-serif"] font-bold'>
+            ¿Qué Ofrecemos?
+          </h2>
           <LandingsCards img={postulaciones} title={"Postulaciones"} />
           <LandingsCards img={bibliotecla} title={"Biblioteca"} />
           <LandingsCards img={metricas} title={"Métricas"} />
