@@ -1,37 +1,32 @@
-import React, { useState } from "react";
+import React, { useState,useContext, useEffect, useLayoutEffect } from "react";
 import Board from "../components/Board";
 import NewBoard from "../components/modal/NewBoard";
 import '../styles/latoFont.css'
 import { Link } from "react-router-dom";
+import { ContextToken } from "../context/Token";
+import api from "../api/Post";
+
 
 export default function Boards() {
-  const boards = [
-    {
-      boardTitle: "Titulo 1",
-      boardData: "4",
-      boardDescription: "El trabajo de nuestras vidas",
-    },
-    {
-      boardTitle: "Titulo 2",
-      boardData: "4",
-      boardDescription: "El trabajo de nuestras vidas",
-    },
-    {
-      boardTitle: "Titulo 3",
-      boardData: "4",
-      boardDescription: "El trabajo de nuestras vidas",
-    },
-    {
-      boardTitle: "Titulo 4",
-      boardData: "4",
-      boardDescription: "El trabajo de nuestras vidas",
-    },
-    {
-      boardTitle: "Titulo 5",
-      boardData: "4",
-      boardDescription: "El trabajo de nuestras vidas",
-    },
-  ];
+  const {TOKEN,DECODE_TOKEN} = useContext(ContextToken);
+  
+  const [Tableros, setTableros] = useState([]);
+
+  const GetTablero = async() =>{
+    try{ 
+      const response = await api.get(`/api/v1/users/${DECODE_TOKEN}/stages`, {headers:{Authorization:TOKEN}})
+      setTableros(response.data)
+      console.log(response.data)
+
+      
+    }catch(error){
+      throw error.response.data;
+    }
+  } 
+  
+  useEffect(() => {
+    GetTablero()
+  }, []);
  
   return (
     <>
@@ -45,15 +40,14 @@ export default function Boards() {
           <h2 className="font-['Lato','sans-serif'] font-bold">Tablero</h2>
         </div>
         <NewBoard />
-        {boards.map((board,index) => (
-          <Link to={`/tablero/${index}`} className="m-3" key={index}>
+        {Tableros.map((e) => (
             <Board
-              key={index}
-              title={board.boardTitle}
-              data={board.boardData}
-              description={board.boardDescription}
+              key={e.id}
+              title={e.stageName}
+              id={e.id}
+              description={e.boardDescription}
+              
             />
-          </Link>
         ))}
       </main>
     </>
