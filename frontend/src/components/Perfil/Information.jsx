@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import Button from "../Button";
-import api from '../../api/Post'
+import api from "../../api/Post";
 import { ContextToken } from "../../context/Token";
 
 const Information = () => {
@@ -15,12 +15,12 @@ const Information = () => {
       const phone = response.data.resumes[0].profile.phone;
       const location = response.data.resumes[0].profile.location;
       const linkedin = response.data.resumes[0].profile.imgResume;
-      const emailAccount = response.data.email
-      setNombre(fullName); 
-      setEmail(emailAccount)
-      setTelefono(phone)
-      setPais(location)
-      setLinkedin(linkedin)
+      const emailAccount = response.data.email;
+      setNombre(fullName);
+      setEmail(emailAccount);
+      setTelefono(phone);
+      setPais(location);
+      setLinkedin(linkedin);
     } catch (error) {
       throw error.response.data;
     }
@@ -37,31 +37,60 @@ const Information = () => {
   const [linkedin, setLinkedin] = useState("");
 
   const handleGuardar = async () => {
-
- 
     try {
       const responseID = await api.get(`/api/v1/users/${DECODE_TOKEN}`, {
         headers: { Authorization: TOKEN },
       });
-      const idResumes= responseID.data.resumes[0].id
-
-    const response = await api.put(
-      `/api/v1/profile/${idResumes}`,
-      { 
-        fullName: nombre,
-        phone:telefono,
-        location:pais,
-        email:email,
-        imgResume:linkedin
-      },
-      { headers: { Authorization: TOKEN } }
+    
+      const longitud = responseID.data.resumes.length;
+      const idResumes = responseID.data.resumes[0].id;
+      console.log(idResumes);
+      if (longitud != 0) {
+        console.log("Entre aca id distinto de 0")
+        const response = await api.put(
+          `/api/v1/resumes/${idResumes}`,
+          {
+            userId: DECODE_TOKEN,
+            presentation: "Resume 1",
+            resumeName: "Resume 1",
+            profile: {
+              fullName: nombre ,
+              email: email ,
+              phone: telefono ,
+              location: pais ,
+              imgResume: linkedin ,
+            },
+          },
+          { headers: { Authorization: TOKEN } }
         );
-      console.log("Valor guardado:", response.data);
+        console.log("Valor guardado:", response.data);
+      }
+      if (longitud == 0) {
+        console.log("Entre aca id igual a 0")
+        
+        const response = await api.post(
+          `/api/v1/resumes/${idResumes}`,
+          {
+            userId: DECODE_TOKEN,
+            presentation: "Resume 1",
+            resumeName: "Resume1",
+            profile: {
+              fullName: nombre || "",
+              email: email || "",
+              phone: telefono || "",
+              location: pais || "",
+              imgResume: linkedin || "",
+            },
+          },
+
+          { headers: { Authorization: TOKEN } }
+        );
+        console.log("Valor guardado:", response.data);
+      }
     } catch (error) {
       console.error("Error al guardar el valor:", error);
     }
   };
-  
 
   return (
     <div className="w-[90vw] mt-[2vh]">
@@ -76,22 +105,18 @@ const Information = () => {
             placeholder={nombre} // Mostrar el valor de la variable 'nombre' en el placeholder
           />
         </div>
-        <div className="flex flex-col">
-          
-        
-        </div>
-          <div>
-
-            <div className="flex flex-col">
+        <div className="flex flex-col"></div>
+        <div>
+          <div className="flex flex-col">
             <label htmlFor="">Teléfono</label>
-          <input
-            type="text"
-            className="w-[44.5vh] h-[6vh] mb-[2vh]"
-            value={telefono}
-            onChange={(e) => setTelefono(e.target.value)}
-            placeholder={telefono}
+            <input
+              type="text"
+              className="w-[44.5vh] h-[6vh] mb-[2vh]"
+              value={telefono}
+              onChange={(e) => setTelefono(e.target.value)}
+              placeholder={telefono}
             />
-            </div>
+          </div>
         </div>
       </div>
       <div className="flex flex-col">
@@ -113,9 +138,7 @@ const Information = () => {
             value={pais}
             onChange={(e) => setPais(e.target.value)}
           />
-         
         </div>
-       
       </div>
       <div className="flex flex-col">
         <label htmlFor="">LinkedIn / Behance / Portfolio</label>
@@ -127,7 +150,7 @@ const Information = () => {
         />
       </div>
       <div>
-      <Button name={"Guardar"} onClick={handleGuardar} />
+        <Button name={"Guardar"} onClick={handleGuardar} />
       </div>
     </div>
   );

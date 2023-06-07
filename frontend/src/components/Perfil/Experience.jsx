@@ -38,27 +38,47 @@ const Experience = () => {
       const responseID = await api.get(`/api/v1/users/${DECODE_TOKEN}`, {
         headers: { Authorization: TOKEN },
       });
-      const idExperience = responseID.data.resumes[0].experiences[0].id;
+  
       const idResumes = responseID.data.resumes[0].id;
-      console.log(idExperience)
-      const response = await api.put(
-        `/api/v1/experiences/${idExperience}`,
-        {
-          resumeId: idResumes,
-          title: titulo,
-          company: nombreEmpresa,
-          dateStart: anioInicio,
-          dateEnd: anioFinalizacion,
-          description: areaTrabajo,
-        },
-        { headers: { Authorization: TOKEN } }
-      );
-      console.log("Valor guardado:", response.data);
+  
+      if (responseID.data.resumes[0].experiences.length === 0) {
+        // Perform POST request if experiences length is 0
+        const response = await api.post(
+          `/api/v1/experiences`,
+          {
+            resumeId: idResumes,
+            title: titulo,
+            company: nombreEmpresa,
+            dateStart: anioInicio,
+            dateEnd: anioFinalizacion,
+            description: areaTrabajo,
+          },
+          { headers: { Authorization: TOKEN } }
+        );
+        console.log("Valor guardado:", response.data);
+      } else {
+        // Perform PUT request if experiences length is not 0
+        const idExperience = responseID.data.resumes[0].experiences[0].id;
+        const response = await api.put(
+          `/api/v1/experiences/${idExperience}`,
+          {
+            resumeId: idResumes,
+            title: titulo,
+            company: nombreEmpresa,
+            dateStart: anioInicio,
+            dateEnd: anioFinalizacion,
+            description: areaTrabajo,
+          },
+          { headers: { Authorization: TOKEN } }
+        );
+        console.log("Valor guardado:", response.data);
+      }
     } catch (error) {
       console.log(error);
       console.error("Error al guardar el valor:", error);
     }
   };
+  
 
   const [titulo, setTitulo] = useState("");
   const [nombreEmpresa, setNombreEmpresa] = useState("");
