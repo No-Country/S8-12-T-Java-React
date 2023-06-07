@@ -43,26 +43,48 @@ const Education = () => {
       const responseID = await api.get(`/api/v1/users/${DECODE_TOKEN}`, {
         headers: { Authorization: TOKEN },
       });
-      const idEducations = responseID.data.resumes[0].educations[0].id;
+  
       const idResumes = responseID.data.resumes[0].id;
-      const response = await api.put(
-        `/api/v1/educations/${idEducations}`,
-        {
-          resumeId: idResumes,
-          title: titulo,
-          institution: institucion,
-          dateStart: anioInicio,
-          dateEnd: anioFinalizacion,
-          description: areaEstudio,
-        },
-        { headers: { Authorization: TOKEN } }
-      );
-      console.log("Valor guardado:", response.data);
+  console.log(idResumes)
+      if (responseID.data.resumes[0].educations.length === 0) {
+        // Perform POST request if educations length is 0
+        const response = await api.post(
+          `/api/v1/educations/${idResumes}`,
+          {
+            resumeId: idResumes,
+            title: titulo,
+            institution: institucion,
+            dateStart: anioInicio,
+            dateEnd: anioFinalizacion,
+            description: areaEstudio,
+          },
+          { headers: { Authorization: TOKEN } }
+        );
+        console.log("Valor guardado:", response.data);
+      } else {
+        const idEducations = responseID.data.resumes[0].educations[0].id;
+        const idResumes = responseID.data.resumes[0].id;
+        console.log(idResumes)
+        const response = await api.put(
+          `/api/v1/educations/${idEducations}`,
+          {
+            resumeId: idResumes || " ",
+            title: titulo || " " ,
+            institution: institucion || " ",
+            dateStart: anioInicio || " ",
+            dateEnd: anioFinalizacion || " ",
+            description: areaEstudio || " ",
+          },
+          { headers: { Authorization: TOKEN } }
+        );
+        console.log("Valor guardado:", response.data);
+      }
     } catch (error) {
       console.log(error);
       console.error("Error al guardar el valor:", error);
     }
   };
+  
   return (
     <>
       <div className="w-[90vw] mt-[2vh]">
