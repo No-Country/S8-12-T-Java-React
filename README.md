@@ -4,7 +4,11 @@
 
 </div>
 
-# Welcome to Career Watch
+<div align="center">
+<br>
+<img align="center" src="https://i.ibb.co/X4K9ScM/banner.png">
+<br>
+<h3>An app for job seekers who want to nail it. Get your resumes, job applications, and schedule organized with Carreer Watch.</h3>
 
 ## ✔ BackEnd
 
