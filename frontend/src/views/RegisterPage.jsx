@@ -26,6 +26,7 @@ export default function RegisterPage() {
     try {
       // Llamar a la API para generar el token
       const response = await api.post("/auth/register", data);
+      console.log(data);
       const token = response.data.token;
       localStorage.setItem("USER_TOKEN", token);
       window.location.replace("/welcome");
@@ -159,7 +160,12 @@ export default function RegisterPage() {
                 </span>
               )}
             </div>
-            <ButtonLoader isLoading={isLoading} onClick={handleClick}>
+            <ButtonLoader
+              isLoading={isLoading}
+              onClick={() => {
+                submitData();
+              }}
+            >
               Crear cuenta
             </ButtonLoader>
             {/* <button
