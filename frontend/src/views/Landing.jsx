@@ -68,7 +68,7 @@ export default function Landing() {
             <LandingsCards img={calendario} title={"Calendario"} />
           </div>
         </div>
-        <div className="h-[75vw] sm:h-[30vh] sm:h-2/5 flex flex-col justify-between items-center my-[9vh] sm:w-1/4">
+        <div className="h-[70vw] sm:h-[30vh] flex flex-col justify-between items-center my-8 sm:w-1/4">
           <h2 className="w-[90vw] text-[1.25em] sm:text-2xl text-center text-neutral-900 font-bold">
             Testimonios
           </h2>
