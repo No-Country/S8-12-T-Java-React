@@ -8,7 +8,6 @@ import "../styles/menusButtons.css";
 import { Arrow } from "../assets/icons/Icons";
 import Error404 from "./Error404";
 import WelcomePage from "./WelcomePage";
-import Contact from "./Contact";
 import TableroSeleccionado from "./TableroSeleccionado";
 import { ContextTokenProvider } from "../context/Token";
 
@@ -86,7 +85,6 @@ export default function Logged() {
           <Route element={<Perfil />} path="/curriculumn" />
           <Route element={<Error404 />} path="*" />
           <Route element={<WelcomePage />} path="/welcome" />
-          <Route element={<Contact />} path="/contact" />
         </Routes>
       </ContextTokenProvider>
       <Footer />
