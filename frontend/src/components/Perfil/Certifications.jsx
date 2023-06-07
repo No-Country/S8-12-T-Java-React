@@ -8,7 +8,6 @@ const Certifications = () => {
   const [mesFinalizacion, setMesFinalizacion] = useState("");
   const [anioInicio, setAnioInicio] = useState("");
   const [anioFinalizacion, setAnioFinalizacion] = useState("");
-  const [enCurso, setEnCurso] = useState(false);
 
   return (
     <>
@@ -19,6 +18,7 @@ const Certifications = () => {
             type="text"
             className="w-[44.5vh] h-[6vh] mb-[2vh]"
             value={titulo}
+            placeholder="No country"
             onChange={(e) => setTitulo(e.target.value)}
           />
         </div>
@@ -26,6 +26,8 @@ const Certifications = () => {
           <label htmlFor="">Nombre de empresa emisora / institución</label>
           <input
             type="text"
+            placeholder="No country"
+
             className="w-[44.5vh] h-[6vh] mb-[2vh]"
             value={nombreEmpresa}
             onChange={(e) => setNombreEmpresa(e.target.value)}
@@ -39,6 +41,8 @@ const Certifications = () => {
               type="text"
               className="w-[21vh] h-[6vh] mb-[2vh]"
               value={mesInicio}
+            placeholder="02"
+
               onChange={(e) => setMesInicio(e.target.value)}
             />
             <label htmlFor="">Mes de finalización</label>
@@ -46,6 +50,8 @@ const Certifications = () => {
               type="text"
               className="w-[21vh] h-[6vh] mb-[2vh]"
               value={mesFinalizacion}
+            placeholder="           -"
+
               onChange={(e) => setMesFinalizacion(e.target.value)}
             />
           </div>
@@ -55,6 +61,8 @@ const Certifications = () => {
               type="text"
               className="w-[22vh] h-[6vh] mb-[2vh]"
               value={anioInicio}
+            placeholder="2023"
+
               onChange={(e) => setAnioInicio(e.target.value)}
             />
             <label htmlFor="">Año de finalización</label>
@@ -62,21 +70,13 @@ const Certifications = () => {
               type="text"
               className="w-[22vh] h-[6vh] mb-[2vh]"
               value={anioFinalizacion}
+            placeholder="              -"
+
               onChange={(e) => setAnioFinalizacion(e.target.value)}
             />
           </div>
         </div>
-        <div className="flex items-center justify-start">
-          <input
-            type="checkbox"
-            className="w-[3vh] h-[6vh] "
-            checked={enCurso}
-            onChange={(e) => setEnCurso(e.target.checked)}
-          />
-          <p htmlFor="" className=" ml-[2vh]">
-            En curso
-          </p>
-        </div>
+        
         
       </div>
     </>
