@@ -115,7 +115,7 @@ export const MenuLogged = ({ isOpen, onClose }) => {
             Calendario
           </Link>
           <Link
-            to={"/"}
+            
             onClick={() => {
               setActive(6);
               handleLogout();
