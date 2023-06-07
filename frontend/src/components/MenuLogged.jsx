@@ -120,6 +120,7 @@ export const MenuLogged = ({ isOpen, onClose }) => {
               setActive(6);
               handleLogout();
             }}
+            to={"/"}
             className={`btnInactive ${
               active === 6 ? "btnActive" : null
             } font-['Lato','sans-serif'] font-normal`}
