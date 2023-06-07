@@ -58,7 +58,7 @@ export default function Landing() {
         </div>
 
         <div className="my-8 flex flex-col items-center justify-evenly h-screen w-full sm:h-2/5 sm:w-3/5">
-          <h2 className="sm:my-4 w-full  text-[1.25em] text-center text-neutral-900 font-bold">
+          <h2 className="sm:my-4 w-full  text-[1.25em] sm:text-2xl text-center text-neutral-900 font-bold">
             ¿Qué Ofrecemos?
           </h2>
           <div className="sm:my-4  h-5/6 w-full flex flex-col justify-evenly sm:flex-row gap-y-5">
