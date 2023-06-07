@@ -41,12 +41,10 @@ const Information = () => {
       const responseID = await api.get(`/api/v1/users/${DECODE_TOKEN}`, {
         headers: { Authorization: TOKEN },
       });
-    
+
       const longitud = responseID.data.resumes.length;
-      const idResumes = responseID.data.resumes[0].id;
-      console.log(idResumes);
       if (longitud != 0) {
-        console.log("Entre aca id distinto de 0")
+        const idResumes = responseID.data.resumes[0].id;
         const response = await api.put(
           `/api/v1/resumes/${idResumes}`,
           {
@@ -54,11 +52,11 @@ const Information = () => {
             presentation: "Resume 1",
             resumeName: "Resume 1",
             profile: {
-              fullName: nombre ,
-              email: email ,
-              phone: telefono ,
-              location: pais ,
-              imgResume: linkedin ,
+              fullName: nombre,
+              email: email,
+              phone: telefono,
+              location: pais,
+              imgResume: linkedin,
             },
           },
           { headers: { Authorization: TOKEN } }
@@ -66,10 +64,9 @@ const Information = () => {
         console.log("Valor guardado:", response.data);
       }
       if (longitud == 0) {
-        console.log("Entre aca id igual a 0")
-        
+        console.log("longitud 0");
         const response = await api.post(
-          `/api/v1/resumes/${idResumes}`,
+          `/api/v1/resumes`,
           {
             userId: DECODE_TOKEN,
             presentation: "Resume 1",
