@@ -36,35 +36,35 @@ export default function Perfil() {
           onClick={() => handleComponentToggle("education")}
         />
         {activeComponent === "education" && <Education />}
-        {activeComponent === "education" && <AddDeleted name={"Agregar educación"} />}
+        {/* {activeComponent === "education" && <AddDeleted name={"Agregar educación"}  />} */}
 
         <CategoryPerfil
           name={"Experiencia"}
           onClick={() => handleComponentToggle("experience")}
         />
         {activeComponent === "experience" && <Experience />}
-        {activeComponent === "experience" && <AddDeleted name={"Agregar experiencia"} />}
+        {/* {activeComponent === "experience" && <AddDeleted name={"Agregar experiencia"} />} */}
 
         <CategoryPerfil
           name={"Certificaciones"}
           onClick={() => handleComponentToggle("certifications")}
         />
         {activeComponent === "certifications" && <Certifications />}
-        {activeComponent === "certifications" && <AddDeleted name={"Agregar certificado"} />}
+        {/* {activeComponent === "certifications" && <AddDeleted name={"Agregar certificado"} />} */}
         
         <CategoryPerfil
           name={"Conocimientos"}
           onClick={() => handleComponentToggle("knowledge")}
         />
         {activeComponent === "knowledge" && <Knowledge />}
-        {activeComponent === "knowledge" && <AddDeleted name={"Agregar conocimientos"} />}
+        {/* {activeComponent === "knowledge" && <AddDeleted name={"Agregar conocimientos"} />} */}
 
         <CategoryPerfil
           name={"Idiomas"}
           onClick={() => handleComponentToggle("languages")}
         />
         {activeComponent === "languages" && <Languages />}
-        {activeComponent === "languages" && <AddDeleted name={"Agregar idioma"} />}
+        {/* {activeComponent === "languages" && <AddDeleted name={"Agregar idioma"} />} */}
 
        
       </div>

@@ -34,8 +34,6 @@ const Information = () => {
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
   const [pais, setPais] = useState("");
-  const [ciudad, setCiudad] = useState("");
-  const [provincia, setProvincia] = useState("");
   const [linkedin, setLinkedin] = useState("");
 
   const handleGuardar = async () => {

@@ -1,15 +1,70 @@
-import  { useState } from "react";
-
+import  { useContext, useEffect, useState } from "react";
+import Button from "../Button";
+import api from '../../api/Post'
+import { ContextToken } from "../../context/Token";
 
 const Experience = () => {
+
+  const { TOKEN, DECODE_TOKEN } = useContext(ContextToken);
+  const GetTablero = async () => {
+    try {
+      const response = await api.get(`/api/v1/users/${DECODE_TOKEN}`, {
+        headers: { Authorization: TOKEN },
+      });
+      const title = response.data.resumes[0].experiences[0].title;
+      const company = response.data.resumes[0].experiences[0].company;
+      const dateStart = response.data.resumes[0].experiences[0].dateStart;
+      const dateEnd = response.data.resumes[0].experiences[0].dateEnd;
+      const areatrabajo = response.data.resumes[0].experiences[0].description;
+
+      setTitulo(title);
+      setNombreEmpresa(company);
+      setAnioInicio(dateStart);
+      setAnioFinalizacion(dateEnd);
+      setAreaTrabajo(areatrabajo);
+    } catch (error) {
+      console.log("soy error");
+      console.log(error);
+      throw error.response.data;
+    }
+  };
+
+  useEffect(() => {
+    GetTablero();
+  }, []);
+
+  const handleGuardar = async () => {
+    try {
+      const responseID = await api.get(`/api/v1/users/${DECODE_TOKEN}`, {
+        headers: { Authorization: TOKEN },
+      });
+      const idExperience = responseID.data.resumes[0].experiences[0].id;
+      const idResumes = responseID.data.resumes[0].id;
+      console.log(idExperience)
+      const response = await api.put(
+        `/api/v1/experiences/${idExperience}`,
+        {
+          resumeId: idResumes,
+          title: titulo,
+          company: nombreEmpresa,
+          dateStart: anioInicio,
+          dateEnd: anioFinalizacion,
+          description: areaTrabajo,
+        },
+        { headers: { Authorization: TOKEN } }
+      );
+      console.log("Valor guardado:", response.data);
+    } catch (error) {
+      console.log(error);
+      console.error("Error al guardar el valor:", error);
+    }
+  };
+
   const [titulo, setTitulo] = useState("");
   const [nombreEmpresa, setNombreEmpresa] = useState("");
-  const [tipoIndustria, setTipoIndustria] = useState("");
   const [areaTrabajo, setAreaTrabajo] = useState("");
-  const [pais, setPais] = useState("");
   const [anioInicio, setAnioInicio] = useState("");
   const [anioFinalizacion, setAnioFinalizacion] = useState("");
-  const [actualmenteTrabajo, setActualmenteTrabajo] = useState(false);
 
   return (
     <>
@@ -32,15 +87,7 @@ const Experience = () => {
             onChange={(e) => setNombreEmpresa(e.target.value)}
           />
         </div>
-        <div className="flex flex-col">
-          <label htmlFor="">Tipo de industria</label>
-          <input
-            type="text"
-            className="w-[44.5vh] h-[6vh] mb-[2vh]"
-            value={tipoIndustria}
-            onChange={(e) => setTipoIndustria(e.target.value)}
-          />
-        </div>
+        
         <div className="grid grid-cols-2">
           <div className="flex flex-col">
             <label htmlFor="">Área de trabajo</label>
@@ -49,15 +96,6 @@ const Experience = () => {
               className="w-[21vh] h-[6vh] mb-[2vh]"
               value={areaTrabajo}
               onChange={(e) => setAreaTrabajo(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="">País</label>
-            <input
-              type="text"
-              className="w-[22vh] h-[6vh] mb-[2vh]"
-              value={pais}
-              onChange={(e) => setPais(e.target.value)}
             />
           </div>
         </div>
@@ -82,17 +120,9 @@ const Experience = () => {
             />
           </div>
         </div>
-        <div className="flex items-center justify-start">
-          <input
-            type="checkbox"
-            className="w-[3vh] h-[6vh] "
-            checked={actualmenteTrabajo}
-            onChange={(e) => setActualmenteTrabajo(e.target.checked)}
-          />
-          <p htmlFor="" className=" ml-[2vh]">
-            Actualmente trabajo aquí
-          </p>
-        </div>
+       
+        <Button onClick={handleGuardar} name={"Guardar"} />
+
       </div>
     </>
   );
