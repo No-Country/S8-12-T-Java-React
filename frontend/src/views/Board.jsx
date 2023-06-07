@@ -1,33 +1,34 @@
-import React, { useState,useContext, useEffect, useLayoutEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { TailSpin } from "react-loader-spinner";
 import Board from "../components/Board";
 import NewBoard from "../components/modal/NewBoard";
-import '../styles/latoFont.css'
-import { Link } from "react-router-dom";
+import "../styles/latoFont.css";
 import { ContextToken } from "../context/Token";
 import api from "../api/Post";
 
-
 export default function Boards() {
-  const {TOKEN,DECODE_TOKEN} = useContext(ContextToken);
-  
+  const { TOKEN, DECODE_TOKEN } = useContext(ContextToken);
+
   const [Tableros, setTableros] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const GetTablero = async() =>{
-    try{ 
-      const response = await api.get(`/api/v1/users/${DECODE_TOKEN}/stages`, {headers:{Authorization:TOKEN}})
-      setTableros(response.data)
-      console.log(response.data)
-
-      
-    }catch(error){
+  const GetTablero = async () => {
+    try {
+      const response = await api.get(`/api/v1/users/${DECODE_TOKEN}/stages`, {
+        headers: { Authorization: TOKEN },
+      });
+      setTableros(response.data);
+      setTimeout(()=>{
+        setIsLoading(false)
+    },1000)
+    } catch (error) {
       throw error.response.data;
     }
-  } 
-  
+  };
   useEffect(() => {
-    GetTablero()
+    GetTablero();
   }, []);
- 
+
   return (
     <>
       <main className="bg-white text-black w-full h-full flex flex-col items-center ">
@@ -37,18 +38,27 @@ export default function Boards() {
             src="./trello.svg"
             alt="1"
           ></img>
-          <h2 className="font-['Lato','sans-serif'] font-bold">Tablero</h2>
+          <h2 className="font-['Lato','sans-serif'] font-bold">Tableros</h2>
         </div>
         <NewBoard />
-        {Tableros.map((e) => (
+
+        {isLoading ? (
+          <div className="h-[50vh] flex justify-center items-center">
+          <TailSpin type="TailSpin" color="#6D28D9" height={30} width={30} />
+          </div>
+        ) : Tableros.length > 0 ? (
+          Tableros.map((e) => (
             <Board
               key={e.id}
               title={e.stageName}
               id={e.id}
               description={e.boardDescription}
-              
             />
-        ))}
+          ))
+        ) : (<div className="h-[55vh] flex justify-center items-center">
+          <h2 className="font-['Lato','sans-serif'] font-bold">No creaste ningun tablero, hazlo con el boton de arriba</h2>
+            </div>
+        )}
       </main>
     </>
   );

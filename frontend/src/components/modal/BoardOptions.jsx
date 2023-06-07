@@ -3,6 +3,7 @@ import EditBoard from "./EditBoard";
 import DeletedBoard from "./DeleteBoard";
 
 const BoardOptions = (props) => {
+
   const [boardName, setBoardName] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [deletedModal, setDeletedModal] = useState(false);
@@ -42,11 +43,11 @@ const BoardOptions = (props) => {
       </div>
 
       {showModal && (
-        <EditBoard title={props.title} onClose={() => handleModalClose(false)} />
+        <EditBoard title={props.title} id={props.id} onClose={() => handleModalClose(false)} />
       )}
 
       {deletedModal && (
-        <DeletedBoard title={props.title} onClose={() => handleModalClose(false)}/>
+        <DeletedBoard title={props.title} id={props.id} onClose={() => handleModalClose(false)}/>
       )
 
 

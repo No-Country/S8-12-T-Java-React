@@ -1,15 +1,36 @@
-import React, { useEffect, useState } from "react";
-import Button from "../Button";
+import React, { useContext, useState } from "react";
 import ConfirmationDeleted from "./ConfirmationDeleted";
+import api from '../../api/Post';
+import { ContextToken } from "../../context/Token";
+import { TailSpin } from "react-loader-spinner";
 
 const DeletedBoard = (props) => {
+  const {TOKEN} = useContext(ContextToken);
   const [confirmationDeleted, setConfirmationDeleted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   
   const handleModalClose = () => {
     props.onClose();
   };
   const handleConfirmationDeleted =()=>{
-    setConfirmationDeleted(true);
+
+    const DeleteTablero = async() =>{
+      try{ 
+         await api.delete(`/api/v1/stages/${props.id}`, {headers:{Authorization:TOKEN}})
+  
+      }catch(error){
+        throw error.response;
+      }
+    } 
+    DeleteTablero();
+    setIsLoading(true);
+    
+    setTimeout(()=>{
+      setConfirmationDeleted(true);
+    },2000)
+  
+    
   }
 
   return (
@@ -22,7 +43,11 @@ const DeletedBoard = (props) => {
 
         <div className="flex justify-between">
           <button className="bg-[#6D28D9] text-white px-6 py-2 rounded-md" onClick={handleConfirmationDeleted}>
-            Aceptar
+          {isLoading ? (
+        <TailSpin type="TailSpin" color="#ffffff" height={20} width={20} />
+      ) : 
+        'Aceptar'
+      }
           </button>
           <button
             onClick={handleModalClose}

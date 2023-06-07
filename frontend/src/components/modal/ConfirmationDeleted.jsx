@@ -9,6 +9,7 @@ const ConfirmationDeleted = (props) => {
   const handleModalClose = () => {
     setBoardName('');
     props.onClose(); 
+    window.location.reload()
   };
 
 
