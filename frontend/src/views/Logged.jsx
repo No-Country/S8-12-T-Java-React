@@ -78,15 +78,15 @@ export default function Logged() {
   return (
     <>
       <Responsive />
-      <ContextTokenProvider >
-      <Routes>
-        <Route element={<Boards />} path="/" />
-        <Route element={<TableroSeleccionado />} path="/tablero/:id" />
-        <Route element={<Perfil />} path="/curriculumn" />
-        <Route element={<Error404 />} path="*" />
-        <Route element={<WelcomePage />} path="/welcome" />
-      </Routes>
-       </ContextTokenProvider>
+      <ContextTokenProvider>
+        <Routes>
+          <Route element={<Boards />} path="/" />
+          <Route element={<TableroSeleccionado />} path="/tablero/:id" />
+          <Route element={<Perfil />} path="/curriculumn" />
+          <Route element={<Error404 />} path="*" />
+          <Route element={<WelcomePage />} path="/welcome" />
+        </Routes>
+      </ContextTokenProvider>
       <Footer />
     </>
   );
