@@ -25,6 +25,7 @@ export const MenuNotLogged = ({ isOpen, onClose }) => {
             <XClose />
           </button>
           <Link
+          onClick={onClose}
             to={"/login"}
             className="w-2/5 h-[4.5%] flex items-center justify-center bg-[#6D28D9] text-white hover:text-white rounded font-['Lato','sans-serif'] font-normal"
           >
@@ -38,7 +39,8 @@ export const MenuNotLogged = ({ isOpen, onClose }) => {
           </Link>
           <Link
             to={"/"}
-            onClick={() => setactive(true)}
+            onClick={() => {setactive(true)
+              onClose()}}
             className={`w-2/6 h-[4.5%] flex items-center justify-center ${
               active ? "border-b-2" : null
             } border-[#6D28D9] text-[#6D28D9] hover:text-[#6D28D9] font-['Lato','sans-serif'] font-normal`}
@@ -47,7 +49,8 @@ export const MenuNotLogged = ({ isOpen, onClose }) => {
           </Link>
           <Link
             to={"/contact"}
-            onClick={() => setactive(false)}
+            onClick={() => {setactive(false)
+            onClose()}}
             className={`w-2/6 h-[4.5%] flex items-center justify-center ${
               active ? null : "border-b-2"
             } border-[#6D28D9] text-[#6D28D9] hover:text-[#6D28D9] font-['Lato','sans-serif'] font-normal`}
