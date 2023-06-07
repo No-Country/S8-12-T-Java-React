@@ -1,24 +1,69 @@
-import  { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "../Button";
+import api from '../../api/Post'
+import { ContextToken } from "../../context/Token";
 
 const Information = () => {
+  const { TOKEN, DECODE_TOKEN } = useContext(ContextToken);
+
+  const GetTablero = async () => {
+    try {
+      const response = await api.get(`/api/v1/users/${DECODE_TOKEN}`, {
+        headers: { Authorization: TOKEN },
+      });
+      const fullName = response.data.resumes[0].profile.fullName;
+      const phone = response.data.resumes[0].profile.phone;
+      const location = response.data.resumes[0].profile.location;
+      const linkedin = response.data.resumes[0].profile.imgResume;
+      const emailAccount = response.data.email
+      setNombre(fullName); 
+      setEmail(emailAccount)
+      setTelefono(phone)
+      setPais(location)
+      setLinkedin(linkedin)
+    } catch (error) {
+      throw error.response.data;
+    }
+  };
+
+  useEffect(() => {
+    GetTablero();
+  }, []);
 
   const [nombre, setNombre] = useState("");
-  const [genero, setGenero] = useState("");
-  const [apellido, setApellido] = useState("");
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
   const [pais, setPais] = useState("");
   const [ciudad, setCiudad] = useState("");
   const [provincia, setProvincia] = useState("");
-  const [codigoPostal, setCodigoPostal] = useState("");
   const [linkedin, setLinkedin] = useState("");
 
-  const handleGeneroChange = (e) => {
-    setGenero(e.target.value);
+  const handleGuardar = async () => {
+
+ 
+    try {
+      const responseID = await api.get(`/api/v1/users/${DECODE_TOKEN}`, {
+        headers: { Authorization: TOKEN },
+      });
+      const idResumes= responseID.data.resumes[0].id
+
+    const response = await api.put(
+      `/api/v1/profile/${idResumes}`,
+      { 
+        fullName: nombre,
+        phone:telefono,
+        location:pais,
+        email:email,
+        imgResume:linkedin
+      },
+      { headers: { Authorization: TOKEN } }
+        );
+      console.log("Valor guardado:", response.data);
+    } catch (error) {
+      console.error("Error al guardar el valor:", error);
+    }
   };
-
-
+  
 
   return (
     <div className="w-[90vw] mt-[2vh]">
@@ -27,20 +72,14 @@ const Information = () => {
           <label htmlFor="">Nombre</label>
           <input
             type="text"
-            className="w-[21vh] h-[6vh] mb-[2vh]"
+            className="w-[44.5vh] h-[6vh] mb-[2vh]"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
+            placeholder={nombre} // Mostrar el valor de la variable 'nombre' en el placeholder
           />
-         
         </div>
         <div className="flex flex-col">
-          <label htmlFor="">Apellido</label>
-          <input
-            type="text"
-            className="w-[22vh] h-[6vh] mb-[2vh]"
-            value={apellido}
-            onChange={(e) => setApellido(e.target.value)}
-          />
+          
         
         </div>
           <div>
@@ -50,8 +89,9 @@ const Information = () => {
           <input
             type="text"
             className="w-[44.5vh] h-[6vh] mb-[2vh]"
-            value={email}
+            value={telefono}
             onChange={(e) => setTelefono(e.target.value)}
+            placeholder={telefono}
             />
             </div>
         </div>
@@ -62,6 +102,7 @@ const Information = () => {
           type="text"
           className="w-[44.5vh] h-[6vh] mb-[2vh]"
           value={email}
+          placeholder={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
@@ -70,40 +111,25 @@ const Information = () => {
           <label htmlFor="">País</label>
           <input
             type="text"
-            className="w-[21vh] h-[6vh] mb-[2vh]"
+            className="w-[90vw] h-[6vh] mb-[2vh]"
             value={pais}
             onChange={(e) => setPais(e.target.value)}
           />
-          <label htmlFor="">Ciudad</label>
-          <input
-            type="text"
-            className="w-[44.5vh] h-[6vh] mb-[2vh]"
-            value={ciudad}
-            onChange={(e) => setCiudad(e.target.value)}
-          />
+         
         </div>
-        <div className="flex flex-col">
-          <label htmlFor="">Provincia</label>
-          <input
-            type="text"
-            className="w-[22vh] h-[6vh] mb-[2vh]"
-            value={provincia}
-            onChange={(e) => setProvincia(e.target.value)}
-          />
-        
-        </div>
+       
       </div>
       <div className="flex flex-col">
         <label htmlFor="">LinkedIn / Behance / Portfolio</label>
         <input
           type="text"
-          className="w-[44.5vh] h-[6vh] mb-[2vh]"
+          className="w-[90vw] h-[6vh] mb-[2vh]"
           value={linkedin}
           onChange={(e) => setLinkedin(e.target.value)}
         />
       </div>
       <div>
-      <Button name={"Guardar"} />
+      <Button name={"Guardar"} onClick={handleGuardar} />
       </div>
     </div>
   );
