@@ -60,7 +60,6 @@ export default function Boards() {
         ) : (<div className="h-[55vh] flex justify-center items-center">
           <h2 className="font-['Lato','sans-serif'] font-bold">No creaste ningun tablero, hazlo con el boton de arriba</h2>
             </div>
-
         )}
       </main>
     </>
