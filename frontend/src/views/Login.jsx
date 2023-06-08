@@ -6,7 +6,7 @@ import { Facebook, Google } from "../assets/icons/Icons";
 import { Link } from "react-router-dom";
 import api from "../api/Post";
 import personIMG from "../assets/images/personIMG.svg";
-import {TailSpin} from 'react-loader-spinner'
+import { TailSpin } from "react-loader-spinner";
 
 export default function Login() {
   const [emailValue, setEmailValue] = useState("");
@@ -62,7 +62,7 @@ export default function Login() {
   return (
     <>
       <div className="sm:w-full sm:h-[80vh] flex flex-col sm:justify-center sm:items-center">
-        <div className="bg-white mx-4 sm:m-0 sm:place-self-center flex flex-col justify-evenly h-[80vh] sm:shadow-lg sm:max-h-[637px] sm:border sm:rounded-lg sm:max-w-2xl sm:flex sm:flex-row">
+        <div className="sm:bg-white mx-4 sm:m-0 sm:place-self-center flex flex-col justify-evenly h-[80vh] sm:shadow-lg sm:max-h-[637px] sm:border sm:rounded-lg sm:max-w-2xl sm:flex sm:flex-row">
           <img
             src={personIMG}
             className="hidden sm:block sm:h-full"
@@ -128,7 +128,18 @@ export default function Login() {
                 className="w-full h-[5vh] min-h-[5vh] max-h-[6vh] self-center bg-[#6D28D9] text-white font-normal rounded"
                 type="submit"
               >
-               {isLoading ? <div className="flex justify-center items-center"><TailSpin type="TailSpin" color="#FFF" height={25} width={25} /></div> : "Iniciar sesión"}
+                {isLoading ? (
+                  <div className="flex justify-center items-center">
+                    <TailSpin
+                      type="TailSpin"
+                      color="#FFF"
+                      height={25}
+                      width={25}
+                    />
+                  </div>
+                ) : (
+                  "Iniciar sesión"
+                )}
               </button>
             </form>
             <div className="w-full flex flex-row self-center items-center justify-between">
