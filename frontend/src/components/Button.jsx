@@ -4,15 +4,13 @@ import "../styles/latoFont.css";
 
 const Button = (props) => {
   return (
-    <div className="w-auto h-auto">
-      <Link
-        to={props.url}
-        className='w-[90vw] h-[6vh] flex items-center justify-center bg-[#6D28D9] text-white font-["Lato","sans-serif"] font-normal rounded-lg drop-shadow-md'
-        onClick={props.onClick}
-      >
-        {props.name}
-      </Link>
-    </div>
+    <Link
+      to={props.url}
+      className="col-span-2 rounded bg-[#6D28D9] text-white h-10 shadow-md flex items-center justify-center"
+      onClick={props.onClick}
+    >
+      {props.name}
+    </Link>
   );
 };
 

@@ -41,27 +41,56 @@ const Information = () => {
       const responseID = await api.get(`/api/v1/users/${DECODE_TOKEN}`, {
         headers: { Authorization: TOKEN },
       });
-      const idResumes = responseID.data.resumes[0].id;
 
-      const response = await api.put(
-        `/api/v1/profile/${idResumes}`,
-        {
-          fullName: nombre,
-          phone: telefono,
-          location: pais,
-          email: email,
-          imgResume: linkedin,
-        },
-        { headers: { Authorization: TOKEN } }
-      );
-      console.log("Valor guardado:", response.data);
+      const longitud = responseID.data.resumes.length;
+      if (longitud != 0) {
+        const idResumes = responseID.data.resumes[0].id;
+        const response = await api.put(
+          `/api/v1/resumes/${idResumes}`,
+          {
+            userId: DECODE_TOKEN,
+            presentation: "Resume 1",
+            resumeName: "Resume 1",
+            profile: {
+              fullName: nombre,
+              email: email,
+              phone: telefono,
+              location: pais,
+              imgResume: linkedin,
+            },
+          },
+          { headers: { Authorization: TOKEN } }
+        );
+        console.log("Valor guardado:", response.data);
+      }
+      if (longitud == 0) {
+        console.log("longitud 0");
+        const response = await api.post(
+          `/api/v1/resumes`,
+          {
+            userId: DECODE_TOKEN,
+            presentation: "Resume 1",
+            resumeName: "Resume1",
+            profile: {
+              fullName: nombre || "",
+              email: email || "",
+              phone: telefono || "",
+              location: pais || "",
+              imgResume: linkedin || "",
+            },
+          },
+
+          { headers: { Authorization: TOKEN } }
+        );
+        console.log("Valor guardado:", response.data);
+      }
     } catch (error) {
       console.error("Error al guardar el valor:", error);
     }
   };
 
   return (
-    <div className="px-6">
+    <div>
       <div className="grid grid-cols-2 my-4 gap-y-7 gap-x-2 text-base">
         <div className="col-span-2 sm:col-span-1">
           <label htmlFor="">Nombre</label>

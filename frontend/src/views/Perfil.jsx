@@ -8,7 +8,7 @@ import Information from "../components/Perfil/Information";
 import Knowledge from "../components/Perfil/Knowledge";
 import Languages from "../components/Perfil/Languages";
 import AddDeleted from "../components/Perfil/AddDeleted";
-
+import profilePicture from "../assets/images/Photo.svg";
 export default function Perfil() {
   const [activeComponent, setActiveComponent] = useState("");
 
@@ -17,15 +17,15 @@ export default function Perfil() {
   };
 
   return (
-    <>
-      <div className="flex justify-center">
+    <div className="px-4 w-full">
+      <div className="flex justify-center mt-8">
         <img
           className="w-[25vh] drop-shadow-xl  "
-          src="../../public/Photo.svg"
+          src={profilePicture}
           alt="1"
         ></img>
       </div>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col w-full gap-y-7 gap-x-2">
         <CategoryPerfil
           name={"Información personal"}
           onClick={() => handleComponentToggle("information")}
@@ -51,7 +51,7 @@ export default function Perfil() {
         />
         {activeComponent === "certifications" && <Certifications />}
         {/* {activeComponent === "certifications" && <AddDeleted name={"Agregar certificado"} />} */}
-        
+
         <CategoryPerfil
           name={"Conocimientos"}
           onClick={() => handleComponentToggle("knowledge")}
@@ -65,12 +65,8 @@ export default function Perfil() {
         />
         {activeComponent === "languages" && <Languages />}
         {/* {activeComponent === "languages" && <AddDeleted name={"Agregar idioma"} />} */}
-
-       
       </div>
-      <div className="flex justify-center mt-[3vh]">
-       
-      </div>
-    </>
+      <div className="flex justify-center mt-[3vh]"></div>
+    </div>
   );
 }
