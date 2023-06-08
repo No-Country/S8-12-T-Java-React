@@ -30,6 +30,8 @@ Say goodbye to guesswork and hello to a data-driven approach to your job search.
 
 <div align="center">
   
+  <br>
+  
   <img style="width:700px;"  src="https://i.ibb.co/CwXvnDP/2.png">
   <img style="width:700px;" src="https://i.ibb.co/CMq9ZsJ/1347-743.png">
   
