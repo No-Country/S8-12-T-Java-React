@@ -67,7 +67,7 @@ const EditBoard = (props) => {
           </button>
           <button
             className="ml-2 px-6 py-2 rounded-md text-[#6D28D9] border-[#6D28D9] border br"
-            onClick={handleModalClose}
+            onClick={()=>{props.onClose();}}
           >
             Cancelar
           </button>
