@@ -21,8 +21,8 @@ export const MenuLogged = ({isOpen,onClose}) => {
       )
     }
     const Disconnect = () =>{
-      setactive(6)
       localStorage.removeItem('USER_TOKEN');
+      setactive(6)
       onClose()
       window.location.replace('/')
     }

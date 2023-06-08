@@ -52,15 +52,13 @@ const NewBoard = () => {
 
   return (
     <>
-      <button onClick={handleModalOpen}>
-        {" "}
-        <Button name={"Nuevo tablero"} />
-      </button>
+      
+        <Button name={"Nuevo tablero"} onClick={handleModalOpen}/>
+     
 
       {showModal && (
         <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
           <div className="bg-white w-[328px] h-[323px] p-6 rounded-3xl flex flex-col justify-center">
-            <button></button>
             <h2 className="text-xl font-bold mb-4 flex justify-center">
               Nuevo tablero
             </h2>

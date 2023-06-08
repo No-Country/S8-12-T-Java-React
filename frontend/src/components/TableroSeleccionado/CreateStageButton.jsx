@@ -11,7 +11,7 @@ export const CreateStageButton = () => {
         onClick={() => {
           setShowModal(true);
         }}
-        className=" h-[5.5vh] bg-[#6D28D9] flex justify-center items-center fixed bottom-[5vh] right-[5vw] gap-x-[2vw] px-[2vw] rounded-md shadow-lg outline-none"
+        className=" h-[5.5vh] bg-[#6D28D9] flex justify-center items-center fixed bottom-[12vh] right-[5vw] gap-x-[2vw] px-[2vw] rounded-md shadow-lg outline-none"
       >
         <p className="text-white">Crear tabla</p>
         <Plus color={"white"} h={"15"} />
