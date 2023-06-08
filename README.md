@@ -27,6 +27,20 @@ Say goodbye to guesswork and hello to a data-driven approach to your job search.
 </p
 <br>
 </div>
+
+<div align="center">
+  
+  <img style="width:700px;"  src="https://i.ibb.co/CwXvnDP/2.png">
+  <img style="width:700px;" src="https://i.ibb.co/CMq9ZsJ/1347-743.png">
+  
+  <br><br>
+  <img style="width:350px; height:660px;" src="https://i.ibb.co/gW78QqQ/325-662.png">
+  <img style="width:350px; height:660px;" src="https://i.ibb.co/pWR2Vm4/z.png">
+
+  <h3 align="center"><b>You can check out our webpage here:</b></h3>
+  <h3 align="center"><a href="https://career-watch.web.app/" target="_blank" rel="noopener noreferrer"> :bar_chart: Career Watch :memo: </a></h3>
+  <p  align="center"><a href="#" target="_blank" rel="noopener noreferrer"> <img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
+ </div>
 <br><br>
   
 ## ✔ BackEnd
