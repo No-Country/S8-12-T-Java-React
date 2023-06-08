@@ -59,22 +59,14 @@ Say goodbye to guesswork and hello to a data-driven approach to your job search.
 - Exceptions should be handled by an implementation of ControllerAdvice. 
 - Messages to user can't be hardcoded them should be handled. Some refs [here](https://looksok.wordpress.com/2014/07/05/string-externalization-in-spring-3-1-with-messagesource-no-web-xml/) and [here](https://zetcode.com/spring/messagesource/). 
 - If you add a new endpoint, make sure to set the role access for it in the WebSecurity class.
-<br>
 
 #### 👉🏻 Documentation 📜
 
 - You can read API docs <a href="http://cwapidocs.s3-website-us-east-1.amazonaws.com/" target="_blank">here</a>.
-<br>
 
 #### 👉🏻 Serverless Architecture 🛠️
 
-<br>
-<br>
-
 <img src="https://docs.aws.amazon.com/images/apigateway/latest/developerguide/images/custom-auth-workflow.png">
-
-<br>
-<br>
 
 #### 👉🏻 Built with 🛠️
 
