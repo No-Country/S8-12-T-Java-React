@@ -10,6 +10,7 @@ import Error404 from "./Error404";
 import WelcomePage from "./WelcomePage";
 import TableroSeleccionado from "./TableroSeleccionado";
 import { ContextTokenProvider } from "../context/Token";
+import { Metricas } from "./metricas";
 
 export default function Logged() {
 
@@ -53,7 +54,7 @@ export default function Logged() {
             Curriculumn
           </NavLink>
           <NavLink
-            to={"/1"}
+            to={"/metricas"}
             className={({ isActive, isPending }) =>
               isPending
                 ? "h-[35%] btnInactive"
@@ -90,6 +91,7 @@ export default function Logged() {
           <Route element={<Boards />} path="/" />
           <Route element={<TableroSeleccionado />} path="/tablero/:id" />
           <Route element={<Perfil />} path="/curriculumn" />
+          <Route element={<Metricas />} path="/metricas" />
           <Route element={<Error404 />} path="*" />
           <Route element={<WelcomePage />} path="/welcome" />
         </Routes>
