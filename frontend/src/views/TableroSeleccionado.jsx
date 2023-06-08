@@ -49,7 +49,7 @@ export default function TableroSeleccionado() {
   };
 
   return (
-    <main className="min-h-[80vh] w-full flex flex-row gap-x-[4vw] pl-8 overflow-x-scroll overflow-y-scroll">
+    <main className="min-h-[80vh] w-full flex flex-row gap-x-[4vw] px-8 overflow-x-scroll overflow-y-scroll">
       <DragDropContext
         onDragEnd={(e) => {
           GuardadoDeDrop(e);
