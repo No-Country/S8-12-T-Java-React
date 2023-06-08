@@ -5,6 +5,7 @@ import NewBoard from "../components/modal/NewBoard";
 import "../styles/latoFont.css";
 import { ContextToken } from "../context/Token";
 import api from "../api/Post";
+import trello from "../../src/assets/images/trello.svg";
 
 export default function Boards() {
   const { TOKEN, DECODE_TOKEN } = useContext(ContextToken);
@@ -19,9 +20,9 @@ export default function Boards() {
       });
       console.log(response.data)
       setTableros(response.data);
-      setTimeout(()=>{
-        setIsLoading(false)
-    },1000)
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
     } catch (error) {
       throw error.response.data;
     }
@@ -36,7 +37,7 @@ export default function Boards() {
         <div className="w-[90vw] text-[1.15em] text-star text-700 font-bold flex flex-row items-center mt-[10%] mb-3">
           <img
             className="w-[10vw] drop-shadow-md mr-3 "
-            src="./trello.svg"
+            src={trello}
             alt="1"
           ></img>
           <h2 className="font-['Lato','sans-serif'] font-bold">Tableros</h2>
@@ -45,7 +46,7 @@ export default function Boards() {
 
         {isLoading ? (
           <div className="h-[50vh] flex justify-center items-center">
-          <TailSpin type="TailSpin" color="#6D28D9" height={30} width={30} />
+            <TailSpin type="TailSpin" color="#6D28D9" height={30} width={30} />
           </div>
         ) : Tableros.length ? (
           (
@@ -59,6 +60,7 @@ export default function Boards() {
         ) : (<div className="h-[55vh] flex justify-center items-center">
           <h2 className="font-['Lato','sans-serif'] font-bold">No creaste ningun tablero, hazlo con el boton de arriba</h2>
             </div>
+
         )}
       </main>
     </>

@@ -1,0 +1,46 @@
+{
+  "contactStack": [
+    {
+      "id": 1,
+      "name": "Agustín Soleti",
+      "url": "https://www.linkedin.com/in/aguusoleti/",
+      "stack": "Front-end"
+    },
+    {
+      "id": 2,
+      "name": "Brayan Rodallega",
+      "url": "https://www.linkedin.com/in/brayanrodallega/",
+      "stack": "Back-end"
+    },
+    {
+      "id": 3,
+      "name": "Dolores Alemán",
+      "url": "https://www.linkedin.com/in/dolores-aleman/",
+      "stack": "QA Tester"
+    },
+    {
+      "id": 4,
+      "name": "Emiliano Escobedo",
+      "url": "https://www.linkedin.com/in/emiliano-escobedo/",
+      "stack": "Back-end"
+    },
+    {
+      "id": 5,
+      "name": "Facundo Ramírez",
+      "url": "https://www.linkedin.com/in/facundo-ramirez-cambareri-4a426b1a5/",
+      "stack": "Front-end"
+    },
+    {
+      "id": 6,
+      "name": "Gerardo Vargas",
+      "url": "https://www.linkedin.com/in/geravargas/",
+      "stack": "Diseño UX/UI"
+    },
+    {
+      "id": 7,
+      "name": "Nicolás Rberto",
+      "url": "https://www.linkedin.com/in/nicolas-roberto/",
+      "stack": "Front-end"
+    }
+  ]
+}

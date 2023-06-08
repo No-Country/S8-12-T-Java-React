@@ -4,20 +4,44 @@
 
 </div>
 
-# Welcome to Career Watch
+<div align="center">
+<br>
+<img align="center" src="https://i.ibb.co/X4K9ScM/banner.png">
+<br>
+<h2>An app for job seekers who want to nail it. Get your resumes, job applications, and schedule organized with Carreer Watch.</h2>
 
+  <br>
+  
+  ### Introducing Career Watch - your ultimate job search companion. With this game-changing project, you can take your job hunt to the next level and ensure you're on the right track.
+ 
+  <br>
+  
+</div>
+
+<p>
+Career Watch empowers you to create impressive resumes, organize your job applications into stages, and take charge of your schedule. But it doesn't stop there. You have the freedom to add specific tasks to each application, such as sending emails to HR or studying key topics for interviews. Stay on top of your game with handy reminders that keep you focused and motivated.
+<br><br>
+But here's the real game-changer: Career Watch lets you measure your progress with powerful metrics. For instance, imagine you've submitted 50 applications, received interview calls from 5 companies, and made it to technical tests with 2 of them. These metrics provide valuable insights, helping you reassess and fine-tune your job search strategy based on real results.
+<br><br>
+Say goodbye to guesswork and hello to a data-driven approach to your job search. Career Watch revolutionizes the way you navigate the job market, helping you make informed decisions that bring you closer to your dream career. Get ready to unleash your potential and land that perfect job with Career Watch.
+</p
+<br>
+</div>
+<br><br>
+  
 ## ✔ BackEnd
 
 #### 👉🏻 Task List ✅
 
 - Development of REST API with Java and Spring-Boot.
-- Create Postgre Database on AWS RDS.
+- Create Postgre Database on AWS RDS and configure in a Proxy RDS.
+- Deploy API in API Gateway, with lambda proxy integration.
+- Build specific lambda for register and autentication.
+- Authorization procces through API gateway and lambda custom authorizer. 
+- Users validation with JWT built and signed in the application, or Oauth2.0 from Google.
 - Creating filters with regular expressions and JPA/Hibernate rules.
-- Role based securize architecture. 
-- Users validation with JWT. 
 - API documentation on Swagger3.
 - Endpoints and services fully tested. 
-- Deployed on AWS Lambda through AWS api gateway.
 - Containerization in docker to run locally.
 
 #### 👉🏻 Code Standards 📜
@@ -37,9 +61,16 @@
 - If you add a new endpoint, make sure to set the role access for it in the WebSecurity class.
 
 #### 👉🏻 Documentation 📜
-- You can read API docs <a href="#" target="_blank">here</a>.
+
+- You can read API docs <a href="http://cwapidocs.s3-website-us-east-1.amazonaws.com/" target="_blank">here</a>.
+
+#### 👉🏻 Serverless Architecture 🛠️
+
+<img src="https://docs.aws.amazon.com/images/apigateway/latest/developerguide/images/custom-auth-workflow.png">
 
 #### 👉🏻 Built with 🛠️
+
+<br>
 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white) 
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
