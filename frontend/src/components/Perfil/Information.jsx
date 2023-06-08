@@ -90,61 +90,57 @@ const Information = () => {
   };
 
   return (
-    <div className="w-[90vw] mt-[2vh]">
-      <div className="grid grid-cols-2">
-        <div className="flex flex-col">
+    <div>
+      <div className="grid grid-cols-2 gap-y-7 gap-x-2 text-base">
+        <div className="col-span-2 sm:col-span-1">
           <label htmlFor="">Nombre</label>
           <input
             type="text"
-            className="w-[44.5vh] h-[6vh] mb-[2vh]"
+            className="w-full py-2 pl-2 rounded border border-[#D4D4D8]"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
             placeholder={nombre} // Mostrar el valor de la variable 'nombre' en el placeholder
           />
         </div>
-        <div className="flex flex-col"></div>
-        <div>
-          <div className="flex flex-col">
-            <label htmlFor="">Teléfono</label>
-            <input
-              type="text"
-              className="w-[44.5vh] h-[6vh] mb-[2vh]"
-              value={telefono}
-              onChange={(e) => setTelefono(e.target.value)}
-              placeholder={telefono}
-            />
-          </div>
+        <div className="col-span-2 sm:col-span-1">
+          <label htmlFor="">Teléfono</label>
+          <input
+            type="text"
+            className="w-full py-2 pl-2 rounded border border-[#D4D4D8]"
+            value={telefono}
+            onChange={(e) => setTelefono(e.target.value)}
+            placeholder={telefono}
+          />
         </div>
-      </div>
-      <div className="flex flex-col">
-        <label htmlFor="">E-mail</label>
-        <input
-          type="text"
-          className="w-[44.5vh] h-[6vh] mb-[2vh]"
-          value={email}
-          placeholder={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div className="grid grid-cols-2">
-        <div className="flex flex-col">
+
+        <div className="col-span-2 sm:col-span-1">
+          <label htmlFor="">E-mail</label>
+          <input
+            type="text"
+            className="w-full py-2 pl-2 rounded border border-[#D4D4D8]"
+            value={email}
+            placeholder={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="col-span-2 sm:col-span-1">
           <label htmlFor="">País</label>
           <input
             type="text"
-            className="w-[90vw] h-[6vh] mb-[2vh]"
+            className="w-full py-2 pl-2 rounded border border-[#D4D4D8]"
             value={pais}
             onChange={(e) => setPais(e.target.value)}
           />
         </div>
-      </div>
-      <div className="flex flex-col">
-        <label htmlFor="">LinkedIn / Behance / Portfolio</label>
-        <input
-          type="text"
-          className="w-[90vw] h-[6vh] mb-[2vh]"
-          value={linkedin}
-          onChange={(e) => setLinkedin(e.target.value)}
-        />
+        <div className="col-span-2 mb-4">
+          <label htmlFor="">LinkedIn / Behance / Portfolio</label>
+          <input
+            type="text"
+            className="w-full py-2 pl-2 rounded border border-[#D4D4D8]"
+            value={linkedin}
+            onChange={(e) => setLinkedin(e.target.value)}
+          />
+        </div>
       </div>
       <div>
         <Button name={"Guardar"} onClick={handleGuardar} />

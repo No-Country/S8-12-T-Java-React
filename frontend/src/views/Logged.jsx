@@ -16,7 +16,7 @@ export default function Logged() {
 
   function Responsive() {
     return responsize > 768 ? (
-      <header className="w-[100vw] h-[8vh] gap-x-[18vw] flex items-center border-b-2 select-none">
+      <header className="h-[8vh] flex items-center justify-around border-b-2 select-none">
         <h1 className="text-[1.25em] text-neutral-600 antialiased ml-[5vw]">
           Career<span className="text-orange-600">Watch</span>
         </h1>

@@ -1,10 +1,9 @@
-import  { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "../Button";
-import api from '../../api/Post'
+import api from "../../api/Post";
 import { ContextToken } from "../../context/Token";
 
 const Experience = () => {
-
   const { TOKEN, DECODE_TOKEN } = useContext(ContextToken);
   const GetTablero = async () => {
     try {
@@ -38,9 +37,9 @@ const Experience = () => {
       const responseID = await api.get(`/api/v1/users/${DECODE_TOKEN}`, {
         headers: { Authorization: TOKEN },
       });
-  
+
       const idResumes = responseID.data.resumes[0].id;
-  
+
       if (responseID.data.resumes[0].experiences.length === 0) {
         // Perform POST request if experiences length is 0
         const response = await api.post(
@@ -78,7 +77,6 @@ const Experience = () => {
       console.error("Error al guardar el valor:", error);
     }
   };
-  
 
   const [titulo, setTitulo] = useState("");
   const [nombreEmpresa, setNombreEmpresa] = useState("");
@@ -88,61 +86,56 @@ const Experience = () => {
 
   return (
     <>
-      <div className="w-[90vw] mt-[2vh]">
-        <div className="flex flex-col">
+      <div className="grid grid-cols-2 mb-4 gap-y-7 gap-x-2 text-base">
+        <div className="col-span-2 sm:col-span-1">
           <label htmlFor="">Título</label>
           <input
             type="text"
-            className="w-[44.5vh] h-[6vh] mb-[2vh]"
+            className="w-full py-2 pl-2 rounded border border-[#D4D4D8]"
             value={titulo}
             onChange={(e) => setTitulo(e.target.value)}
           />
         </div>
-        <div className="flex flex-col">
+        <div className="col-span-2 sm:col-span-1">
           <label htmlFor="">Nombre de empresa / Negocio</label>
           <input
             type="text"
-            className="w-[44.5vh] h-[6vh] mb-[2vh]"
+            className="w-full py-2 pl-2 rounded border border-[#D4D4D8]"
             value={nombreEmpresa}
             onChange={(e) => setNombreEmpresa(e.target.value)}
           />
         </div>
-        
-        <div className="grid grid-cols-2">
-          <div className="flex flex-col">
-            <label htmlFor="">Área de trabajo</label>
-            <input
-              type="text"
-              className="w-[21vh] h-[6vh] mb-[2vh]"
-              value={areaTrabajo}
-              onChange={(e) => setAreaTrabajo(e.target.value)}
-            />
-          </div>
+
+        <div className="col-span-2 sm:col-span-1">
+          <label htmlFor="">Área de trabajo</label>
+          <input
+            type="text"
+            className="w-full py-2 pl-2 rounded border border-[#D4D4D8]"
+            value={areaTrabajo}
+            onChange={(e) => setAreaTrabajo(e.target.value)}
+          />
         </div>
 
-        <div className="grid grid-cols-2">
-          <div className="flex flex-col">
-            <label htmlFor="">Año de inicio</label>
-            <input
-              type="text"
-              className="w-[21vh] h-[6vh] mb-[2vh]"
-              value={anioInicio}
-              onChange={(e) => setAnioInicio(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="">Año de finalización</label>
-            <input
-              type="text"
-              className="w-[22vh] h-[6vh] mb-[2vh]"
-              value={anioFinalizacion}
-              onChange={(e) => setAnioFinalizacion(e.target.value)}
-            />
-          </div>
+        <div className="col-span-1">
+          <label htmlFor="">Año de inicio</label>
+          <input
+            type="text"
+            className="w-full py-2 pl-2 rounded border border-[#D4D4D8]"
+            value={anioInicio}
+            onChange={(e) => setAnioInicio(e.target.value)}
+          />
         </div>
-       
+        <div className="col-span-1">
+          <label htmlFor="">Año de finalización</label>
+          <input
+            type="text"
+            className="w-full py-2 pl-2 rounded border border-[#D4D4D8]"
+            value={anioFinalizacion}
+            onChange={(e) => setAnioFinalizacion(e.target.value)}
+          />
+        </div>
+
         <Button onClick={handleGuardar} name={"Guardar"} />
-
       </div>
     </>
   );
