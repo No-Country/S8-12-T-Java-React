@@ -9,11 +9,11 @@ import userAvatar6 from "../assets/images/stack/GerardoVargas.svg";
 import userAvatar8 from "../assets/images/stack/BillyCampagnoli.svg";
 export default function Contact() {
   return (
-    <div className="w-full px-4 my-4 sm:my-10 sm:w-6/12 m-auto">
-      <h1 className="text-center text-2xl font-bold m-4">
+    <div className="w-full px-4 min-h-[80vh] sm:w-6/12 m-auto box-border flex flex-col justify-around">
+      <h1 className="text-center text-2xl font-bold sm:m-0 my-4">
         Equipo S8-12-Java-React
       </h1>
-      <ul className="flex flex-row flex-wrap justify-around m-auto">
+      <ul className="flex flex-row flex-wrap justify-around m-auto sm:m-0">
         {contactStack.contactStack.map((usuario) => (
           <li
             key={usuario.id}
