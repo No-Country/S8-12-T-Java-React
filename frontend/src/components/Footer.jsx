@@ -12,20 +12,20 @@ export const Footer = () => {
       </Link>
       <div className="w-full flex justify-center gap-x-3">
         <a
-          href="https://www.nocountry.tech/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[1em] text-center text-neutral-900 font-bold"
-        >
-          #No Country
-        </a>
-        <a
           href="https://github.com/No-Country/S8-12-T-Java-React"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[1em] text-center text-neutral-900 font-bold"
         >
           Equipo S8-12-Java-React
+        </a>
+        <a
+          href="https://www.nocountry.tech/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[1em] text-center text-neutral-900 font-bold"
+        >
+          #No Country
         </a>
       </div>
     </footer>
