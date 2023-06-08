@@ -29,8 +29,24 @@ public class TestLogin {
 	}
 
 	@Test
-	public void test() throws InterruptedException {
+	public void test01() throws InterruptedException {
 		pageLogin.LoginExitoso();
 
 	}
+	@Test
+	public void test02() throws InterruptedException {
+		pageLogin.LoginSinNombre();
+
+	}
+	@Test
+	public void test03() throws InterruptedException {
+		pageLogin.LoginSinPass();
+
+	}
+	@Test
+	public void test04() throws InterruptedException {
+		pageLogin.credencialesIvalidas();
+
+	}
+
 }
