@@ -17,9 +17,7 @@ import java.util.List;
 @Builder
 public class StageDto {
     private Long id;
-    @NotEmpty(message = "User Id not specified")
     private Long userId;
-    @Pattern(regexp = "^(?!\\s*$).+", message = "Title must not be blank")
     private String stageName;
     private List<ApplicationDto> applications;
 }

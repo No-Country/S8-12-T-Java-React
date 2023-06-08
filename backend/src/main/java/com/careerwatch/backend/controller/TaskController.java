@@ -40,7 +40,7 @@ public class TaskController {
             @ApiResponse(responseCode = "401", description = "Unauthorized",
                     content = @Content)})
     @PostMapping
-    public ResponseEntity<TaskDto> createTask(@Valid @RequestBody TaskDto taskDto) throws JsonProcessingException {
+    public ResponseEntity<TaskDto> createTask( @RequestBody @Valid TaskDto taskDto) throws JsonProcessingException {
         return ResponseEntity.ok(taskService.createTask(taskDto));
     }
 
@@ -84,7 +84,7 @@ public class TaskController {
                     content = @Content)})
     @PutMapping("/{taskId}")
     public ResponseEntity<TaskDto> updateTaskById(@PathVariable Long taskId,
-                                                  @Valid @RequestBody UpdateTaskDto taskDto) throws JsonProcessingException {
+                                                  @RequestBody @Valid UpdateTaskDto taskDto) throws JsonProcessingException {
         return ResponseEntity.ok(taskService.updateTaskById(taskId, taskDto));
     }
 

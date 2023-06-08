@@ -7,7 +7,7 @@ import com.careerwatch.backend.entity.User;
 import com.careerwatch.backend.exception.AlreadyExistException;
 import com.careerwatch.backend.exception.InvalidPasswordException;
 import com.careerwatch.backend.exception.NotFoundException;
-import com.careerwatch.backend.security.JwtService;
+import com.careerwatch.backend.authentication.JwtService;
 import com.careerwatch.backend.mapper.user.RegisterDtoMapper;
 import com.careerwatch.backend.repository.UserRepository;
 import com.careerwatch.backend.service.AuthService;

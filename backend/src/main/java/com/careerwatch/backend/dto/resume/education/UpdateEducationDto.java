@@ -2,6 +2,7 @@ package com.careerwatch.backend.dto.resume.education;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +17,7 @@ import java.util.Optional;
 @Builder
 public class UpdateEducationDto {
     @Schema(requiredMode = Schema.RequiredMode.REQUIRED)
-    @NotEmpty(message = "Resume Id not specified")
+    @NotNull(message = "Resume Id not specified")
     private Long resumeId;
     @Pattern(regexp = "^(?!\\s*$).+", message = "Title must not be blank")
     private String title;

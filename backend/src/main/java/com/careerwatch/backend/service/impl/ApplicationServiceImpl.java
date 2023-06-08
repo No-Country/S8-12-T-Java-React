@@ -92,7 +92,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         applicationDto.getPosition().ifPresent(existingApplication::setPosition);
         applicationDto.getDescription().ifPresent(existingApplication::setDescription);
-        applicationDto.getApplicationDate().ifPresent(existingApplication::setApplicationDate);
         applicationDto.getCompany().ifPresent(existingApplication::setCompany);
         applicationDto.getResumeId().ifPresent(existingApplication::setResumeId);
 

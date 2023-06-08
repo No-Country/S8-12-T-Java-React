@@ -6,6 +6,7 @@ import com.careerwatch.backend.dto.resume.profile.UpdateProfileDto;
 import com.careerwatch.backend.entity.Profile;
 import com.careerwatch.backend.entity.Resume;
 import com.careerwatch.backend.entity.Social;
+import com.careerwatch.backend.exception.CantBeEmptyException;
 import com.careerwatch.backend.exception.NotFoundException;
 import com.careerwatch.backend.mapper.resume.ProfileDtoMapper;
 import com.careerwatch.backend.mapper.resume.SocialDtoMapper;

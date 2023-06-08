@@ -61,7 +61,6 @@ public class ApplicationDtoMapper {
                 .stage(stageApplication)
                 .position(applicationDto.getPosition())
                 .description(applicationDto.getDescription())
-                .applicationDate(applicationDto.getApplicationDate())
                 .company(applicationDto.getCompany())
                 .resumeId(applicationDto.getResumeId())
                 .build();

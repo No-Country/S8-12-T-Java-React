@@ -26,7 +26,6 @@ import java.util.List;
 public class ProfileController {
     
     private final ProfileService profileService;
-
     @Operation(summary = "Update one profile by resume Id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "The profile updated",
@@ -42,7 +41,7 @@ public class ProfileController {
                     content = @Content)})
     @PutMapping("/{resumeId}")
     public ResponseEntity<ProfileDto> updateProfileByResumeId(@PathVariable Long resumeId,
-                                                              @Valid @RequestBody UpdateProfileDto profileDto) throws JsonProcessingException {
+                                                              @RequestBody @Valid UpdateProfileDto profileDto) throws JsonProcessingException {
         return ResponseEntity.ok(profileService.updateProfileByResumeId(resumeId, profileDto));
     }
 

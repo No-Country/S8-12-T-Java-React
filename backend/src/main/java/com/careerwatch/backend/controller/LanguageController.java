@@ -42,7 +42,7 @@ public class LanguageController {
             @ApiResponse(responseCode = "401", description = "Unauthorized",
                     content = @Content)})
     @PostMapping
-    public ResponseEntity<LanguageDto> createLanguage(@Valid @RequestBody LanguageDto languageDto) throws JsonProcessingException {
+    public ResponseEntity<LanguageDto> createLanguage(@RequestBody @Valid LanguageDto languageDto) throws JsonProcessingException {
         return ResponseEntity.ok(languageService.createLanguage(languageDto));
     }
 
@@ -82,7 +82,7 @@ public class LanguageController {
                     content = @Content)})
     @PutMapping("/{languageId}")
     public ResponseEntity<LanguageDto> updateLanguage(@PathVariable Long languageId,
-                                                      @Valid @RequestBody UpdateLanguageDto languageDto) throws JsonProcessingException {
+                                                      @RequestBody @Valid UpdateLanguageDto languageDto) throws JsonProcessingException {
         return ResponseEntity.ok(languageService.updateLanguageById(languageId, languageDto));
     }
 

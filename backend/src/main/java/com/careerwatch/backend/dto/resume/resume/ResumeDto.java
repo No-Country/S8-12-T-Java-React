@@ -7,6 +7,7 @@ import com.careerwatch.backend.dto.resume.profile.ProfileDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,9 +22,8 @@ import java.util.List;
 @Builder
 public class ResumeDto {
     private Long id;
-    @NotBlank(message = "User ID can't be empty")
+    @NotNull(message = "User ID can't be empty")
     private Long userId;
-    @NotBlank(message = "Presentation must be null or not empty")
     private String presentation;
     @NotBlank(message = "Resume name can't be empty")
     private String resumeName;

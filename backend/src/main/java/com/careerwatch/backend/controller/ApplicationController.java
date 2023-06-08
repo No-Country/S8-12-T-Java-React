@@ -118,7 +118,7 @@ public class ApplicationController {
             @ApiResponse(responseCode = "404", description = "Application not found",
                     content = @Content),})
     @PutMapping("/{applicationId}")
-    public ResponseEntity<ApplicationDto> updateApplicationById(@PathVariable Long applicationId, @Valid @RequestBody UpdateApplicationDto applicationDto) throws JsonProcessingException {
+    public ResponseEntity<ApplicationDto> updateApplicationById(@PathVariable Long applicationId, @RequestBody @Valid UpdateApplicationDto applicationDto) throws JsonProcessingException {
         return ResponseEntity.ok(applicationService.updateApplicationById(applicationId, applicationDto));
     }
 

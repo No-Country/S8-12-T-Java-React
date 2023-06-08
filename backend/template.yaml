@@ -20,7 +20,6 @@ Resources:
     Properties:
       StageName: Prod
 
-
   ApiFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -60,6 +59,20 @@ Resources:
             RestApiId: !Ref CWApi
             Path: /auth/{proxy+}
             Method: ANY
+
+  AuthFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: lambdaAuthorizer.index::handler
+      Runtime: nodejs18.x.
+      AutoPublishAlias: production
+      SnapStart:
+        ApplyOn: PublishedVersions
+      Architectures:
+        - x86_64
+      MemorySize: 512
+
 
 Parameters:
   DBhost:
