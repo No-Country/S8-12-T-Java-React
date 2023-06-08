@@ -6,6 +6,7 @@ import userAvatar4 from "../assets/images/stack/EmilianoEscobedo.svg";
 import userAvatar2 from "../assets/images/stack/BrayanRodallega.svg";
 import userAvatar3 from "../assets/images/stack/DoloresAleman.svg";
 import userAvatar6 from "../assets/images/stack/GerardoVargas.svg";
+import userAvatar8 from "../assets/images/stack/BillyCampagnoli.svg";
 export default function Contact() {
   return (
     <div className="w-full px-4 my-4 sm:my-10 sm:w-6/12 m-auto">
@@ -16,7 +17,7 @@ export default function Contact() {
         {contactStack.contactStack.map((usuario) => (
           <li
             key={usuario.id}
-            className="w-40 h-[250px] mb-4 rounded shadow-lg sm:w-48 sm:h-[298px] bg-white"
+            className="w-40 h-[250px] mb-4 rounded-[10px] shadow-lg sm:w-48 sm:h-[298px] bg-white"
           >
             <a
               href={usuario.url}
@@ -24,7 +25,16 @@ export default function Contact() {
               rel="noopener noreferrer"
               className="text-neutral-700 font-bold"
             >
-              <img src={getUserAvatar(usuario.id)} alt={usuario.name} />
+              <img
+                className="w-full rounded-t-lg"
+                style={{
+                  objectFit: "cover",
+                  width: "100%",
+                  height: "75%",
+                }}
+                src={getUserAvatar(usuario.id)}
+                alt={usuario.name}
+              />
               <div className="w-max h-max m-auto sm:mx-4 my-2 sm:my-4">
                 <p className="text-neutral-700 font-bold text-base">
                   {usuario.name}
@@ -54,6 +64,8 @@ function getUserAvatar(userId) {
       return userAvatar6;
     case 7:
       return userAvatar7;
+    case 8:
+      return userAvatar8;
     default:
       return "";
   }
