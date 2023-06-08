@@ -12,9 +12,11 @@ export const StageCreateModal = (props) => {
     const [error, setError] = useState(false);
 
     const postApplications = async() =>{
+
         setIsLoading(true)
         try{
           const response = await api.post(`/api/v1/applications`,{userId:DECODE_TOKEN,stageId:props.id,position:boardName.position,company:boardName.company,description:boardName.description,applicationDate:boardName.applicationDate},{headers:{Authorization:TOKEN}})
+          console.log(response.data)
           handleModalClose()
         }catch(error){
             setIsLoading(false)
@@ -28,15 +30,7 @@ export const StageCreateModal = (props) => {
         setBoardName({position:"",description:"",applicationDate:"",company:""});
       };
 
-      const handleCreateBoard = () => {
-        // Aquí puedes realizar la lógica para crear un nuevo tablero con el nombre proporcionado
-        console.log("Creando nuevo tablero:", boardName);
-        postApplications();
-    
-        // Cerrar el modal y limpiar el campo de entrada
-        handleModalClose();
-      };
-
+      
       const handleInputChange = (event) => {
         const {name, value } = event.target;
         setBoardName((prevState) => ({
