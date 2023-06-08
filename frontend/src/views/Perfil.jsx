@@ -18,12 +18,8 @@ export default function Perfil() {
 
   return (
     <div className="px-4 w-full">
-      <div className="flex justify-center mt-8">
-        <img
-          className="w-[25vh] drop-shadow-xl  "
-          src={profilePicture}
-          alt="1"
-        ></img>
+      <div className="flex justify-center my-8">
+        <img className="w-40 h-40" src={profilePicture} alt="1"></img>
       </div>
       <div className="flex flex-col w-full gap-y-7 gap-x-2">
         <CategoryPerfil

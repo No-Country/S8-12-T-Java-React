@@ -86,7 +86,7 @@ const Education = () => {
   };
 
   return (
-    <div className="w-full grid grid-cols-2 my-4 gap-y-7 gap-x-2 text-base">
+    <div className="grid grid-cols-2 gap-y-7 gap-x-2 text-base">
       <div className="col-span-2 sm:col-span-1">
         <label htmlFor="">Título</label>
         <input

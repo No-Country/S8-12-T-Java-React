@@ -91,7 +91,7 @@ const Information = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-2 my-4 gap-y-7 gap-x-2 text-base">
+      <div className="grid grid-cols-2 gap-y-7 gap-x-2 text-base">
         <div className="col-span-2 sm:col-span-1">
           <label htmlFor="">Nombre</label>
           <input
@@ -132,7 +132,7 @@ const Information = () => {
             onChange={(e) => setPais(e.target.value)}
           />
         </div>
-        <div className="col-span-2">
+        <div className="col-span-2 mb-4">
           <label htmlFor="">LinkedIn / Behance / Portfolio</label>
           <input
             type="text"
