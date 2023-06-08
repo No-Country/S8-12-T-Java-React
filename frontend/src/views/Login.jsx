@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/inputLabel.css";
 import "../styles/fontLogo.css";
 import "../styles/latoFont.css";
+import personIMG from "../assets/images/personIMG.svg";
 import { Facebook, Google } from "../assets/icons/Icons";
 import { Link} from "react-router-dom";
 import api from '../api/Post'
@@ -61,10 +62,11 @@ export default function Login() {
   }
 
   return (
-    <>
-      <div className="w-full h-full bg-white text-neutral-900">
-        <div className="h-[90vh] flex flex-col justify-evenly">
-          <h1 className="text-[16vw] text-center text-neutral-600 font-normal antialiased mt-[3vh]">
+    <div className="md:w-[40%] md:flex md:flex-row md:justify-center md:items-center bg-[#F8F5F2]">
+      <div className="w-full h-full md:h-[100vh] bg-white text-neutral-900 md:flex md:flex-row">
+      <img src={personIMG} className="hidden md:flex w-[100vh] h-[80%]" alt="dasdfsa"></img>
+        <div className="h-[90vh] md:h-[80%] w-full flex flex-col justify-evenly">
+          <h1 className="text-[16vw] md:text-[5vw] text-center text-neutral-600 font-normal antialiased mt-[3vh]">
             Career<span className="text-orange-600">Watch</span>
           </h1>
           <form
@@ -92,7 +94,7 @@ export default function Login() {
                     onChange={(e) => setEmailValue(e.target.value)}
                   />
                 </div>
-                <p className="w-[90vw] self-center text-[#f02849]">
+                <p className="w-[90vw] md:ml-[54.5vw] self-center text-[#f02849]">
                   {emailResult.ErrorText}
                 </p>
               </div>
@@ -113,19 +115,19 @@ export default function Login() {
                     onChange={(e) => setPasswordValue(e.target.value)}
                   />
                 </div>
-                <p className="w-[90vw] self-center text-[#f02849]">
+                <p className="w-[90vw] md:ml-[54.5vw] self-center text-[#f02849]">
                   {passwordResult.ErrorText}
                 </p>
               </div>
             </div>
             <button
-              className="w-[90vw] h-[5vh] min-h-[5vh] max-h-[6vh] self-center bg-[#6D28D9] text-white font-normal rounded"
+              className="w-[90vw] md:w-[90%] h-[5vh] min-h-[5vh] max-h-[6vh] self-center bg-[#6D28D9] text-white font-normal rounded"
               type="submit"
             >
               Iniciar sesión
             </button>
           </form>
-          <div className="w-[90vw] flex flex-row self-center justify-between">
+          <div className="w-[90vw] md:w-[90%] flex flex-row self-center justify-between">
             <div>
               <input
                 className="border-gray-400 rounded-lg"
@@ -158,7 +160,7 @@ export default function Login() {
               <Facebook h={"h-[3.5vh]"} />
             </button>
           </div>
-          <div className="w-[90vw] flex flex-row self-center ">
+          <div className="w-[90vw] md:w-[90%] flex flex-row self-center ">
             <p className="font-[Lato,sans-serif] font-normal">
               ¿No tienes cuenta?
             </p>
@@ -171,6 +173,6 @@ export default function Login() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

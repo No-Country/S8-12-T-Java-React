@@ -26,6 +26,17 @@ export const XClose = () => {
   );
 };
 
+export const Plus = ({color,h}) =>{
+  return (
+    <svg fill="none" style={{height:h}} viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M6.25 14V7.75H0v-1.5h6.25V0h1.5v6.25H14v1.5H7.75V14h-1.5z"
+        fill={color}
+      />
+    </svg>
+  );
+}
+
 export const Arrow = ({ h, rotate }) => {
   return (
     <svg

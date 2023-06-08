@@ -20,6 +20,13 @@ export const MenuLogged = ({isOpen,onClose}) => {
         </div>
       )
     }
+    const Disconnect = () =>{
+      setactive(6)
+      localStorage.removeItem('USER_TOKEN');
+      window.location.replace('/')
+    
+
+    }
     
   return (
     <div style={{marginLeft: isOpen ? '0px' : '100%', transition:'margin-left 1s , background-color 3s',background:'linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(5 5 5 / 63%) 100%)'}} className="fixed z-50 w-[100vw] h-[100vh] flex flex-col items-end select-none">
@@ -35,7 +42,7 @@ export const MenuLogged = ({isOpen,onClose}) => {
         {active===3?<Biblioteca/>:null}
         <Link to={'/'} onClick={()=>setactive(4)} className={`btnInactive ${active===4?'btnActive':null} font-['Lato','sans-serif'] font-normal`}>Métricas</Link>
         <Link to={'/'} onClick={()=>setactive(5)} className={`btnInactive ${active===5?'btnActive':null} font-['Lato','sans-serif'] font-normal`}>Calendario</Link>
-        <Link to={'/'} onClick={()=>setactive(6)} className={`btnInactive ${active===6?'btnActive':null} font-['Lato','sans-serif'] font-normal`}>Desconectarse</Link>
+        <Link to={'/'} onClick={()=>Disconnect()} className={`btnInactive ${active===6?'btnActive':null} font-['Lato','sans-serif'] font-normal`}>Desconectarse</Link>
       </div>
       </div>
     </div>
