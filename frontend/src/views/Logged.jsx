@@ -10,17 +10,25 @@ import Error404 from "./Error404";
 import WelcomePage from "./WelcomePage";
 import TableroSeleccionado from "./TableroSeleccionado";
 import { ContextTokenProvider } from "../context/Token";
+import { Metricas } from "./metricas";
 
 export default function Logged() {
+
   const responsize = window.innerWidth;
+
+  const Disconnect = () =>{
+    localStorage.removeItem('USER_TOKEN');
+     window.location.replace('/')
+   
+  }
 
   function Responsive() {
     return responsize > 768 ? (
-      <header className="h-[8vh] flex items-center justify-around border-b-2 select-none">
-        <h1 className="text-[1.25em] text-neutral-600 antialiased ml-[5vw]">
+      <header className="h-[8vh] bg-white flex items-center justify-between border-b-2 select-none">
+        <h1 className="text-[1.25em] text-neutral-600 antialiased ml-[8vw]">
           Career<span className="text-orange-600">Watch</span>
         </h1>
-        <div className=" flex flex-row justify-center gap-x-[8vw]">
+        <div className=" flex flex-row justify-center gap-x-[8vw] mr-[8vw]">
           <NavLink
             to={"/"}
             className={({ isActive, isPending }) =>
@@ -31,7 +39,7 @@ export default function Logged() {
                 : "h-[35%] btnInactive"
             }
           >
-            Empleos
+            Tableros
           </NavLink>
           <NavLink
             to={"/curriculumn"}
@@ -43,10 +51,10 @@ export default function Logged() {
                 : "h-[35%] btnInactive items-center gap-x-2"
             }
           >
-            Biblioteca <Arrow h={"1vh"} rotate={"0deg"} />
+            Curriculumn
           </NavLink>
           <NavLink
-            to={"/1"}
+            to={"/metricas"}
             className={({ isActive, isPending }) =>
               isPending
                 ? "h-[35%] btnInactive"
@@ -57,17 +65,17 @@ export default function Logged() {
           >
             Métricas
           </NavLink>
-          <NavLink
-            to={"/2"}
+          <NavLink onClick={()=>{Disconnect()}}
+            
             className={({ isActive, isPending }) =>
               isPending
                 ? "h-[35%] btnInactive"
                 : isActive
-                ? "h-[35%] btnActive"
+                ? "h-[35%] btnInactive"
                 : "h-[35%] btnInactive"
             }
           >
-            Calendario
+            Desconectar
           </NavLink>
         </div>
       </header>
@@ -83,6 +91,7 @@ export default function Logged() {
           <Route element={<Boards />} path="/" />
           <Route element={<TableroSeleccionado />} path="/tablero/:id" />
           <Route element={<Perfil />} path="/curriculumn" />
+          <Route element={<Metricas />} path="/metricas" />
           <Route element={<Error404 />} path="*" />
           <Route element={<WelcomePage />} path="/welcome" />
         </Routes>

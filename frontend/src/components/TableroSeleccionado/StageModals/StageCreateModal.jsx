@@ -6,7 +6,7 @@ import api from "../../../api/Post";
 export const StageCreateModal = (props) => {
 
     const {TOKEN, DECODE_TOKEN } = useContext(ContextToken);
-    const [boardName, setBoardName] = useState({position:"",description:"",applicationDate:"hoy",company:""});
+    const [boardName, setBoardName] = useState({position:"",company:""});
     const [showModal, setShowModal] = useState(false);
     const [isLoading,setIsLoading]= useState(false);
     const [error, setError] = useState(false);
@@ -15,7 +15,7 @@ export const StageCreateModal = (props) => {
 
         setIsLoading(true)
         try{
-          const response = await api.post(`/api/v1/applications`,{userId:DECODE_TOKEN,stageId:props.id,position:boardName.position,company:boardName.company,description:boardName.description,applicationDate:boardName.applicationDate},{headers:{Authorization:TOKEN}})
+          const response = await api.post(`/api/v1/applications`,{userId:DECODE_TOKEN,stageId:props.id,position:boardName.position,company:boardName.company,description:"A"},{headers:{Authorization:TOKEN}})
           console.log(response.data)
           handleModalClose()
         }catch(error){
@@ -27,7 +27,11 @@ export const StageCreateModal = (props) => {
       const handleModalClose = () => {
         props.onClose()
         setShowModal(false);
-        setBoardName({position:"",description:"",applicationDate:"",company:""});
+        setBoardName({position:"",company:""});
+        setTimeout((e)=>{
+          window.location.reload();
+        },500)
+        
       };
 
       
@@ -42,21 +46,12 @@ export const StageCreateModal = (props) => {
   return (
     <>
     {setShowModal && (<div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
-    <div className="bg-white w-[328px] h-[415px] p-6 rounded-3xl font-['Lato','sans-serif']  flex flex-col justify-center">
+    <div className="bg-white w-[328px] h-[375px] p-6 rounded-3xl font-['Lato','sans-serif']  flex flex-col justify-center">
       
       <h2 className="text-xl font-bold mb-4 flex justify-center">
         Nuevo postulacion
       </h2>
-      <label className="font-normal" htmlFor='company'>Empresa</label>
-      <input
-        type="text"
-        name='company'
-        value={boardName.company}
-        onChange={handleInputChange}
-        className="w-full p-2 border border-[#D4D4D8] mb-4 bg-[#F8F5F2;] shadow-lg"
-        placeholder="IBM"
-      />
-      <label className="font-normal" htmlFor='position'>Puesto</label>
+      <label className="font-normal" htmlFor='company'>Puesto</label>
       <input
         type="text"
         name='position'
@@ -65,13 +60,14 @@ export const StageCreateModal = (props) => {
         className="w-full p-2 border border-[#D4D4D8] mb-4 bg-[#F8F5F2;] shadow-lg"
         placeholder="Desarrollador web"
       />
-      <label className="font-normal" htmlFor='description'>Descripcion</label>
+      <label className="font-normal" htmlFor='position'>Empresa</label>
       <input
         type="text"
-        name='description'
-        value={boardName.description}
+        name='company'
+        value={boardName.company}
         onChange={handleInputChange}
         className="w-full p-2 border border-[#D4D4D8] mb-4 bg-[#F8F5F2;] shadow-lg"
+        placeholder="IBM"
       />
       {error && <p className='text-[#f02849] mb-3'>Porfavor, llena todos los campos.</p>}
       <div className="flex justify-between">
@@ -82,7 +78,7 @@ export const StageCreateModal = (props) => {
          {isLoading ? <TailSpin type="TailSpin" color="#ffffff" height={20} width={20} />:'Aceptar'}
         </button>
         <button
-          onClick={handleModalClose}
+          onClick={(e)=>{props.onClose();setShowModal(false);setBoardName({position:"",description:"",company:""});}}
           className="ml-2 px-6 py-2 rounded-md text-[#6D28D9] border-[#6D28D9] border br"
         >
           Cancelar

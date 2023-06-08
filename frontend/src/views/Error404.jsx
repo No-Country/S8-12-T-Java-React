@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function Error404() {
   return (
-    <main className='w-[100vw] h-[100vh] bg-white text-center'>
+    <main className='w-[100vw] h-[100vh] text-center'>
     <div className='flex flex-col justify-center items-center font-["Lato","sans-serif"] gap-y-[1vh] mt-[10vh]'>
       <Smile CN={'h-[20vh]'}/>
       <div className='font-bold'>

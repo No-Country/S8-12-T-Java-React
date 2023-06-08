@@ -33,7 +33,7 @@ export default function Boards() {
 
   return (
     <>
-      <main className="bg-white text-black w-full h-full flex flex-col items-center ">
+      <main className=" text-black w-full h-full flex flex-col items-center ">
         <div className="w-[90vw] text-[1.15em] text-star text-700 font-bold flex flex-row items-center mt-[10%] mb-3">
           <img
             className="w-[10vw] drop-shadow-md mr-3 "
@@ -43,7 +43,7 @@ export default function Boards() {
           <h2 className="font-['Lato','sans-serif'] font-bold">Tableros</h2>
         </div>
         {Tableros.length <= 0 ? <NewBoard /> : null}
-
+        <div className="h-[75vh]">
         {isLoading ? (
           <div className="h-[50vh] flex justify-center items-center">
             <TailSpin type="TailSpin" color="#6D28D9" height={30} width={30} />
@@ -61,6 +61,7 @@ export default function Boards() {
           <h2 className="font-['Lato','sans-serif'] font-bold">No creaste ningun tablero, hazlo con el boton de arriba</h2>
             </div>
         )}
+        </div>
       </main>
     </>
   );

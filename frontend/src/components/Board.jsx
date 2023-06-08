@@ -16,7 +16,7 @@ const Board = (props) => {
   return (
     <section className="select-none m-3">
       <div
-        className="bg-[#FFFFF] w-[90vw] h-[20.5vh] text-black flex flex-col items-star justify-between rounded-lg border-2 border-#D4D4D8 shadow-lg mt-1 cursor-pointer"
+        className="bg-[#FFFFF] w-[90vw] h-[20.5vh] bg-white text-black flex flex-col items-star justify-between rounded-lg border-2 border-#D4D4D8 shadow-lg mt-1 cursor-pointer"
       >
       <div className="flex flex-row justify-between"
       >
