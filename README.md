@@ -61,8 +61,14 @@ Say goodbye to guesswork and hello to a data-driven approach to your job search.
 - If you add a new endpoint, make sure to set the role access for it in the WebSecurity class.
 
 #### 👉🏻 Documentation 📜
-- You can read API docs <a href="#" target="_blank">here</a>.
-
+<br>
+- You can read API docs <a href="http://cwapidocs.s3-website-us-east-1.amazonaws.com/" target="_blank">here</a>.
+<br>
+#### 👉🏻 Serverless Architecture 🛠️
+<br>
+<img src="https://docs.aws.amazon.com/images/apigateway/latest/developerguide/images/custom-auth-workflow.png">
+<br>
+<br>
 #### 👉🏻 Built with 🛠️
 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white) 
