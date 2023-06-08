@@ -24,6 +24,7 @@ export const MenuLogged = ({isOpen,onClose}) => {
       setactive(6)
       localStorage.removeItem('USER_TOKEN');
       window.location.replace('/')
+      onClose()
     
 
     }
