@@ -4,15 +4,30 @@ import "../styles/latoFont.css";
 import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
-    <footer className="bg-neutral-50 border-t border-neutral-300 w-full h-[10vh] flex flex-col items-center justify-evenly">
+    <footer className="bg-neutral-50 border-t border-neutral-300 w-full h-[10vh] flex flex-col items-center text-center justify-evenly">
       <Link to={"/"}>
-        <h1 className="text-[1.5em] text-neutral-600 antialiased ml-[3vw]">
+        <h1 className="text-[1.5em] text-neutral-600 antialiased">
           Career<span className="text-orange-600">Watch</span>
         </h1>
       </Link>
-      <h2 className='w-[90vw] text-[1em] text-center text-neutral-900 font-["Lato","sans-serif"] font-bold'>
-        Realizado por el equipo S8-12-Java-React
-      </h2>
+      <div className="w-full flex justify-center gap-x-3">
+        <a
+          href="https://www.nocountry.tech/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[1em] text-center text-neutral-900 font-bold"
+        >
+          #No Country
+        </a>
+        <a
+          href="https://github.com/No-Country/S8-12-T-Java-React"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[1em] text-center text-neutral-900 font-bold"
+        >
+          Equipo S8-12-Java-React
+        </a>
+      </div>
     </footer>
   );
 };
