@@ -2,6 +2,7 @@ package com.careerwatch.backend.controller;
 
 import com.careerwatch.backend.dto.resume.education.EducationDto;
 import com.careerwatch.backend.dto.resume.experience.ExperienceDto;
+import com.careerwatch.backend.dto.resume.experience.UpdateExperienceDto;
 import com.careerwatch.backend.service.ExperienceService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.v3.oas.annotations.Operation;
@@ -44,7 +45,7 @@ public class ExperienceController {
             @ApiResponse(responseCode = "401", description = "Unauthorized",
                     content = @Content)})
     @PostMapping
-    public ResponseEntity<ExperienceDto> createExperience(@Valid @RequestBody ExperienceDto experienceDto) throws JsonProcessingException {
+    public ResponseEntity<ExperienceDto> createExperience(@RequestBody @Valid ExperienceDto experienceDto) throws JsonProcessingException {
         return ResponseEntity.ok(experienceService.createExperience(experienceDto));
     }
 
@@ -90,7 +91,7 @@ public class ExperienceController {
                     content = @Content)})
     @PutMapping("/{experienceId}")
     public ResponseEntity<ExperienceDto> updateExperienceById(@PathVariable Long experienceId,
-                                                              @Valid @RequestBody ExperienceDto experienceDto) throws JsonProcessingException {
+                                                              @RequestBody @Valid UpdateExperienceDto experienceDto) throws JsonProcessingException {
         return ResponseEntity.ok(experienceService.updateExperienceById(experienceId, experienceDto));
     }
 

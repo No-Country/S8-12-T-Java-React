@@ -2,6 +2,7 @@ package com.careerwatch.backend.dto.application.task;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +16,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Builder
 public class UpdateTaskDto {
-    @Pattern(regexp = "^(?:\\d+)?\\s*$", message = "Application Id must not be blank and must be a number")
+    @NotNull(message = "Application Id is required")
     private Long applicationId;
     @Pattern(regexp = "^(?!\\s*$).+", message = "Title must not be blank")
     private String title;

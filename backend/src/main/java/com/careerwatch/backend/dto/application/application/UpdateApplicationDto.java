@@ -16,8 +16,6 @@ public class UpdateApplicationDto {
     private String position;
     @Pattern(regexp = "^(?!\\s*$).+", message = "Description must not be blank")
     private String description;
-    @Pattern(regexp = "^(?!\\s*$).+", message = "Application Date must not be blank")
-    private String applicationDate;
     @Pattern(regexp = "^(?!\\s*$).+", message = "Company must not be blank")
     private String company;
     private List<TaskDto> tasks;
@@ -33,9 +31,6 @@ public class UpdateApplicationDto {
     }
     public Optional<String> getDescription(){
         return Optional.ofNullable(this.description);
-    }
-    public Optional<String> getApplicationDate(){
-        return Optional.ofNullable(this.applicationDate);
     }
     public Optional<String> getCompany(){
         return Optional.ofNullable(this.company);

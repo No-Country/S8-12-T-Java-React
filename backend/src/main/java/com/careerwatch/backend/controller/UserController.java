@@ -157,7 +157,7 @@ public class UserController {
                     content = @Content)})
     @PutMapping("/{userId}")
     public ResponseEntity<UserDto> updateUser(@PathVariable Long userId,
-                                              @Valid @RequestBody UpdateUserDto userDto) throws JsonProcessingException {
+                                              @RequestBody @Valid UpdateUserDto userDto) throws JsonProcessingException {
         return ResponseEntity.ok(userService.updateUser(userId, userDto));
     }
 

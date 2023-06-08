@@ -17,7 +17,7 @@ import lombok.Setter;
 public class TaskDto {
     private Long id;
     @Schema(requiredMode = Schema.RequiredMode.REQUIRED)
-    @NotEmpty(message = "Application Id not specified")
+    @NotNull(message = "Application Id not specified")
     private Long applicationId;
     @Schema(requiredMode = Schema.RequiredMode.REQUIRED)
     @NotEmpty(message = "Title must not be empty")

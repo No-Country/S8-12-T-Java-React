@@ -34,6 +34,7 @@ public class EducationController {
                      Possible responses:
                      
                      - Resume Id not specified
+                     - Title is required
                      - Title must not be blank
                      - Institution must not be blank
                      - Date start must not be blank
@@ -44,7 +45,7 @@ public class EducationController {
             @ApiResponse(responseCode = "401", description = "Unauthorized",
                     content = @Content)})
     @PostMapping("/{resumeId}")
-    public ResponseEntity<EducationDto> createEducation(@Valid @RequestBody EducationDto educationDto) throws JsonProcessingException {
+    public ResponseEntity<EducationDto> createEducation(@RequestBody @Valid EducationDto educationDto) throws JsonProcessingException {
         return ResponseEntity.ok(educationService.createEducation(educationDto));
     }
 
@@ -90,7 +91,7 @@ public class EducationController {
             @ApiResponse(responseCode = "404", description = "Education not found",
                     content = @Content)})
     @PutMapping("/{educationId}")
-    public ResponseEntity<EducationDto> updateEducation(@Valid @PathVariable Long educationId, @RequestBody UpdateEducationDto educationDto) throws JsonProcessingException {
+    public ResponseEntity<EducationDto> updateEducation(@PathVariable Long educationId, @RequestBody @Valid UpdateEducationDto educationDto) throws JsonProcessingException {
         return ResponseEntity.ok(educationService.updateEducation(educationId, educationDto));
     }
 

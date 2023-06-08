@@ -44,7 +44,7 @@ public class SocialController {
                     content = @Content)})
     @PostMapping
     public ResponseEntity<SocialDto> createSocial(@PathVariable Long resumeId,
-                                                  @Valid @RequestBody SocialDto socialDto) throws JsonProcessingException {
+                                                  @RequestBody @Valid SocialDto socialDto) throws JsonProcessingException {
         return ResponseEntity.ok(socialService.createSocial(resumeId, socialDto));
     }
 
@@ -88,7 +88,7 @@ public class SocialController {
             content = @Content)})
     @PutMapping("/{socialId}")
     public ResponseEntity<SocialDto> updateSocial(@PathVariable Long socialId,
-                                                  @Valid @RequestBody UpdateSocialDto socialDto) throws JsonProcessingException {
+                                                  @RequestBody @Valid UpdateSocialDto socialDto) throws JsonProcessingException {
         return ResponseEntity.ok(socialService.updateSocialById(socialId, socialDto));
     }
 

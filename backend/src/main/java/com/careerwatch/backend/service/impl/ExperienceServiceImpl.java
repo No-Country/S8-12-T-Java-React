@@ -1,6 +1,7 @@
 package com.careerwatch.backend.service.impl;
 
 import com.careerwatch.backend.dto.resume.experience.ExperienceDto;
+import com.careerwatch.backend.dto.resume.experience.UpdateExperienceDto;
 import com.careerwatch.backend.entity.Experience;
 import com.careerwatch.backend.exception.NotFoundException;
 import com.careerwatch.backend.mapper.resume.ExperienceDtoMapper;
@@ -39,15 +40,16 @@ public class ExperienceServiceImpl implements ExperienceService {
     }
 
     @Override
-    public ExperienceDto updateExperienceById(Long experienceId, ExperienceDto experienceDto) {
+    public ExperienceDto updateExperienceById(Long experienceId, UpdateExperienceDto experienceDto) {
         Experience existingExperience = experienceRepository.findById(experienceId)
                 .orElseThrow(() -> new NotFoundException("Error: Experience not found"));
 
-        existingExperience.setTitle(experienceDto.getTitle());
-        existingExperience.setCompany(experienceDto.getCompany());
-        existingExperience.setDateStart(experienceDto.getDateStart());
-        existingExperience.setDateEnd(experienceDto.getDateEnd());
-        existingExperience.setDescription(experienceDto.getDescription());
+        experienceDto.getTitle().ifPresent(existingExperience::setTitle);
+        experienceDto.getCompany().ifPresent(existingExperience::setCompany);
+        experienceDto.getDateStart().ifPresent(existingExperience::setDateStart);
+        experienceDto.getDateEnd().ifPresent(existingExperience::setDateEnd);
+        experienceDto.getDescription().ifPresent(existingExperience::setDescription);
+
 
         Experience updatedExperience = experienceRepository.save(existingExperience);
         return mapper.entityToDto(updatedExperience);

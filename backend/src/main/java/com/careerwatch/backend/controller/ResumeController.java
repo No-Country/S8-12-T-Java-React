@@ -182,7 +182,7 @@ public class ResumeController {
             @ApiResponse(responseCode = "401", description = "Unauthorized",
                     content = @Content)})
     @PostMapping()
-    public ResponseEntity<ResumeDto> createResume(@Valid @RequestBody ResumeDto resumeDto) throws JsonProcessingException {
+    public ResponseEntity<ResumeDto> createResume(@RequestBody @Valid ResumeDto resumeDto) throws JsonProcessingException {
         return ResponseEntity.status(HttpStatus.CREATED).body(resumeService.createResume(resumeDto));
     }
 
@@ -203,7 +203,7 @@ public class ResumeController {
             @ApiResponse(responseCode = "404", description = "Resume not found",
                     content = @Content)})
     @PutMapping("/{resumeId}")
-    public ResponseEntity<ResumeDto> updateResumeById(@Valid @PathVariable Long resumeId, @RequestBody UpdateResumeDto resumeDto) throws JsonProcessingException {
+    public ResponseEntity<ResumeDto> updateResumeById(@PathVariable Long resumeId, @RequestBody @Valid UpdateResumeDto resumeDto) throws JsonProcessingException {
         return ResponseEntity.ok(resumeService.updateResumeById(resumeId, resumeDto));
     }
 

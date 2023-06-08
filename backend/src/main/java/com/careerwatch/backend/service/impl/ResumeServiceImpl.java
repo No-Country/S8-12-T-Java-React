@@ -42,14 +42,14 @@ public class ResumeServiceImpl implements ResumeService {
         resumeRepository.save(resume);
 
         List<SocialDto> socials = resumeDto.getProfile().getSocials();
-        if (!socials.isEmpty()) {
+        if (socials != null) {
             for (SocialDto social : socials) {
                 socialService.createSocial(resume.getId(), social);
             }
         }
 
         List<EducationDto> educations = resumeDto.getEducations();
-        if (!educations.isEmpty()) {
+        if (educations != null) {
             for (EducationDto education : educations) {
                 education.setResumeId(resume.getId());
                 educationService.createEducation(education);
@@ -57,7 +57,7 @@ public class ResumeServiceImpl implements ResumeService {
         }
 
         List<ExperienceDto> experiences = resumeDto.getExperiences();
-        if (!experiences.isEmpty()) {
+        if (experiences != null) {
             for (ExperienceDto experience : experiences) {
                 experience.setResumeId(resume.getId());
                 experienceService.createExperience(experience);
@@ -65,7 +65,7 @@ public class ResumeServiceImpl implements ResumeService {
         }
 
         List<LanguageDto> languages = resumeDto.getLanguages();
-        if (!languages.isEmpty()) {
+        if (languages != null) {
             for (LanguageDto language : languages) {
                 language.setResumeId(resume.getId());
                 languageService.createLanguage(language);
@@ -122,13 +122,14 @@ public class ResumeServiceImpl implements ResumeService {
     @Transactional
     @Override
     public void deleteResumeById(Long id) {
-        List<Education> educations = educationRepository.findAllByResumeId(id);        if(!educations.isEmpty())
+        List<Education> educations = educationRepository.findAllByResumeId(id);
+        if(educations  != null)
             educations.forEach(educationRepository::delete);
         List<Experience> experiences = experienceRepository.findAllByResumeId(id);
-        if(!experiences.isEmpty())
+        if(experiences != null)
             experiences.forEach(experienceRepository::delete);
         List<Language> languages = languageRepository.findAllByResumeId(id);
-        if(!languages.isEmpty())
+        if(languages != null)
             languages.forEach(languageRepository::delete);
         profileService.deleteProfileByResumeId(id);
         resumeRepository.deleteById(id);

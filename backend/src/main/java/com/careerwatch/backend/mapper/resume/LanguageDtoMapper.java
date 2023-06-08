@@ -16,11 +16,17 @@ import java.util.stream.Collectors;
 public class LanguageDtoMapper {
 
     public LanguageDto entityToDto(Language language) {
+
+        String languageLevel = null;
+        if (language.getLanguageLevel() != null) {
+            languageLevel = language.getLanguageLevel().name();
+        }
+
         return LanguageDto.builder()
                 .id(language.getId())
                 .resumeId(language.getResumeId())
                 .language(language.getLanguage().name())
-                .languageLevel(language.getLanguageLevel().name())
+                .languageLevel(languageLevel)
                 .build();
     }
 
@@ -33,16 +39,20 @@ public class LanguageDtoMapper {
             case "chinese" -> ELanguage.CHINESE;
             default -> null;
         };
-        ELanguageLevel languageLvl = switch (languageDto.getLanguageLevel().toLowerCase()) {
-            case "a1" -> ELanguageLevel.A1;
-            case "a2" -> ELanguageLevel.A2;
-            case "b1" -> ELanguageLevel.B1;
-            case "b2" -> ELanguageLevel.B2;
-            case "c1" -> ELanguageLevel.C1;
-            case "c2" -> ELanguageLevel.C2;
-            case "native" -> ELanguageLevel.Native;
-            default -> null;
-        };
+        ELanguageLevel languageLvl = null;
+        if (languageDto.getLanguageLevel() != null){
+            languageLvl = switch (languageDto.getLanguageLevel().toLowerCase()) {
+                case "a1" -> ELanguageLevel.A1;
+                case "a2" -> ELanguageLevel.A2;
+                case "b1" -> ELanguageLevel.B1;
+                case "b2" -> ELanguageLevel.B2;
+                case "c1" -> ELanguageLevel.C1;
+                case "c2" -> ELanguageLevel.C2;
+                case "native" -> ELanguageLevel.Native;
+                default -> null;
+            };
+        }
+
 
         return Language.builder()
                 .resumeId(languageDto.getResumeId())

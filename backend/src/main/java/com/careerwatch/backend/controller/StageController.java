@@ -36,13 +36,14 @@ public class StageController {
                      Possible responses:
                      
                      - User Id not specified
+                     - User Id must be a number
                      - Stage name must not be blank
                     """,
                     content = @Content),
             @ApiResponse(responseCode = "401", description = "Unauthorized",
                     content = @Content)})
     @PostMapping
-    public ResponseEntity<StageDto> createStage(@Valid @RequestBody CreateStageDto stageDto) throws JsonProcessingException {
+    public ResponseEntity<StageDto> createStage(@RequestBody @Valid CreateStageDto stageDto) throws JsonProcessingException {
         return ResponseEntity.ok(stageService.createStage(stageDto));
     }
 
@@ -84,7 +85,7 @@ public class StageController {
                     content = @Content)})
     @PutMapping("/{stageId}")
     public ResponseEntity<StageDto> updateStage(@PathVariable Long stageId,
-                                                @Valid @RequestBody UpdateStageDto stageDto) throws JsonProcessingException {
+                                                @RequestBody @Valid UpdateStageDto stageDto) throws JsonProcessingException {
         return ResponseEntity.ok(stageService.updateStage(stageId, stageDto));
     }
 

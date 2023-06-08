@@ -1,4 +1,4 @@
-package com.careerwatch.backend.security;
+package com.careerwatch.backend.authentication;
 
 import com.careerwatch.backend.entity.User;
 import io.jsonwebtoken.Claims;
@@ -16,7 +16,7 @@ import java.util.function.Function;
 @Service
 public class JwtService {
     private static final Logger logger = LoggerFactory.getLogger(JwtService.class);
-    private static final String SECRET_KEY = "${SECRET_KEY}";
+    private static final String SECRET_KEY = "{SECRET_KEY}";
     private static final Long jwtExpirationMs = 28800000L;
 
     private Key getSignInKey() {

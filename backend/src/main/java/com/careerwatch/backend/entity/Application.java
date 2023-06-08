@@ -3,6 +3,9 @@ package com.careerwatch.backend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,4 +47,9 @@ public class Application {
     @Column(name = "COMPANY")
     private String company;
 
+    @PrePersist
+    protected void onCreate() {
+        this.applicationDate = ZonedDateTime.now(
+                ZoneId.of("GMT-3")).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+    }
 }
