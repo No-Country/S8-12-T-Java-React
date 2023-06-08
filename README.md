@@ -72,11 +72,11 @@ Say goodbye to guesswork and hello to a data-driven approach to your job search.
 - The <b>third lambda</b> works under proxy protocol, and is where the application endpoints that call the business logic are located, which in turn communicates with a Postgre database in RDS through a RDS proxy.<br>
 - The three lambdas generate the logs in CloudWatch and their environment variables are managed by the AWS secrets manager.<br>
 
+<br>
+
 <img src="https://docs.aws.amazon.com/images/apigateway/latest/developerguide/images/custom-auth-workflow.png">
 
 #### 👉🏻 Built with 🛠️
-
-<br>
 
 ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white) 
@@ -94,6 +94,8 @@ Say goodbye to guesswork and hello to a data-driven approach to your job search.
 |:-:|:-:|
 | **Emiliano Escobedo**| **Brayan Rodallega**|
 | <a href="https://github.com/EmilianoEscobedo"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/emiliano-escobedo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/brayanrodallega"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/brayanrodallega/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> 
+
+<br><br>
 
 ## ✔ FrontEnd
 
@@ -121,7 +123,6 @@ Say goodbye to guesswork and hello to a data-driven approach to your job search.
 - Handle errors and exceptions gracefully, providing helpful error messages to users when necessary.
 - Use localization techniques for handling strings and messages that need to be translated or externalized.
 
-
 #### 👉🏻 Built with 🛠️
 
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
@@ -137,6 +138,50 @@ Say goodbye to guesswork and hello to a data-driven approach to your job search.
 |:-:|:-:|:-:|
 | **Nicolas Roberto**| **Facundo Ramirez**|**Agustin Soleti**|
 | <a href="https://github.com/nicolasroberto"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/nicol%C3%A1s-roberto/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Jiao-lin"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/facundo-ramirez-cambareri-4a426b1a5/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/aguusoleti"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/aguusoleti/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+<br>
+
+## ✔ Testing 
+
+#### 👉🏻 Task List ✅
+
+- Perform design and integration testing 
+- Testing REST API endpoints
+- Testing front end components and back end integration
+
+#### 👉🏻 Tested with 🛠️
+
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+![Selenium](https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+
+#### 👉🏻 Testers 👨🏻‍💻
+
+| <img src="https://avatars.githubusercontent.com/u/85188798?v=4" width=100>|
+|:-:|
+| **Dolores Alemán**|
+| <a href="https://github.com/dolores91"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/dolores-aleman/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+<br>
+
+## ✔ UX/UI Design
+
+#### 👉🏻 Task List ✅
+
+- Design brand identity and logos
+- Design low quality prototypes and mockups
+- Define colors, fonts and styles
+- Move to medium quality and develop components
+- Copy-writing
+
+#### 👉🏻 Built with 🛠️
+
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
+
+#### 👉🏻 Designers 👨🏻‍💻
+
+| <img src="https://ca.slack-edge.com/T032Y55Q6VC-U04F9DLU37U-365a35d22506-512" width=100>|
+|:-:|
+| **Gerardo Vargas**|
+| <a href="https://www.behance.net/geravargas"><img src="https://img.shields.io/badge/Behance-1769ff?style=for-the-badge&logo=behance&logoColor=white"/></a> <a href="https://www.linkedin.com/in/geravargas/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+
 <br>
 
 ## ✔ WorkFlow 
@@ -170,6 +215,10 @@ For understanding more about git and how to work with different branches, I reco
 
 #### 👉🏻 Team Leader 👨🏻‍💻
 
+| <img src="https://avatars.githubusercontent.com/u/75045716?v=4" width=100>|
+|:-:|
+| **Billy Campagnoli**|
+| <a href="https://www.linkedin.com/in/billy-campagnoli-221621223/"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/billy-campagnoli-221621223/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 <br>
 <hr>
 <br><br>
