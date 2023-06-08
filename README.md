@@ -99,29 +99,30 @@ Say goodbye to guesswork and hello to a data-driven approach to your job search.
 
 #### 👉🏻 Task List ✅
 
--
--
--
--
--
+- Development of front-end reactive React app.
+- Implementation of UX/UI designs.
+- Implementation of security architecture with JWT interceptors.
+- Connection with REST API.
+- Deployed in Firebase hosting.
 
 #### 👉🏻 Code Standards 📜
-
--
--
--
--
--
--
--
--
--
--
+    
+- Name React components using PascalCase. For example: UserCard, LoginForm.
+- Use meaningful and descriptive names for variables, functions, and components.
+- Separate concerns and maintain a modular structure for your code. Each component should have its own file.
+- Organize components into logical folders based on their functionality or feature.
+- Use camelCase for variable and function names. For example: firstName, getUserData().
+- Utilize reusable components whenever possible to avoid code duplication.
+- Follow the recommended file structure for React projects, separating components, styles, and other resources into their respective directories.
+- Utilize React hooks and functional components for new development whenever possible.
+- Ensure responsive design and cross-browser compatibility for a consistent user experience.
+- Optimize performance by following best practices such as lazy loading, code splitting, and efficient rendering techniques.
+- Prioritize code readability and maintain a consistent coding style throughout the project.
+- Handle errors and exceptions gracefully, providing helpful error messages to users when necessary.
+- Use localization techniques for handling strings and messages that need to be translated or externalized.
 
 
 #### 👉🏻 Built with 🛠️
-
-
 
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
