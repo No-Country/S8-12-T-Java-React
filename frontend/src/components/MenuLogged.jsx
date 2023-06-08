@@ -41,7 +41,7 @@ export const MenuLogged = ({isOpen,onClose}) => {
         {active===3?<Biblioteca/>:null}
         <Link to={'/'} onClick={()=>setactive(4)} className={`btnInactive ${active===4?'btnActive':null} font-['Lato','sans-serif'] font-normal`}>Métricas</Link>
         <Link to={'/'} onClick={()=>setactive(5)} className={`btnInactive ${active===5?'btnActive':null} font-['Lato','sans-serif'] font-normal`}>Calendario</Link>
-        <Link to={'/'} onClick={()=>Disconnect()} className={`btnInactive ${active===6?'btnActive':null} font-['Lato','sans-serif'] font-normal`}>Desconectarse</Link>
+        <Link to={'/metricas'} onClick={()=>Disconnect()} className={`btnInactive ${active===6?'btnActive':null} font-['Lato','sans-serif'] font-normal`}>Desconectarse</Link>
       </div>
       </div>
     </div>

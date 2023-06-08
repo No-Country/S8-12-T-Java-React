@@ -36,6 +36,7 @@ export default function TableroSeleccionado() {
     const toStage = e.destination.droppableId;
 
     const setApplicationState = async() =>{
+      
       try{
         const response = await api.put(`/api/v1/applications/${aplication}/toStage/${toStage}`,{},{headers:{Authorization:TOKEN}})
         window.location.reload()
@@ -50,7 +51,7 @@ export default function TableroSeleccionado() {
   return (
     
     <main className='h-[100vh] w-[90vw] flex flex-row gap-x-[4vw] ml-[4vw] overflow-x-scroll'>
-    <DragDropContext onDragEnd={(e)=>{GuardadoDeDrop(e)}}>
+    <DragDropContext onDragEnd={(e)=>{GuardadoDeDrop(e);}}>
     {isLoading ? (
           <div className="h-[100vh] w-[100vw] flex justify-center items-center">
             <TailSpin type="TailSpin" color="#6D28D9" height={80} width={80} />
