@@ -90,6 +90,10 @@ Say goodbye to guesswork and hello to a data-driven approach to your job search.
 
 #### 👉🏻 Developers 👨🏻‍💻
 
+| <img src="https://avatars.githubusercontent.com/u/83373185?s=400&u=8a6f208010656f54fe828ab92cfebbe430e9f019&v=4" width=50>| <img src="https://avatars.githubusercontent.com/u/93452642?v=4" width=50>| 
+|:-:|:-:|
+| **Emiliano Escobedo**| **Brayan Rodallega**|
+| <a href="https://github.com/EmilianoEscobedo"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/emiliano-escobedo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/brayanrodallega"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/brayanrodallega/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> 
 
 ## ✔ FrontEnd
 
