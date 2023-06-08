@@ -31,9 +31,9 @@ export const StagesModal = (props) => {
   }, []);
 
   return (
-    <div className="bg-transparent text-black w-[100%] h-[100vh] flex flex-col items-center gap-y-[1.5vh]">
-      <div className="w-[100%] text-[1.15em] text-star text-700 font-bold flex flex-row items-center mt-[5vh] mb-3">
-        <img className="w-[15%] mr-3" src={trello} alt="1"></img>
+    <div className="bg-transparent text-black w-[100%] min-h-[50vh] flex flex-col items-center gap-y-[1.5vh]">
+      <div className="w-[100%] text-[1.15em] text-star text-700 font-bold flex flex-row items-center my-5">
+        <img className="w-5 mr-3" src={trello} alt="1"></img>
         <h2 className="text-[80%] font-['Lato','sans-serif'] font-bold uppercase">
           {props.title}
         </h2>
@@ -44,7 +44,7 @@ export const StagesModal = (props) => {
       <Droppable droppableId={`${props.id}`}>
         {(droppableProvided, droppableSnapshot) => (
           <div
-            className="h-[65vh] w-full overflow-y-scroll"
+            className="h-[65vh] w-[50vw] sm:w-[20vw] overflow-y-scroll"
             ref={droppableProvided.innerRef}
             {...droppableProvided.droppableProps}
           >

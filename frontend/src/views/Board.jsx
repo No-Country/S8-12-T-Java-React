@@ -18,7 +18,7 @@ export default function Boards() {
       const response = await api.get(`/api/v1/users/${DECODE_TOKEN}/stages`, {
         headers: { Authorization: TOKEN },
       });
-      console.log(response.data)
+      console.log(response.data);
       setTableros(response.data);
       setTimeout(() => {
         setIsLoading(false);
@@ -33,34 +33,36 @@ export default function Boards() {
 
   return (
     <>
-      <main className=" text-black w-full h-full flex flex-col items-center ">
-        <div className="w-[90vw] text-[1.15em] text-star text-700 font-bold flex flex-row items-center mt-[10%] mb-3">
-          <img
-            className="w-[10vw] drop-shadow-md mr-3 "
-            src={trello}
-            alt="1"
-          ></img>
-          <h2 className="font-['Lato','sans-serif'] font-bold">Tableros</h2>
+      <main className="text-black w-full flex flex-col items-center mt-[10%] sm:mt-[5%] mb-3 box-border">
+        <div className="text-[1.15em] text-star text-700 font-bold flex flex-row items-center">
+          <img className="w-5 drop-shadow-md mr-3 " src={trello} alt="1"></img>
+          <h2 className="font-bold">Tableros</h2>
         </div>
         {Tableros.length <= 0 ? <NewBoard /> : null}
-        <div className="h-[75vh]">
-        {isLoading ? (
-          <div className="h-[50vh] flex justify-center items-center">
-            <TailSpin type="TailSpin" color="#6D28D9" height={30} width={30} />
-          </div>
-        ) : Tableros.length ? (
-          (
+        <div className="h-[70vh]">
+          {isLoading ? (
+            <div className="h-[50vh] flex  items-center">
+              <TailSpin
+                type="TailSpin"
+                color="#6D28D9"
+                height={30}
+                width={30}
+              />
+            </div>
+          ) : Tableros.length ? (
             <Board
               key={Tableros[0].id}
               title={Tableros[0].stageName}
               id={Tableros[0].id}
               description={Tableros[0].boardDescription}
             />
-          )
-        ) : (<div className="h-[55vh] flex justify-center items-center">
-          <h2 className="font-['Lato','sans-serif'] font-bold">No creaste ningun tablero, hazlo con el boton de arriba</h2>
+          ) : (
+            <div className="h-[55vh] flex justify-center items-center">
+              <h2 className="font-bold">
+                No creaste ningun tablero, hazlo con el boton de arriba
+              </h2>
             </div>
-        )}
+          )}
         </div>
       </main>
     </>

@@ -17,9 +17,13 @@ export default function Perfil() {
   };
 
   return (
-    <div className="px-4 w-full">
+    <div className="px-4 w-full sm:w-[50vw] sm:h-[80vh] sm:m-auto">
       <div className="flex justify-center my-8">
-        <img className="w-40 h-40" src={profilePicture} alt="1"></img>
+        <img
+          className="w-45 h-40 rounded-full"
+          src="https://images-ext-1.discordapp.net/external/9d9X4u--AETYMONmdr_3PJoqHvwqbT4wMBkWDaVhnic/https/opem.b-cdn.net/wp-content/uploads/2022/10/foto-curriculum.jpg?width=784&height=657"
+          alt="1"
+        ></img>
       </div>
       <div className="flex flex-col w-full gap-y-7 gap-x-2">
         <CategoryPerfil
