@@ -166,7 +166,7 @@ Say goodbye to guesswork and hello to a data-driven approach to your job search.
 
 #### 👉🏻 Documentation 📜
 
-- You can read testing docs <a href="http://cwapidocs.s3-website-us-east-1.amazonaws.com/](https://daleman.notion.site/Test-Template-18af0cb0011a4dd4afdb8a729824f315?pvs=4" target="_blank">here</a>.
+- You can read testing docs <a href="https://daleman.notion.site/Test-Template-18af0cb0011a4dd4afdb8a729824f315?pvs=4" target="_blank">here</a>.
 
 #### 👉🏻 Tested with 🛠️
 
