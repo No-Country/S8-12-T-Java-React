@@ -164,6 +164,10 @@ Say goodbye to guesswork and hello to a data-driven approach to your job search.
 - Testing REST API endpoints
 - Testing front end components and back end integration
 
+#### 👉🏻 Documentation 📜
+
+- You can read testing docs <a href="[http://cwapidocs.s3-website-us-east-1.amazonaws.com/](https://daleman.notion.site/Test-Template-18af0cb0011a4dd4afdb8a729824f315?pvs=4)" target="_blank">here</a>.
+
 #### 👉🏻 Tested with 🛠️
 
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
