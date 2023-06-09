@@ -1,12 +1,12 @@
 package com.Tests;
 
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import com.Pages.PageLogin;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestLogin {
 	
@@ -14,23 +14,35 @@ public class TestLogin {
 	PageLogin pageLogin;
 
 	@BeforeEach
-	public void setUp() throws Exception {
+	public void setUp (){
 		pageLogin = new PageLogin(driver);
-		driver =pageLogin.chromeDriverConnection();
-		pageLogin.link("https://www.facebook.com/");
-		Thread.sleep(2000);
-		String titulo = driver.getTitle();
-		System.out.println(titulo);
-		//assertTrue(titulo.contains("facebook"));
+		driver = pageLogin.chromeDriverConnection();
+		pageLogin.link("https://career-watch.web.app/");
 	}
 	@AfterEach
-	public void tearDown() throws Exception {
+	public void tearDown (){
 		driver.quit();
 	}
 
 	@Test
-	public void test() throws InterruptedException {
+	public void test01() throws InterruptedException {
 		pageLogin.LoginExitoso();
 
 	}
+	@Test
+	public void test02() throws InterruptedException {
+		pageLogin.LoginSinMail();
+
+	}
+	@Test
+	public void test03() throws InterruptedException {
+		pageLogin.LoginSinPass();
+
+	}
+	@Test
+	public void test04() throws InterruptedException {
+		pageLogin.credencialesIvalidas();
+
+	}
+
 }

@@ -3,8 +3,14 @@ package com.Base;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class BasePage {
 
@@ -25,6 +31,23 @@ public class BasePage {
 	public void link (String url) {
 		driver.get(url);
 	}
+	public void obtenerTexto (By locator) {
+		String res = driver.findElement(locator).getText();
+		System.out.println("Texto : " + res );
 	}
+	public void comparar (By locator, String texto) {
+		String res = driver.findElement(locator).getText();
+		assertTrue(res.contains(texto));
+	}
+	public void esperaExplictaText (int time, By locator, String texto){
+		new WebDriverWait(driver, Duration.ofSeconds(time)).
+				until(ExpectedConditions.textToBePresentInElementLocated(locator,texto));
+	}
+	public void esperaExplictabutton(int time, By locator) {
+		new WebDriverWait(driver, Duration.ofSeconds(time))
+				.until(ExpectedConditions.elementToBeClickable(locator));
+	}
+
+}
 
 

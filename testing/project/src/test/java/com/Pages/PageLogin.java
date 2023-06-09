@@ -4,53 +4,76 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import com.Base.BasePage;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PageLogin extends BasePage{
-    By mailInput = By.name("email");  //cambiar
-    By passwordInput = By.name("pass"); //cambiar
-    By btnLogin = By.name("login"); //cambiar
-
-    //By resultado = By.className("xbh8q5q x1pwv2dq xvlca1e");
-    //By resultadoFail = By.className("form-feedback");
+    By buttonMenu = By.xpath("//*[@id=\'root\']/header/button");
+    By buttonLogin = By.xpath("//*[@id=\'root\']/div[1]/div[2]/div/a[1]");
+    By header = By.xpath("//*[@id=\'root\']/header/h1");
+    By correo = By.id("user");
+    By contrasena = By.id("password");
+    By buttonLogin1 = By.xpath("//*[@id=\'root\']/div[3]/div/div/form/button");
+    By resultado = By.xpath("//*[@id=\'root\']/main/div[1]/h2");
+    By resultadoFail = By.xpath("//*[@id=\'root\']/div[3]/div/div/form/div/div[1]/span");
+    By resultadoFail2 = By.xpath("//*[@id=\'root\']/div[3]/div/div/form/div/div[2]/span");
 
     public PageLogin(WebDriver driver) {
     }
     public void LoginExitoso() throws InterruptedException {
-        teclear("dolo_aleman@hotmail.com",mailInput);
-        teclear("123456",passwordInput);
-        oprimir(btnLogin);
-        Thread.sleep(5000);
-        //String res = driver.findElement(resultado).getText();
-        //assertTrue(res.contains("edisson esteban gomez pinzon"));
-        //Thread.sleep(2000);
-        driver.quit();
+        esperaExplictabutton(10,buttonMenu);
+        oprimir(buttonMenu);
+        esperaExplictabutton(10,buttonLogin);
+        oprimir(buttonLogin);
+        oprimir(header);
+        teclear("josefernandez@gmail.com",correo);
+        teclear("12341234",contrasena);
+        oprimir(buttonLogin1);
+        esperaExplictaText(50,resultado,"Tableros");
+        obtenerTexto(resultado);
+        esperaExplictaText(20,resultado,"Tableros");
+        comparar(resultado,"Tableros");
     }
-    public void LoginSinNombre() throws InterruptedException {
-        teclear("",mailInput);
-        teclear("123456",passwordInput);
-        oprimir(btnLogin);
-        Thread.sleep(5000);
-       // String res = driver.findElement(resultadoFail).getText();
-       // assertTrue(res.contains("Sus credenciales son inválidas. Por favor, vuelva a intentarlo"));
-        driver.quit();
-    }
+   public void LoginSinMail() throws InterruptedException {
+       esperaExplictabutton(10,buttonMenu);
+       oprimir(buttonMenu);
+       esperaExplictabutton(10,buttonLogin);
+       oprimir(buttonLogin);
+       oprimir(header);
+       teclear("",correo);
+       teclear("12341234",contrasena);
+       oprimir(buttonLogin1);
+       esperaExplictaText(50,resultadoFail,"El correo no esta registrado");
+       obtenerTexto(resultadoFail);
+       esperaExplictaText(20,resultadoFail,"El correo no esta registrado");
+       comparar(resultadoFail,"debe ingresar un correo");
+
+   }
+
     public void LoginSinPass() throws InterruptedException {
-        teclear("dolo_aleman@hotmail.com",mailInput);
-        teclear("",passwordInput);
-        oprimir(btnLogin);
-        Thread.sleep(5000);
-        // String res = driver.findElement(resultadoFail).getText();
-        // assertTrue(res.contains("Sus credenciales son inválidas. Por favor, vuelva a intentarlo"));
-        driver.quit();
+        esperaExplictabutton(10,buttonMenu);
+        oprimir(buttonMenu);
+        esperaExplictabutton(10,buttonLogin);
+        oprimir(buttonLogin);
+        oprimir(header);
+        teclear("josefernandez@gmail.com",correo);
+        teclear("",contrasena);
+        oprimir(buttonLogin1);
+        esperaExplictaText(50,resultadoFail2,"La contraseña es incorrecta.");
+        obtenerTexto(resultadoFail2);
+        esperaExplictaText(20,resultadoFail2,"La contraseña es incorrecta.");
+        comparar(resultadoFail2,"Debe ungresar una contraseña.");
     }
     public void credencialesIvalidas() throws InterruptedException {
-        teclear("dolo_aleman",mailInput);
-        teclear("123456",passwordInput);
-        oprimir(btnLogin);
-        Thread.sleep(5000);
-        // String res = driver.findElement(resultadoFail).getText();
-        // assertTrue(res.contains("Sus credenciales son inválidas. Por favor, vuelva a intentarlo"));
-        driver.quit();
+        esperaExplictabutton(10,buttonMenu);
+        oprimir(buttonMenu);
+        esperaExplictabutton(10,buttonLogin);
+        oprimir(buttonLogin);
+        oprimir(header);
+        teclear("josefernandez@gmail.com",correo);
+        teclear("12345678",contrasena);
+        oprimir(buttonLogin1);
+        esperaExplictaText(50,resultadoFail2,"La contraseña es incorrecta.");
+        obtenerTexto(resultadoFail2);
+        esperaExplictaText(20,resultadoFail2,"La contraseña es incorrecta.");
+        comparar(resultadoFail2,"La contraseña es incorrecta.");
     }
 }
